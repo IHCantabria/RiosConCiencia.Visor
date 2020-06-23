@@ -1,18 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import apiSensors from "./modules/apiSensors";
-import datahub from "./modules/datahub";
-import coords from "./modules/coords";
-import filters from "./modules/filters";
+import samples from "./modules/samples";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    apiSensors,
-    datahub,
-    coords,
-    filters
+    samples
   }
 });
