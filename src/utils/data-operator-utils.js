@@ -1,26 +1,21 @@
-//aux method to parse a string to GeoJSON
-export const parseGeoJSON = string => {
-  return JSON.parse(string).features[0];
+import * as config from "@/config/data-config";
+//aux method to get the color of the biological state
+export const getBiologicalColor = id => {
+  let color = config.BIOLOGICAL_RAMP.find(element => element.id == id).color;
+  if (!color)
+    color = config.BIOLOGICAL_RAMP.find(element => element.id == 0).color;
+  return color;
 };
-//aux method to generate a random color
-export const colorLayers = () => {
-  return (
-    "#" + ("00000" + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6)
-  );
+//aux method to get the color of the forest state
+export const getForestColor = id => {
+  let color = config.FOREST_RAMP.find(element => element.id == id).color;
+  if (!color) color = config.FOREST_RAMP.find(element => element.id == 0).color;
+  return color;
 };
-//aux method to create mapIDGenerator
-export const mapIDGenerator = (id, type) => {
-  return `${id}${type}`;
-};
-//aux method to resolve license Product Type
-export const licenseProductType = licenseString => {
-  return licenseString == "Open Access" ? true : false;
-};
-//aux method to resolve license Buoy Type
-export const licenseBuoyType = licenseString => {
-  return licenseString == "Restringida" ? false : true;
-};
-//aux method to resolve license Station Type
-export const licenseStationType = licenseString => {
-  return licenseString == "Restringida" ? false : true;
+//aux method to get the color of the forest state
+export const getStateColor = id => {
+  let color = config.ECOLOGICAL_RAMP.find(element => element.id == id).color;
+  if (!color)
+    color = config.ECOLOGICAL_RAMP.find(element => element.id == 0).color;
+  return color;
 };
