@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dataCardBuoy.vue renders correctly default values 1`] = `
+<div
+  class="overviewcard"
+>
+  <div
+    class="overviewcard__description"
+  >
+    <vs-list-stub
+      class="additional-Info"
+    >
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <i
+          class="fas fa-lock"
+          title=""
+        />
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Latitude"
+      >
+        <span>
+          0
+        </span>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Longitude"
+      >
+        <span>
+          0
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+     
+    <vs-list-stub
+      class="variables-Info"
+    >
+      <vs-list-header-stub
+        color="primary"
+        icon="info"
+        iconpack="material-icons"
+        title="Variables Info"
+      />
+       
+    </vs-list-stub>
+  </div>
+</div>
+`;
+
+exports[`dataCardBuoy.vue renders correctly with full info 1`] = `
+<div
+  class="overviewcard"
+>
+  <div
+    class="overviewcard__description"
+  >
+    <vs-list-stub
+      class="additional-Info"
+    >
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <i
+          class="fas fa-unlock"
+          title="open"
+        />
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Latitude"
+      >
+        <span>
+          30
+        </span>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Longitude"
+      >
+        <span>
+          10
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+     
+    <vs-list-stub
+      class="variables-Info"
+    >
+      <vs-list-header-stub
+        color="primary"
+        icon="info"
+        iconpack="material-icons"
+        title="Variables Info"
+      />
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+      >
+        <span>
+          <strong>
+            Name
+          </strong>
+          : name test 1
+        </span>
+         
+        <span>
+          <strong>
+            Type
+          </strong>
+          : type test 1
+        </span>
+         
+        <span>
+          <strong>
+            Units
+          </strong>
+          : m
+        </span>
+         
+        <span>
+          <strong>
+            Minimum
+          </strong>
+          : 14
+        </span>
+         
+        <span>
+          <strong>
+            Maximum
+          </strong>
+          : 56
+        </span>
+      </vs-list-item-stub>
+      <vs-list-item-stub
+        iconpack="material-icons"
+      >
+        <span>
+          <strong>
+            Name
+          </strong>
+          : name test 2
+        </span>
+         
+        <span>
+          <strong>
+            Type
+          </strong>
+          : type test 2
+        </span>
+         
+        <span>
+          <strong>
+            Units
+          </strong>
+          : s
+        </span>
+         
+        <span>
+          <strong>
+            Minimum
+          </strong>
+          : 45
+        </span>
+         
+        <span>
+          <strong>
+            Maximum
+          </strong>
+          : 156
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+  </div>
+</div>
+`;

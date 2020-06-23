@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`panelFilters.vue renders correctly by default 1`] = `<!---->`;
+
+exports[`panelFilters.vue renders correctly with momentFilter 1`] = `<!---->`;
+
+exports[`panelFilters.vue renders correctly with moments 1`] = `
+<div
+  class="app-filters"
+>
+  <filters-advanced-stub
+    class="filters-advanced"
+    data-cy="filtersAdvancedToggle"
+  />
+   
+  <panel-about-stub
+    class="panel-about"
+  />
+   
+  <div
+    class="type-filters__expanded"
+  >
+    <div
+      class="time-selectors"
+    >
+      <slider-stub
+        class="time-selectors__selector"
+        id="selector"
+        rangedata="[object Object],[object Object],[object Object],[object Object]"
+        theme="light"
+      />
+    </div>
+     
+    <div
+      class="variable-selectors"
+    >
+      <!---->
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app.vue renders correctly 1`] = `
+<div
+  class="app-style grid"
+  id="app"
+>
+  <viewer-stub
+    class="main"
+  />
+</div>
+`;

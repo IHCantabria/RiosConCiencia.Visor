@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dataCardProduct.vue renders correctly default values 1`] = `
+<div
+  class="overviewcard"
+>
+  <div
+    class="overviewcard__description"
+  >
+    <vs-list-stub
+      class="additional-Info"
+    >
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <i
+          class="fas fa-lock"
+          title=""
+        />
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <a
+          href=""
+          target="_blank"
+          title="Go to Data Catalog"
+        >
+          <i
+            class="fas fa-folder"
+          />
+        </a>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Type of Product"
+      >
+        <span>
+          
+        </span>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Source Origin"
+      >
+        <a
+          href=""
+          target="_blank"
+          title="Go to source Url"
+        >
+          <span>
+            
+          </span>
+        </a>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Source Ambit"
+      >
+        <span>
+          
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+     
+    <vs-list-stub
+      class="variables-Info"
+    >
+      <vs-list-header-stub
+        color="primary"
+        icon="info"
+        iconpack="material-icons"
+        title="Variables Info"
+      />
+       
+    </vs-list-stub>
+  </div>
+</div>
+`;
+
+exports[`dataCardProduct.vue renders correctly with full info 1`] = `
+<div
+  class="overviewcard"
+>
+  <div
+    class="overviewcard__description"
+  >
+    <vs-list-stub
+      class="additional-Info"
+    >
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <i
+          class="fas fa-unlock"
+          title="open"
+        />
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        class="additional-Info__Icon"
+        iconpack="material-icons"
+      >
+        <a
+          href="url test"
+          target="_blank"
+          title="Go to Data Catalog"
+        >
+          <i
+            class="fas fa-folder"
+          />
+        </a>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Type of Product"
+      >
+        <span>
+          type test
+        </span>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Source Origin"
+      >
+        <a
+          href="url source test"
+          target="_blank"
+          title="Go to source Url"
+        >
+          <span>
+            source test
+          </span>
+        </a>
+      </vs-list-item-stub>
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="Source Ambit"
+      >
+        <span>
+          source type test
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+     
+    <vs-list-stub
+      class="variables-Info"
+    >
+      <vs-list-header-stub
+        color="primary"
+        icon="info"
+        iconpack="material-icons"
+        title="Variables Info"
+      />
+       
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="long name test 1"
+      >
+        <span>
+          <strong>
+            Short Name
+          </strong>
+          : short name test 1
+        </span>
+         
+        <span>
+          <strong>
+            Alias
+          </strong>
+          : alias test 1
+        </span>
+         
+        <span>
+          <strong>
+            Units
+          </strong>
+          : m
+        </span>
+      </vs-list-item-stub>
+      <vs-list-item-stub
+        iconpack="material-icons"
+        title="long name test 2"
+      >
+        <span>
+          <strong>
+            Short Name
+          </strong>
+          : short name test 2
+        </span>
+         
+        <span>
+          <strong>
+            Alias
+          </strong>
+          : alias test 2
+        </span>
+         
+        <span>
+          <strong>
+            Units
+          </strong>
+          : s
+        </span>
+      </vs-list-item-stub>
+    </vs-list-stub>
+  </div>
+</div>
+`;

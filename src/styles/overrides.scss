@@ -1,0 +1,329 @@
+/* Override Sweet-Modal styles */
+//This rules overright css from dependencies: sweet-modal
+.sweet-modal {
+  border-radius: 0;
+  width: 100%;
+  max-width: 750px;
+  background:$color-panels;
+
+  .sweet-title {
+    background:$color-light-white;
+    border-bottom: 0;
+    padding-top: 2%;
+    padding-right: 0;
+    padding-left: 0;
+
+    h2 {
+      font-weight: bold;
+      text-align:center;
+    }
+  }
+
+  .sweet-content {
+    padding: {
+      left: 2%;
+      right: 2%;
+      top: 1%;
+      bottom: 3%;
+    }
+  }
+}
+
+.sweet-modal.is-visible {
+  opacity: 0.9;
+}
+
+/* Non-mobile styles, 750px breakpoint */
+
+@media only screen and (min-width: $breakpoint-movilToTablet) {
+  .sweet-modal {
+    width: 80%;
+    border-radius: 20px;
+    max-width: 640px;
+  }
+}
+
+/* Override Vuesax styles */
+//This rules overright css from dependencies: vuesax
+* {//Global
+  box-sizing: content-box;
+}
+a, a:link, a:visited, a:focus, a:hover, a:active{
+  color: $app-font-color;
+  text-decoration:none; 
+}
+
+.material-icons {
+  font-size: 1rem;
+}
+.vs-dropdown--menu{
+  border-radius: 15px;
+  font-family: $app-font;
+  color: $app-font-color;
+  font-size: 0.8rem;
+  background:$color-panels;
+}
+
+//selects
+.vs-select--label{
+  color:$app-font-color;
+}
+
+.vs-select-primary{
+  background-color: $color-light-white;
+}
+.vs-select--item{
+  border-top:0;
+  border-bottom:0;
+}
+
+//tables
+
+.td-check {
+  display: none;
+}
+
+.vs-table--tbody-table {
+  background: $color-table-tbody-tr;
+  min-width: 0;
+}
+
+.vs-table--tbody-table tr{
+  background: $color-table-tbody-tr;
+}
+
+.tr-expand td .content-tr-expand {
+  padding: 0;
+}
+
+.panel-sensors .vs-table--thead tr th {
+  padding: 10px;
+  background: $color-table-thead-tr;
+}
+
+.panel-products .vs-table--thead tr th{
+  padding: 10px;
+  background: $color-table-thead-tr
+}
+
+.vs-table--header {
+  background: $color-table-header;
+}
+
+.vs-table--pagination{
+  background: $color-table-thead-tr;
+  width: 95%;
+}
+
+.vs-table--content{
+  background: $color-table-thead-tr;
+}
+
+.vs-table--tbody::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: $color-white;
+}
+
+.vs-table--tbody::-webkit-scrollbar
+{
+  direction: rtl;
+  width: 8px;
+	background-color: $color-white;
+}
+
+.vs-table--tbody::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: $color-grey;
+}
+
+.panel-sensors .vs-table--tbody{
+  direction : rtl;
+}
+.panel-sensors .vs-table--tbody .vs-table--tbody-table{
+  direction : ltr;
+}
+
+.vs-table--not-data{
+  background: $color-table-tbody-tr
+}
+
+.vs-table--search {
+  margin: 0 5px;
+}
+
+.panel-sensors .vs-table--search{
+  margin-left:5px;
+}
+
+.vs-table--search-input{
+  background: $color-table-search;
+  border: 1.5px solid $color-light-grey;
+
+}
+
+.vs-tabs--content{
+  padding:0;
+  margin:0;
+}
+
+//Checkbox 
+
+.vuesax-app-is-ltr .vs-checkbox {
+  margin-right: 0;
+}
+
+.con-vs-checkbox {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.vs-checkbox-default{
+  z-index:2;
+}
+
+.con-vs-tabs .con-slot-tabs {
+  width:100%;
+}
+
+//list
+.vs-list {
+  padding-bottom: 0;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+}
+
+.vs-list--header{
+  width:100%;
+  border-bottom:0;
+  margin-bottom:0;
+}
+.vs-list--icon i{
+  font-size: 1.6rem;
+}
+
+.vs-list--item{
+  padding:10px;
+  min-width:1%;
+  max-width:100%;
+  display: flex;
+  border-bottom:0;
+  flex-flow: nowrap column;
+  .list-titles{
+    text-align: center;
+  }
+  .vs-list--slot{
+    display: flex;
+    flex-flow: nowrap column;
+    margin:5px;
+    text-align: center;
+    font-size:90%
+  }
+}
+.additional-Info__Icon{
+
+  .vs-list--slot {
+    font-size:150%
+  }
+}
+.variables-Info .vs-list--item{
+  width:100%;
+  .list-titles{
+    border-top: 0.5px solid $color-light-grey;
+    border-bottom: 0.5px solid $color-light-grey;
+    padding: 5px;
+    width: 100%;
+    text-align: left;
+  }
+  .vs-list--slot{
+    width:100%;
+    display: flex;
+    flex-flow: nowrap column;
+    margin:5px;
+    text-align: left;
+    font-size:90%
+  }
+}
+
+/* Override Leaflet styles */
+//This rules overright css from dependencies: Leaflet
+
+.easy-button-button {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: 1px;
+  border-radius: 4px;
+  background-color: $color-light-white;
+  &:hover {
+    background-color: $color-light-grey
+  }
+}
+.leaflet-control-layers{
+  background-color: $color-light-white;
+}
+.leaflet-control-layers-base label {
+  &:hover {
+    cursor: pointer;
+    background-color: $color-light-grey
+  }
+}
+
+.leaflet-container{
+  font-family: $app-font;
+  color: $app-font-color;
+}
+
+.leaflet-control-layers-list {
+  text-align: left;
+}
+
+.leaflet-control-layers-selector {
+  &:hover {
+    cursor: pointer;
+    }
+}
+.leaflet-bar a{
+  background-color: $color-light-white;
+}
+.leaflet-draw-actions a {
+  background-color: $color-primary;
+  color:$color-white
+}
+.leaflet-draw-actions a:hover {
+  background-color: $color-grey;
+  color:$color-white
+}
+
+.leaflet-bar a:hover{
+  background-color: $color-light-grey
+}
+.leaflet-bar a.leaflet-disabled{
+  background: $color-grey;
+}
+.leaflet-draw-tooltip-subtext {
+	color: $color-light-grey;
+}
+
+.extra-marker i {
+  margin-top: 0;
+}
+
+//Icon classes
+.icon-sensors {
+  width: 80%;
+  height: 80%;
+
+  &__Buoy {
+    content: url("~@/assets/buoy.svg");
+  }
+
+  &__Station {
+    content: url("~@/assets/station.svg");
+  }
+}

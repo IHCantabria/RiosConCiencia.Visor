@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`baseSpinner.vue renders correctly in basic mode 1`] = `
+<sweet-modal-stub
+  blocking="true"
+  class="app-style"
+  hide-close-button="true"
+  modal-theme="light"
+  overlay-theme="light"
+  pulse-on-block="true"
+  title="Loading"
+>
+  <div
+    class="loading-panel"
+  >
+    <div
+      class="loading-icon"
+    >
+      <circle-loader-stub
+        color="#1c313a"
+        size="50"
+        sizeunit="px"
+      />
+    </div>
+     
+    <div
+      class="loading-text"
+    >
+      test
+    </div>
+     
+    <!---->
+  </div>
+</sweet-modal-stub>
+`;
+
+exports[`baseSpinner.vue renders correctly in progress mode 1`] = `
+<sweet-modal-stub
+  blocking="true"
+  class="app-style"
+  hide-close-button="true"
+  modal-theme="light"
+  overlay-theme="light"
+  pulse-on-block="true"
+  title="Loading"
+>
+  <div
+    class="loading-panel"
+  >
+    <div
+      class="loading-icon"
+    >
+      <circle-loader-stub
+        color="#1c313a"
+        size="50"
+        sizeunit="px"
+      />
+    </div>
+     
+    <div
+      class="loading-text"
+    >
+      test
+    </div>
+     
+    <!---->
+  </div>
+</sweet-modal-stub>
+`;
+
+exports[`baseSpinner.vue renders correctly in subTasks mode 1`] = `
+<sweet-modal-stub
+  blocking="true"
+  class="app-style"
+  hide-close-button="true"
+  modal-theme="light"
+  overlay-theme="light"
+  pulse-on-block="true"
+  title="Loading"
+>
+  <div
+    class="loading-panel"
+  >
+    <div
+      class="loading-icon"
+    >
+      <circle-loader-stub
+        color="#1c313a"
+        size="50"
+        sizeunit="px"
+      />
+    </div>
+     
+    <div
+      class="loading-text"
+    >
+      test
+    </div>
+     
+    <div
+      class="loading-table"
+    >
+      <vs-table-stub
+        data="[object Object]"
+        max-items="2"
+        no-data-text=""
+      />
+    </div>
+  </div>
+</sweet-modal-stub>
+`;
