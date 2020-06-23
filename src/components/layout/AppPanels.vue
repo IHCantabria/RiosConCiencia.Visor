@@ -1,113 +1,5 @@
 <template>
   <div class="app-info">
-    <div class="panel-controls">
-      <div
-        class="show-button show-button__left"
-        title="Sensors"
-        data-cy="sensorsToggle"
-        @click="sensorsOpen = !sensorsOpen"
-      >
-        <object
-          :data="require('@/assets/sensors.svg')"
-          type="image/svg+xml"
-          style="height:100%; pointer-events: none;"
-        />
-      </div>
-      <div
-        class="show-button show-button__right"
-        title="Products"
-        data-cy="productsToggle"
-        @click="productsOpen = !productsOpen"
-      >
-        <object
-          :data="require('@/assets/products.svg')"
-          type="image/svg+xml"
-          style="height:100%; pointer-events: none;"
-        />
-      </div>
-    </div>
-    <div class="transition-sensors">
-      <transition name="slide" class="sensors">
-        <div
-          v-show="isSensorsOpen"
-          data-cy="sensorsPanel"
-          :class="[
-            'side-panel',
-            'side-panel__sensors',
-            isSensorsExpanded ? 'side-panel__expanded' : 'side-panel__reduced'
-          ]"
-        >
-          <div class="header-panel">
-            <div
-              :class="[
-                'header-buttons',
-                'header-buttons__left',
-                isSensorsExpanded ? 'header-buttons__expanded' : ''
-              ]"
-            >
-              <i
-                data-cy="sensorsTogglePanel"
-                class="fas fa-times header-button"
-                @click="sensorsOpen = !sensorsOpen"
-              />
-              <i
-                :class="[
-                  'header-button',
-                  isSensorsExpanded ? 'fas fa-angle-down' : 'fas fa-angle-up'
-                ]"
-                data-cy="sensorsTogglePanelExpanded"
-                @click="sensorsExpanded = !sensorsExpanded"
-              />
-            </div>
-          </div>
-          <panel-sensors
-            :table-max-height="computedTableMaxHeightSensors"
-            :table-elements="computedTableMaxItemsSensors"
-          ></panel-sensors>
-        </div>
-      </transition>
-    </div>
-    <div class="transition-products">
-      <transition name="slide" class="products">
-        <div
-          v-show="isProductsOpen"
-          data-cy="productsPanel"
-          :class="[
-            'side-panel',
-            'side-panel__products',
-            isProductsExpanded ? 'side-panel__expanded' : 'side-panel__reduced'
-          ]"
-        >
-          <div class="header-panel">
-            <div
-              :class="[
-                'header-buttons',
-                'header-buttons__right',
-                isProductsExpanded ? 'header-buttons__expanded' : ''
-              ]"
-            >
-              <i
-                data-cy="productsTogglePanel"
-                class="fas fa-times header-button"
-                @click="productsOpen = !productsOpen"
-              />
-              <i
-                :class="[
-                  'header-button',
-                  isProductsExpanded ? 'fas fa-angle-down' : 'fas fa-angle-up'
-                ]"
-                data-cy="productsTogglePanelExpanded"
-                @click="productsExpanded = !productsExpanded"
-              />
-            </div>
-          </div>
-          <panel-products
-            :table-max-height="computedTableMaxHeightProducts"
-            :table-elements="computedTableMaxItemsProducts"
-          ></panel-products>
-        </div>
-      </transition>
-    </div>
     <div class="transition-filters">
       <transition name="slide" class="filters">
         <div
@@ -148,15 +40,11 @@
 </template>
 <script>
 import { resizeHelperMixin } from "@/mixins/resize-helper.js";
-import PanelProducts from "@/components/PanelProducts.vue";
-import PanelSensors from "@/components/PanelSensors.vue";
 import PanelFilters from "@/components/PanelFilters.vue";
 import { mapGetters } from "vuex";
 import * as types from "@/store/types";
 export default {
   components: {
-    "panel-products": PanelProducts,
-    "panel-sensors": PanelSensors,
     "panel-filters": PanelFilters
   },
   mixins: [resizeHelperMixin],
