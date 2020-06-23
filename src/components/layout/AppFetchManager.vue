@@ -70,7 +70,7 @@ export default {
   methods: {
     init() {
       //initial load data
-      // this.fetchSamplesData();
+      this.fetchSamplesData();
     },
     requestsController(data) {
       //define data received to use in the Data_operator, dataReady to true to mark that the data is ready

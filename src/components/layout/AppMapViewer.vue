@@ -7,7 +7,6 @@
       :c-draw-options="mapConfigComputed.cDrawOptionsConfig"
       :c-switch-layer-base-maps="mapConfigComputed.switchBaseMapsConfig"
       :c-markers="markers"
-      :go-to-coords="goToCoords"
       @marker-drawn="searchCoords"
       @rectangle-drawn="searchExtends"
       @search-global="searchGlobal"
@@ -16,8 +15,8 @@
 </template>
 <script>
 import LMap from "@/components/ui/LMap.vue";
-import { mapActions, mapGetters, mapState } from "vuex";
-import * as types from "@/store/types";
+// import { mapActions, mapGetters, mapState } from "vuex";
+// import * as types from "@/store/types";
 import { LEAFLET_CONFIG } from "@/config/leaflet-config.js";
 export default {
   components: {
@@ -29,15 +28,16 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      goToCoords: state => state.coords.goToCoords
-    }),
-    ...mapGetters({
-      sensorsSelected: [types.G_GET_SENSORS_SELECTED],
-      productsSelected: [types.G_GET_PRODUCTS_SELECTED]
-    }),
+    // ...mapState({
+    //   goToCoords: state => state.coords.goToCoords
+    // }),
+    // ...mapGetters({
+    //   sensorsSelected: [types.G_GET_SENSORS_SELECTED],
+    //   productsSelected: [types.G_GET_PRODUCTS_SELECTED]
+    // }),
     markers() {
-      return [...this.productsSelected, ...this.sensorsSelected];
+      // return [...this.productsSelected, ...this.sensorsSelected];
+      return [];
     },
     mapConfigComputed() {
       return {
@@ -50,9 +50,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      setSearchCoords: types.A_SET_SEARCH_COORDS
-    }),
+    // ...mapActions({
+    //   setSearchCoords: types.A_SET_SEARCH_COORDS
+    // }),
     searchCoords(coords) {
       this.setSearchCoords({
         xMin: coords.lon,
