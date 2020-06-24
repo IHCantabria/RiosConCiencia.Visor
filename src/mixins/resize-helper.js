@@ -1,4 +1,4 @@
-import { convertVHtoPX, convertVWtoPX } from "@/utils/general-utils.js";
+import { convertVWtoPX } from "@/utils/general-utils.js";
 export const resizeHelperMixin = {
   data() {
     return {
@@ -7,24 +7,8 @@ export const resizeHelperMixin = {
     };
   },
   computed: {
-    computedTableMaxHeightProducts() {
-      return this.productsExpanded
-        ? `${convertVHtoPX(this.windowHeight, 98) - 120}px`
-        : `${convertVHtoPX(this.windowHeight, 38) - 120}px`;
-    },
-    computedTableMaxHeightSensors() {
-      return this.sensorsExpanded
-        ? `${convertVHtoPX(this.windowHeight, 98) - 120}px`
-        : `${convertVHtoPX(this.windowHeight, 38) - 120}px`;
-    },
     computedSelectWidth() {
       return `${convertVWtoPX(this.windowWidth, 20)}px`;
-    },
-    computedTableMaxItemsProducts() {
-      return this.productsExpanded ? 45 : 15;
-    },
-    computedTableMaxItemsSensors() {
-      return this.sensorsExpanded ? 45 : 15;
     }
   },
   methods: {

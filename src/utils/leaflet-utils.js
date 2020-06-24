@@ -7,11 +7,6 @@ export const iconFix = () => {
     shadowUrl: require("leaflet/dist/images/marker-shadow.png")
   });
 };
-//aux method pan & zoom to a marker position
-export const panZoomMarker = marker => {
-  const latLngs = [marker.getLatLng()];
-  return L.latLngBounds(latLngs);
-};
 //aux method to create a custom icon Marker
 export const createCustomIcon = (typeSensor, color) => {
   return L.ExtraMarkers.icon({
