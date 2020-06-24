@@ -5,8 +5,14 @@
 </template>
 <script>
 import L from "leaflet";
+import "leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js";
 import "leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js";
-import { iconFix, createCustomIcon } from "@/utils/leaflet-utils.js";
+import {
+  iconFix,
+  createCustomIcon,
+  getCustomIcon,
+  getCustomColorKey
+} from "@/utils/leaflet-utils.js";
 iconFix();
 export default {
   props: {
@@ -49,6 +55,20 @@ export default {
         return [];
       }
     },
+    cOverlayLayers: {
+      type: Array,
+      required: false,
+      default: () => {
+        return [];
+      }
+    },
+    cSwitchLayerOverlayMaps: {
+      type: Array,
+      required: false,
+      default: () => {
+        return [];
+      }
+    },
     cMarkers: {
       type: Array,
       required: false,
@@ -61,8 +81,7 @@ export default {
     return {
       myMap: null,
       layersMap: [],
-      layerMarkers: [],
-      editableLayers: null
+      layerMarkers: []
     };
   },
   watch: {
@@ -89,7 +108,6 @@ export default {
       );
       this.setMap(layersToSetMap);
       this.setupSwitcherLayer();
-      this.setMarker();
       this.setupListeners();
     },
     loadTileLayers() {
@@ -117,52 +135,75 @@ export default {
     },
     setupSwitcherLayer() {
       if (this.cSwitchLayerBaseMaps.length > 0) {
-        const baseLayers = {};
-        this.cSwitchLayerBaseMaps.forEach(baseLayer => {
-          const newLayer = this.layersMap.find(
-            layer => layer.options.id == baseLayer.idLayer
-          );
-          baseLayers[baseLayer.displayLayerName] = newLayer;
-        });
-        L.control.layers(baseLayers).addTo(this.myMap);
+        const baseLayers = this.createSwitchBaseLayers();
+        const groupedOverlays = this.createSwitchOverlayLayers();
+        //OverlayLayers
+        var options = {
+          // Make the "Filtros" group exclusive (use radio inputs)
+          exclusiveGroups: ["Filtros"],
+          // Show a checkbox next to non-exclusive group labels for toggling all
+          groupCheckboxes: true
+        };
+        L.control
+          .groupedLayers(baseLayers, groupedOverlays, options)
+          .addTo(this.myMap);
       }
     },
-    setMarker() {
-      this.layerMarkers = L.featureGroup().addTo(this.myMap);
-      if (this.cMarkers.length > 0) {
-        this.cMarkers.forEach(cMarker => {
-          this.createLayerMarker(cMarker);
-        });
-      }
+    createSwitchBaseLayers() {
+      const baseLayers = {};
+      this.cSwitchLayerBaseMaps.forEach(baseLayer => {
+        const newLayer = this.layersMap.find(
+          layer => layer.options.id == baseLayer.idLayer
+        );
+        baseLayers[baseLayer.displayLayerName] = newLayer;
+      });
+      return baseLayers;
+    },
+    createSwitchOverlayLayers() {
+      const groupedOverlays = {};
+      var filters = {};
+      this.cOverlayLayers.forEach(layer => {
+        const overlayLayer = new L.LayerGroup([], layer.configParameters);
+        filters[layer.name] = overlayLayer;
+        this.layerMarkers.push(overlayLayer);
+      });
+      groupedOverlays["Filtros"] = filters;
+      this.layerMarkers[0].addTo(this.myMap);
+      return groupedOverlays;
     },
     updateLayerMarker() {
+      this.clearLayerMarkers();
       if (this.cMarkers.length > 0) this.addNewLayerMarkers();
-      if (this.layerMarkers.length != 0) this.removeOldLayerMarkers();
     },
     addNewLayerMarkers() {
-      this.cMarkers.forEach(cMarker => {
-        this.createLayerMarker(cMarker);
+      this.layerMarkers.forEach(layerGroup => {
+        this.createLayerMarkers(layerGroup);
       });
     },
-    createLayerMarker(cMarker) {
+    createLayerMarkers(layerGroup) {
+      this.cMarkers.forEach(cMarker => {
+        this.createLayerMarker(cMarker, layerGroup);
+      });
+    },
+    createLayerMarker(cMarker, layerGroup) {
+      const icon = getCustomIcon(layerGroup.options.id);
+      const key = getCustomColorKey(layerGroup.options.id);
+      const color = cMarker[key];
       const mark = L.marker(
         { lon: cMarker.longitude, lat: cMarker.latitude },
-        { icon: createCustomIcon(cMarker.typeSensor, cMarker.color) }
+        { icon: createCustomIcon(icon, color) }
       );
-      mark.layerID = cMarker.mapID;
+      mark.layerID = cMarker.id;
       mark.type = cMarker.type;
-      mark.addTo(this.layerMarkers);
+      layerGroup.addLayer(mark);
     },
-    removeOldLayerMarkers() {
-      const self = this;
-      this.layerMarkers.eachLayer(layer => {
-        this.checkLayerMarkerDontExist(layer.layerID)
-          ? self.layerMarkers.removeLayer(layer)
-          : "";
+    clearLayerMarkers() {
+      this.layerMarkers.forEach(layerGroup => {
+        var layers = layerGroup.getLayers();
+        layers.forEach(layer => {
+          layerGroup.removeLayer(layer);
+        });
       });
-    },
-    checkLayerMarkerDontExist(id) {
-      return this.cMarkers.find(cMarker => cMarker.mapID === id) ? false : true;
     },
     setupListeners() {
       this.ListenerLegendChange();
@@ -176,6 +217,9 @@ export default {
 <style src="leaflet/dist/leaflet.css"></style>
 <style
   src="leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css"
+></style>
+<style
+  src="leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css"
 ></style>
 <style scoped lang="scss">
 .l-map {

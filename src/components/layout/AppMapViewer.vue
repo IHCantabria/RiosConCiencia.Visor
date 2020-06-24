@@ -2,21 +2,19 @@
   <div class="app-map-viewer">
     <l-map
       :c-center="mapConfigComputed.centerConfig"
-      :c-base-layers="mapConfigComputed.baseLayersConfig"
       :c-map-default="mapConfigComputed.mapDefaultConfig"
-      :c-draw-options="mapConfigComputed.cDrawOptionsConfig"
+      :c-base-layers="mapConfigComputed.baseLayersConfig"
       :c-switch-layer-base-maps="mapConfigComputed.switchBaseMapsConfig"
+      :c-overlay-layers="mapConfigComputed.overlayLayersConfig"
+      :c-switch-layer-overlay-maps="mapConfigComputed.switchOverlayMapsConfig"
       :c-markers="markers"
-      @marker-drawn="searchCoords"
-      @rectangle-drawn="searchExtends"
-      @search-global="searchGlobal"
     ></l-map>
   </div>
 </template>
 <script>
 import LMap from "@/components/ui/LMap.vue";
-// import { mapActions, mapGetters, mapState } from "vuex";
-// import * as types from "@/store/types";
+import { mapGetters } from "vuex";
+import * as types from "@/store/types";
 import { LEAFLET_CONFIG } from "@/config/leaflet-config.js";
 export default {
   components: {
@@ -28,51 +26,21 @@ export default {
     };
   },
   computed: {
-    // ...mapState({
-    //   goToCoords: state => state.coords.goToCoords
-    // }),
-    // ...mapGetters({
-    //   sensorsSelected: [types.G_GET_SENSORS_SELECTED],
-    //   productsSelected: [types.G_GET_PRODUCTS_SELECTED]
-    // }),
+    ...mapGetters({
+      samples: [types.G_GET_SAMPLES_FILTERED]
+    }),
     markers() {
-      // return [...this.productsSelected, ...this.sensorsSelected];
-      return [];
+      return [...this.samples];
     },
     mapConfigComputed() {
       return {
         centerConfig: this.leafletConfig.centerDefault,
         baseLayersConfig: this.leafletConfig.baseLayersConfig,
         mapDefaultConfig: this.leafletConfig.mapDefaultConfig,
-        cDrawOptionsConfig: this.leafletConfig.drawOptionsConfig,
-        switchBaseMapsConfig: this.leafletConfig.switchBaseMapsConfig
+        switchBaseMapsConfig: this.leafletConfig.switchBaseMapsConfig,
+        overlayLayersConfig: this.leafletConfig.overlayLayersConfig,
+        switchOverlayMapsConfig: this.leafletConfig.switchOverlayMapsConfig
       };
-    }
-  },
-  methods: {
-    // ...mapActions({
-    //   setSearchCoords: types.A_SET_SEARCH_COORDS
-    // }),
-    searchCoords(coords) {
-      this.setSearchCoords({
-        xMin: coords.lon,
-        xMax: coords.lon,
-        yMin: coords.lat,
-        yMax: coords.lat
-      });
-    },
-    searchExtends(coords) {
-      this.setSearchCoords({
-        xMin: coords.lonMax,
-        xMax: coords.lonMin,
-        yMin: coords.latMin,
-        yMax: coords.latMax
-      });
-    },
-    searchGlobal() {
-      this.setSearchCoords({
-        global: true
-      });
     }
   }
 };
