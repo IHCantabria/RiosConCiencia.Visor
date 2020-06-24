@@ -4,7 +4,13 @@ import {
   forestQuality,
   ecologicalState
 } from "@/config/leaflet-providers.js";
-const centerDefault = { lat: 43.2, lon: -3.9, zoom: 10, minZoom: 3 };
+const centerDefault = {
+  lat: 43.2,
+  lon: -3.9,
+  zoom: 10,
+  minZoom: 10,
+  maxZoom: 16
+};
 
 const mapDefault = {
   center: [centerDefault.lat, centerDefault.lon],
