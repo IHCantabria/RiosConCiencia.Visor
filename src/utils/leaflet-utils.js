@@ -1,4 +1,4 @@
-import { MARKER_ICONS, MARKER_COLORS } from "@/config/data-config";
+import * as config from "@/config/data-config";
 //aux method to fix Icon default Leafleat Bug
 export const iconFix = () => {
   delete L.Icon.Default.prototype._getIconUrl;
@@ -11,13 +11,13 @@ export const iconFix = () => {
 
 //aux method to get icon to CustomMarker
 export const getCustomIcon = layerId => {
-  const icon = MARKER_ICONS.find(icon => icon.id == layerId).icon;
+  const icon = config.MARKER_ICONS.find(icon => icon.id == layerId).icon;
   return icon;
 };
 
 //aux method to get color to CustomMarker
 export const getCustomColorKey = layerId => {
-  const key = MARKER_COLORS.find(icon => icon.id == layerId).key;
+  const key = config.MARKER_COLORS.find(icon => icon.id == layerId).key;
   return key;
 };
 
@@ -84,4 +84,25 @@ export const createCustomTooltip = sample => {
       <strong>Calidad del Bosque de Rivera:</strong> ${sample.forestState}</br>
       <strong>Estado Ecológico:</strong> ${sample.ecologicalState}
     </p>`;
+};
+
+//aux method to create legend
+export const createCustomLegendDiv = (title, ramp) => {
+  const labels = [`<strong class="title-legend">${title}</strong>`];
+  let innerHTML;
+  ramp.forEach(ramp => {
+    innerHTML += labels.push(
+      `<span class="item-legend"><i class="circle-dot" style="background-color: ${ramp.colorCode}"></i> ${ramp.name}</span>`
+    );
+  });
+  innerHTML = labels.join("");
+  return innerHTML;
+};
+export const createCustomLegend = innerHTML => {
+  let div = L.DomUtil.create(
+    "div",
+    "leaflet-control-layers leaflet-control custom-legend"
+  );
+  div.innerHTML = innerHTML;
+  return div;
 };

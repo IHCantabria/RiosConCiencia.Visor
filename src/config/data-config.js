@@ -32,31 +32,45 @@ export const MARKER_COLORS = [
 export const BIOLOGICAL_RAMP = [
   {
     id: 0,
-    color: "blue-dark"
+    color: "blue-dark",
+    name: "No hay Datos",
+    colorCode: "#184055"
   },
   {
     id: 1,
-    color: "green"
+    color: "green",
+    name: "Muy Buena",
+    colorCode: "#00842d"
   },
   {
     id: 2,
-    color: "green-light"
+    color: "green-light",
+    name: "Buena",
+    colorCode: "#4a9a29"
   },
   {
     id: 3,
-    color: "yellow"
+    color: "yellow",
+    name: "Moderada",
+    colorCode: "#f3ac23"
   },
   {
     id: 4,
-    color: "orange"
+    color: "orange",
+    name: "Deficiente",
+    colorCode: "#ea7817"
   },
   {
     id: 5,
-    color: "red"
+    color: "red",
+    name: "Mala",
+    colorCode: "#cc2518"
   },
   {
     id: 6,
-    color: "cyan"
+    color: "cyan",
+    name: "No Calculable",
+    colorCode: "#1d92d4"
   }
 ];
 
@@ -74,49 +88,71 @@ export const CAMPAIGN_VALUES = [
 export const FOREST_RAMP = [
   {
     id: 0,
-    color: "blue-dark"
+    color: "blue-dark",
+    name: "No hay Datos",
+    colorCode: "#184055"
   },
   {
     id: 1,
-    color: "green"
+    color: "green",
+    name: "Alta, bien conservado",
+    colorCode: "#00842d"
   },
   {
     id: 2,
-    color: "yellow"
+    color: "yellow",
+    name: "Media, alteración importante",
+    colorCode: "#f3ac23"
   },
   {
     id: 3,
-    color: "red"
+    color: "red",
+    name: "Muy degradado",
+    colorCode: "#cc2518"
   }
 ];
 
 export const ECOLOGICAL_RAMP = [
   {
     id: 0,
-    color: "blue-dark"
+    color: "blue-dark",
+    name: "No hay Datos",
+    colorCode: "#184055"
   },
   {
     id: 1,
-    color: "green"
+    color: "green",
+    name: "Muy Bueno",
+    colorCode: "#00842d"
   },
   {
     id: 2,
-    color: "green-light"
+    color: "green-light",
+    name: "Bueno",
+    colorCode: "#4a9a29"
   },
   {
     id: 3,
-    color: "yellow"
+    color: "yellow",
+    name: "Moderado",
+    colorCode: "#f3ac23"
   },
   {
     id: 4,
-    color: "orange"
+    color: "orange",
+    name: "Deficiente",
+    colorCode: "#ea7817"
   },
   {
     id: 5,
-    color: "red"
+    color: "red",
+    name: "Malo",
+    colorCode: "#cc2518"
   },
   {
     id: 6,
-    color: "cyan"
+    color: "cyan",
+    name: "No Calculable",
+    colorCode: "#1d92d4"
   }
 ];
