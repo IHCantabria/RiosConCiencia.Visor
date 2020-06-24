@@ -119,7 +119,7 @@ export default {
         this.formatSamples,
         types.A_FETCH_SAMPLES,
         this.createSpinnerTask(
-          "globalSamples",
+          "Muestras",
           "Recopilando datos de muestras. Por favor, espere..."
         )
       );

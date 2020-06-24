@@ -1,5 +1,5 @@
 //DEFINE PROVIDERS
-export const MapSatelite = {
+export const mapSatelite = {
   name: "Mapa Satelite",
   url:
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",

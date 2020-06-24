@@ -4,8 +4,8 @@ export const spinnerEnums = {
 };
 
 export const spinnerConfig = {
-  title: "Loading",
-  text: "Preparing data. Please, wait...",
+  title: "Cargando Datos",
+  text: "Cargando datos. Por favor, espere...",
   mode: spinnerEnums.ModesSpinner.basic, //Enum Modes: basic, progress, subTasks.
   color: "#1c313a",
   tasksConfig: {
