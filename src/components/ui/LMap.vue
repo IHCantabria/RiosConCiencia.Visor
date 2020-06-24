@@ -13,7 +13,8 @@ import {
   getCustomIcon,
   getCustomColorKey,
   createCustomPopup,
-  createCustomTooltip
+  createCustomTooltip,
+  createCustomLegend
 } from "@/utils/leaflet-utils.js";
 iconFix();
 export default {
@@ -83,7 +84,8 @@ export default {
     return {
       myMap: null,
       layersMap: [],
-      layerMarkers: []
+      layerMarkers: [],
+      currentLegend: null
     };
   },
   watch: {
@@ -110,6 +112,7 @@ export default {
       );
       this.setMap(layersToSetMap);
       this.setupSwitcherLayer();
+      this.setupLegend();
       this.setupListeners();
     },
     loadTileLayers() {
@@ -150,6 +153,9 @@ export default {
           .groupedLayers(baseLayers, groupedOverlays, options)
           .addTo(this.myMap);
       }
+    },
+    setupLegend() {
+      this.createLegend(this.layerMarkers[0].options.legend);
     },
     createSwitchBaseLayers() {
       const baseLayers = {};
@@ -215,7 +221,20 @@ export default {
       this.ListenerLegendChange();
     },
     ListenerLegendChange() {
-      //TODO: LOGIC
+      const self = this;
+      this.myMap.on("overlayadd", function(eventLayer) {
+        self.myMap.removeControl(self.currentLegend);
+        self.createLegend(eventLayer.layer.options.legend);
+      });
+    },
+    createLegend(legendText) {
+      var legend = L.control({ position: "topright" });
+      legend.onAdd = () => {
+        var div = createCustomLegend(legendText);
+        return div;
+      };
+      this.currentLegend = legend;
+      legend.addTo(this.myMap);
     }
   }
 };
