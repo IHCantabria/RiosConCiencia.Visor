@@ -319,11 +319,15 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   width: 80%;
   height: 80%;
 
-  &__Buoy {
-    content: url("~@/assets/buoy.svg");
+  &__Water {
+    content: url("~@/assets/water.svg");
   }
 
-  &__Station {
-    content: url("~@/assets/station.svg");
+  &__Forest {
+    content: url("~@/assets/tree.svg");
+  }
+
+  &__Ecological {
+    content: url("~@/assets/ecological.svg");
   }
 }

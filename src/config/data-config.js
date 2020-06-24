@@ -1,9 +1,34 @@
 export const SAMPLES = {
-  type: "marker",
-  iconBiological: "Buoy",
-  iconState: "Buoy",
-  iconForest: "Buoy"
+  type: "marker"
 };
+export const MARKER_ICONS = [
+  {
+    id: "waterQualityID",
+    icon: "Water"
+  },
+  {
+    id: "forestQualityID",
+    icon: "Forest"
+  },
+  {
+    id: "ecologicalStateID",
+    icon: "Ecological"
+  }
+];
+export const MARKER_COLORS = [
+  {
+    id: "waterQualityID",
+    key: "bioQualityColor"
+  },
+  {
+    id: "forestQualityID",
+    key: "forestStateColor"
+  },
+  {
+    id: "ecologicalStateID",
+    key: "ecologicalStateColor"
+  }
+];
 export const BIOLOGICAL_RAMP = [
   {
     id: 0,
@@ -32,6 +57,17 @@ export const BIOLOGICAL_RAMP = [
   {
     id: 6,
     color: "cyan"
+  }
+];
+
+export const CAMPAIGN_VALUES = [
+  {
+    id: 1,
+    name: "Primavera"
+  },
+  {
+    id: 2,
+    name: "Otoño"
   }
 ];
 

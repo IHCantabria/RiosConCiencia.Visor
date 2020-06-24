@@ -2,7 +2,8 @@ import * as config from "@/config/data-config";
 import {
   getBiologicalColor,
   getForestColor,
-  getStateColor
+  getStateColor,
+  getCampaignId
 } from "@/utils/data-operator-utils.js";
 export const dataHelperMixin = {
   methods: {
@@ -27,9 +28,9 @@ export const dataHelperMixin = {
           campaign: data.campaign,
           year: data.year,
           type: config.SAMPLES.type,
-          iconBiological: config.SAMPLES.iconBiological,
-          iconForest: config.SAMPLES.iconForest,
-          iconState: config.SAMPLES.iconState
+          idCampaign: getCampaignId(data.campaign),
+          longitude: data.samplePointCoordsLon,
+          latitude: data.samplePointCoordsLat
         };
       });
     }

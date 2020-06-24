@@ -1,3 +1,4 @@
+import { MARKER_ICONS, MARKER_COLORS } from "@/config/data-config";
 //aux method to fix Icon default Leafleat Bug
 export const iconFix = () => {
   delete L.Icon.Default.prototype._getIconUrl;
@@ -7,15 +8,23 @@ export const iconFix = () => {
     shadowUrl: require("leaflet/dist/images/marker-shadow.png")
   });
 };
-//aux method pan & zoom to a marker position
-export const panZoomMarker = marker => {
-  const latLngs = [marker.getLatLng()];
-  return L.latLngBounds(latLngs);
+
+//aux method to get icon to CustomMarker
+export const getCustomIcon = layerId => {
+  const icon = MARKER_ICONS.find(icon => icon.id == layerId).icon;
+  return icon;
 };
+
+//aux method to get color to CustomMarker
+export const getCustomColorKey = layerId => {
+  const key = MARKER_COLORS.find(icon => icon.id == layerId).key;
+  return key;
+};
+
 //aux method to create a custom icon Marker
-export const createCustomIcon = (typeSensor, color) => {
+export const createCustomIcon = (icon, color) => {
   return L.ExtraMarkers.icon({
     markerColor: `${color}`,
-    innerHTML: `<i class='icon-sensors icon-sensors__${typeSensor}'></i>`
+    innerHTML: `<i class='icon-sensors icon-sensors__${icon}'></i>`
   });
 };
