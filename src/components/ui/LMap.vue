@@ -11,7 +11,9 @@ import {
   iconFix,
   createCustomIcon,
   getCustomIcon,
-  getCustomColorKey
+  getCustomColorKey,
+  createCustomPopup,
+  createCustomTooltip
 } from "@/utils/leaflet-utils.js";
 iconFix();
 export default {
@@ -193,8 +195,12 @@ export default {
         { lon: cMarker.longitude, lat: cMarker.latitude },
         { icon: createCustomIcon(icon, color) }
       );
+      const popupContext = createCustomPopup(cMarker);
+      const tooltioContext = createCustomTooltip(cMarker);
       mark.layerID = cMarker.id;
       mark.type = cMarker.type;
+      mark.bindPopup(popupContext);
+      mark.bindTooltip(tooltioContext);
       layerGroup.addLayer(mark);
     },
     clearLayerMarkers() {
