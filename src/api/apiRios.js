@@ -8,5 +8,16 @@ const _basicHeaders = {
 
 export const getAllSamples = () => {
   const url = `${RIOS_API.public}/RiosConCiencia/GetSamplesExtended`;
-  return { url, params: _basicHeaders };
+  return { url, params: _basicHeaders, method: "get", body: {} };
+};
+
+export const getSamplesCsv = (token, filters) => {
+  const url = `${RIOS_API.public}/RiosConCiencia/ExportSamples/csv`;
+  _basicHeaders.Authorization = `Bearer ${token}`;
+  const bodyObject = {
+    year: filters.year,
+    campaign: filters.campaign,
+    samplesId: filters.samplesId
+  };
+  return { url, params: _basicHeaders, method: "postFile", body: bodyObject };
 };
