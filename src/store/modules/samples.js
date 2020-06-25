@@ -7,7 +7,19 @@ const state = {
   yearFilter: {},
   yearOptions: [],
   campaignFilter: {},
-  campaignOptions: CAMPAIGN_VALUES
+  campaignOptions: CAMPAIGN_VALUES,
+  user: {
+    id: 566,
+    name: "admin",
+    surnames: null,
+    password: "admin",
+    email: "admin@admin.com",
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjU2NiIsIm5iZiI6MTU5MzExMzQyNSwiZXhwIjoxNTkzMTE3MDI1LCJpYXQiOjE1OTMxMTM0MjV9.diMztfQqJUWeAjYaMsI29X5NqO1_z4cpDilmPTjk5pM",
+    roleId: "1",
+    roleName: "admin",
+    cod: null
+  }
 };
 
 const mutations = {
@@ -48,6 +60,15 @@ const getters = {
             sample.idCampaign == state.campaignFilter.id
         )
       : [];
+  },
+  [types.G_GET_SAMPLES_FILTERED_IDS]: (state, getters) => {
+    return getters[types.G_GET_SAMPLES_FILTERED].map(sample => sample.id);
+  },
+  [types.G_GET_USER_TOKEN]: state => {
+    return state.user ? state.user.token : "";
+  },
+  [types.G_GET_USER_LOGGED]: state => {
+    return state.user ? true : false;
   }
 };
 

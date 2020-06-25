@@ -13,3 +13,6 @@ export const A_SET_SAMPLE_YEAR_FILTER = "samples/A_SET_SAMPLE_YEAR_FILTER";
 
 //Getters
 export const G_GET_SAMPLES_FILTERED = "samples/G_GET_SAMPLES_FILTERED";
+export const G_GET_SAMPLES_FILTERED_IDS = "samples/G_GET_SAMPLES_FILTERED_IDS";
+export const G_GET_USER_TOKEN = "samples/G_GET_USER_TOKEN";
+export const G_GET_USER_LOGGED = "samples/G_GET_USER_LOGGED";
