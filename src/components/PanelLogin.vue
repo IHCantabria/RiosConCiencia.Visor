@@ -31,7 +31,7 @@ export default {
       this.modalState = true;
     },
     callLogin() {
-      this.root.$emit("callLogin");
+      this.$root.$emit("callLogin");
     },
     setCampaignFilter(type) {
       this.setSampleCampaignFilter(type);

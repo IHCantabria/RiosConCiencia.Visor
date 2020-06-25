@@ -8,7 +8,15 @@ export default {
       },
       required: true
     },
-    params: { type: Object, required: false, default: () => ({}) }
+    params: { type: Object, required: false, default: () => ({}) },
+    method: {
+      type: String,
+      required: true,
+      default: () => {
+        return "get";
+      }
+    },
+    body: { type: Object, required: false, default: () => ({}) }
   },
   data() {
     return {
@@ -44,8 +52,34 @@ export default {
     async requestData() {
       this.pending = true;
       try {
-        const { data } = await axios.get(this.url, { params: this.params });
-        this.data = data;
+        if (this.method == "postFile") {
+          await axios
+            .post(this.url, this.body, {
+              responseType: "arraybuffer",
+              headers: this.params
+            })
+            .then(response => {
+              const blob = new Blob([response.data], {
+                type: "application/zip"
+              });
+              const downloadUrl = window.URL.createObjectURL(blob);
+              const link = document.createElement("a");
+              link.href = downloadUrl;
+              link.setAttribute("download", "Muestras.zip"); //any other extension
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+              window.URL.revokeObjectURL(downloadUrl);
+              return true;
+            });
+          this.data = [];
+        } else {
+          const { data } =
+            this.method == "get"
+              ? await axios.get(this.url, { headers: this.params })
+              : await axios.post(this.url, this.body, { headers: this.params });
+          this.data = data;
+        }
         this.error = false;
       } catch (e) {
         this.data = null;
