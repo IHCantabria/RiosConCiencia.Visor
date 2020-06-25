@@ -4,6 +4,8 @@
       v-if="requestComputed"
       :url="request.url"
       :params="request.params ? request.params : {}"
+      :method="request.method ? request.method : 'get'"
+      :body="request.body ? request.body : {}"
       @requestFinished="requestsController"
       @stateRequest="pendingState"
       @errorHandler="errorHandler"
@@ -17,13 +19,14 @@
       :additional-info="
         operation.additionalInfo ? operation.additionalInfo : null
       "
-      @dataProcessed="operationsController"
+      @dataProcessed="operationsFinishedEvent"
       @operationFinished="operationsController"
     ></data-operator>
   </div>
 </template>
 <script>
 import * as types from "@/store/types";
+import { mapState, mapGetters } from "vuex";
 import { dataHelperMixin } from "@/mixins/data-helper.js";
 import { notificationsMixin } from "@/mixins/notifications.js";
 import DataOperator from "@/components/renderless/DataOperator";
@@ -47,6 +50,14 @@ export default {
     };
   },
   computed: {
+    ...mapState({
+      yearFilter: state => state.samples.yearFilter,
+      campaignFilter: state => state.samples.campaignFilter
+    }),
+    ...mapGetters({
+      samplesIds: [types.G_GET_SAMPLES_FILTERED_IDS],
+      token: [types.G_GET_USER_TOKEN]
+    }),
     requestComputed() {
       return this.request;
     },
@@ -69,8 +80,18 @@ export default {
   },
   methods: {
     init() {
+      //set the action event listener
+      this.setActionListeners();
       //initial load data
       this.fetchSamplesData();
+    },
+    setActionListeners() {
+      this.$root.$on("callDownload", () => {
+        this.fetchCsvData();
+      });
+      this.$root.$on("callLogin", () => {
+        this.updateEventAction();
+      });
     },
     requestsController(data) {
       //define data received to use in the Data_operator, dataReady to true to mark that the data is ready
@@ -88,6 +109,7 @@ export default {
           )
         : "";
     },
+    operationsFinishedEvent() {},
     operationsController() {
       //actual request to null to reset component async, data to null to reset data, dataReady to false, the data is not ready. pendingTask shift to remove task finished and make watcher load the next
       this.dataReady = false;
@@ -119,8 +141,24 @@ export default {
         this.formatSamples,
         types.A_FETCH_SAMPLES,
         this.createSpinnerTask(
-          "Muestras",
+          "Datos de Muestreo",
           "Recopilando datos de muestras. Por favor, espere..."
+        )
+      );
+    },
+    fetchCsvData() {
+      const filters = {
+        year: this.yearFilter.name,
+        campaign: this.campaignFilter.name,
+        samplesId: this.samplesIds
+      };
+      this.createTask(
+        apiRios.getSamplesCsv(this.token, filters),
+        null,
+        null,
+        this.createSpinnerTask(
+          "Descargando Datos",
+          "Descargando archivos de muestras. Por favor, espere..."
         )
       );
     },
