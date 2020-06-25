@@ -32,7 +32,12 @@ export const getYears = samples => {
   const years = samples
     .map(item => item.year)
     .filter((value, index, self) => self.indexOf(value) === index);
-  return years.sort(function(a, b) {
+  const yearSorted = years.sort(function(a, b) {
     return a - b;
   });
+  const yearObjects = [];
+  for (let i = 0; i < yearSorted.length; i++) {
+    yearObjects.push({ id: i + 1, name: yearSorted[i] });
+  }
+  return yearObjects;
 };
