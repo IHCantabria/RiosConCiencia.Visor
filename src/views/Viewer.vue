@@ -1,18 +1,18 @@
 <template>
   <div class="view-viewer grid">
     <app-map-viewer class="map"></app-map-viewer>
-    <!-- <app-panels></app-panels> -->
+    <app-panels></app-panels>
     <app-fetch-manager></app-fetch-manager>
   </div>
 </template>
 <script>
-// import AppPanels from "@/components/layout/AppPanels.vue";
+import AppPanels from "@/components/layout/AppPanels.vue";
 import AppMapViewer from "@/components/layout/AppMapViewer.vue";
 import AppFetchManager from "@/components/layout/AppFetchManager.vue";
 export default {
   components: {
     "app-map-viewer": AppMapViewer,
-    // "app-panels": AppPanels,
+    "app-panels": AppPanels,
     "app-fetch-manager": AppFetchManager
   }
 };
