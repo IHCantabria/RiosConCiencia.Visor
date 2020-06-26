@@ -5,14 +5,14 @@
         <type-selector
           class="type-selectors__selector"
           label="Selector de Año"
-          width-select="300px"
+          width-select="220px"
           :items="yearOptions"
           @change="setYearFilter"
         ></type-selector>
         <type-selector
           class="type-selectors__selector"
           label="Selector de Campaña"
-          width-select="300px"
+          width-select="220px"
           :items="campaignOptions"
           @change="setCampaignFilter"
         ></type-selector>
@@ -55,7 +55,10 @@ export default {
   flex-flow: row wrap;
 
   &__selector {
-    margin: 1vw;
+    padding: 1vw 0.5vw 1vw 0.5vw;
+    padding-top: 0.5vw;
+    margin-right: 15px;
+    margin-left: 15px;
   }
 }
 </style>

@@ -64,6 +64,9 @@ const getters = {
   },
   [types.G_GET_USER_LOGGED]: state => {
     return state.user ? true : false;
+  },
+  [types.G_GET_SAMPLES_LOADED]: state => {
+    return state.samples ? true : false;
   }
 };
 

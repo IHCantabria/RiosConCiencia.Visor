@@ -1,7 +1,7 @@
 <template>
   <div class="app-about">
     <vs-dropdown
-      title="About"
+      title="Información"
       class="toggler"
       vs-trigger-click
       vs-custom-content
@@ -15,7 +15,10 @@
       </div>
       <vs-dropdown-menu>
         <div class="about-container">
-          <label class="label-version">Version {{ version }}</label>
+          <label class="label-version">
+            <span><strong>Geovisor de RiosConCiencia</strong></span>
+            <span><strong>Versión:</strong> {{ version }} </span>
+          </label>
         </div>
       </vs-dropdown-menu>
     </vs-dropdown>
@@ -37,7 +40,7 @@ export default {
   }
 }
 .toggle-icon {
-  width: 26px;
+  width: 20px;
   padding: 5px;
   margin: 0 4px 0 0;
   &:hover {
@@ -45,6 +48,8 @@ export default {
   }
 }
 .label-version {
+  display: flex;
+  flex-direction: column;
   margin: 2px;
 }
 .about-container {

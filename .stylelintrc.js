@@ -10,7 +10,6 @@ module.exports = {
     }],
     "at-rule-empty-line-before": ["always",{"ignoreAtRules": ["else","if","include"]}],
     "block-no-empty": null,
-    "declaration-no-important": true,
     "unit-whitelist": ["em", "rem", "%", "px", "vh", "vw", "fr", "s", "ms"],
     "selector-max-id": [0,{"severity": "warning"}],
     "selector-max-universal": [0,{"severity": "warning"}],

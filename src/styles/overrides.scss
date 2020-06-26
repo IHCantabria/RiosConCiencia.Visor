@@ -53,6 +53,22 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   text-decoration:none; 
 }
 
+//modal
+.con-vs-popup .vs-popup{
+  font-family: $app-font;
+  color: $app-font-color;
+  width:275px;
+}
+
+.vuesax-app-is-ltr .vs-popup--content{
+  width:auto;
+}
+
+//select
+.vs-con-input-label{
+  margin:auto;
+}
+
 .material-icons {
   font-size: 1rem;
 }
@@ -63,11 +79,23 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   font-size: 0.8rem;
   background:$color-panels;
 }
-
+.vs-select--options{
+  overflow: hidden;
+}
 //selects
 .vs-select--label{
   color:$app-font-color;
 }
+.con-select{
+  margin:auto;
+}
+.vuesax-app-is-ltr .vs-select--input{
+  padding-right:0;
+}
+.vuesax-app-is-ltr .vs-select--options{
+  top:75% !important;
+}
+
 
 .vs-select-primary{
   background-color: $color-light-white;
