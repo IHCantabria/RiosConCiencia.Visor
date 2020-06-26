@@ -21,3 +21,12 @@ export const getSamplesCsv = (token, filters) => {
   };
   return { url, params: _basicHeaders, method: "postFile", body: bodyObject };
 };
+
+export const login = credentials => {
+  const url = `${RIOS_API.public}/RiosConCiencia/Authenticate`;
+  const auth = {
+    email: credentials.email,
+    password: credentials.password
+  };
+  return { url, params: _basicHeaders, method: "post", body: auth };
+};

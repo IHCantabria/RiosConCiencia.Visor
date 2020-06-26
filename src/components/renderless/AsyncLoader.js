@@ -73,11 +73,13 @@ export default {
               return true;
             });
           this.data = [];
+        } else if (this.method == "get") {
+          const { data } = await axios.get(this.url, { headers: this.params });
+          this.data = data;
         } else {
-          const { data } =
-            this.method == "get"
-              ? await axios.get(this.url, { headers: this.params })
-              : await axios.post(this.url, this.body, { headers: this.params });
+          const { data } = await axios.post(this.url, this.body, {
+            headers: this.params
+          });
           this.data = data;
         }
         this.error = false;

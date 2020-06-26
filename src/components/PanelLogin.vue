@@ -10,9 +10,9 @@
     >
       <vs-input v-model="email" class="inputx" placeholder="Placeholder" />
       <vs-input v-model="password" class="inputx" placeholder="Disabled" />
-      <!-- <vs-button color="primary" type="filled" @click="callLogin"
+      <vs-button color="primary" type="filled" @click="callLogin"
         >Login</vs-button
-      > -->
+      >
     </vs-popup>
   </div>
 </template>
@@ -31,13 +31,12 @@ export default {
       this.modalState = true;
     },
     callLogin() {
-      this.$root.$emit("callLogin");
-    },
-    setCampaignFilter(type) {
-      this.setSampleCampaignFilter(type);
-    },
-    setYearFilter(year) {
-      this.setSampleYearFilter(year);
+      this.modalState = false;
+      const credentials = {
+        email: this.email,
+        password: this.password
+      };
+      this.$root.$emit("callLogin", credentials);
     }
   }
 };
