@@ -89,8 +89,8 @@ export default {
       this.$root.$on("callDownload", () => {
         this.fetchCsvData();
       });
-      this.$root.$on("callLogin", () => {
-        this.updateEventAction();
+      this.$root.$on("callLogin", credentials => {
+        this.authenticate(credentials);
       });
     },
     requestsController(data) {
@@ -102,12 +102,16 @@ export default {
       this.requestState = state;
     },
     errorHandler(error) {
-      error
-        ? this.$_showNotificationOnce(
-            `${this.currentSpinnerTask.id}`,
-            `${error}`
-          )
-        : "";
+      if (error) {
+        const errorMessage = this.logicMessageError(error);
+        this.$_showNotificationOnce(
+          `${this.currentSpinnerTask.id}`,
+          `${errorMessage}`
+        );
+      }
+    },
+    logicMessageError(error) {
+      return error.response.data.messages;
     },
     operationsFinishedEvent() {},
     operationsController() {
@@ -143,6 +147,17 @@ export default {
         this.createSpinnerTask(
           "Datos de Muestreo",
           "Recopilando datos de muestras. Por favor, espere..."
+        )
+      );
+    },
+    authenticate(credentials) {
+      this.createTask(
+        apiRios.login(credentials),
+        null,
+        types.A_FETCH_USER,
+        this.createSpinnerTask(
+          "Validando Usuario",
+          "Validando credenciales de acceso. Por favor, espere..."
         )
       );
     },

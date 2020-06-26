@@ -2,7 +2,7 @@
   <div class="app-info">
     <panel-about class="panel-about"></panel-about>
     <panel-filters></panel-filters>
-    <panel-login></panel-login>
+    <panel-login v-if="!userLogged"></panel-login>
     <vs-button
       v-if="userLogged"
       color="primary"

@@ -2,7 +2,7 @@ export const notificationsMixin = {
   methods: {
     $_showNotificationRepeat(title, callback) {
       this.$vs.notify({
-        title: `Error en la carga de ${title}`,
+        title: `Error en la operación de ${title}`,
         text: "Haga click para reintentar",
         color: "danger",
         fixed: true,
@@ -11,7 +11,7 @@ export const notificationsMixin = {
     },
     $_showNotificationOnce(titleText, err) {
       this.$vs.notify({
-        title: `Error en la carga de ${titleText}`,
+        title: `Error en la operación de ${titleText}`,
         text: `${err}`,
         color: "danger"
       });
