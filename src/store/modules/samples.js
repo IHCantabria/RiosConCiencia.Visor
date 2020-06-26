@@ -8,23 +8,15 @@ const state = {
   yearOptions: [],
   campaignFilter: {},
   campaignOptions: CAMPAIGN_VALUES,
-  user: {
-    id: 566,
-    name: "admin",
-    surnames: null,
-    password: "admin",
-    email: "admin@admin.com",
-    token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjU2NiIsIm5iZiI6MTU5MzExMzQyNSwiZXhwIjoxNTkzMTE3MDI1LCJpYXQiOjE1OTMxMTM0MjV9.diMztfQqJUWeAjYaMsI29X5NqO1_z4cpDilmPTjk5pM",
-    roleId: "1",
-    roleName: "admin",
-    cod: null
-  }
+  user: null
 };
 
 const mutations = {
   [types.M_SET_SAMPLES](state, payload) {
     state.samples = payload.samples;
+  },
+  [types.M_SET_USER](state, payload) {
+    state.user = payload.user;
   },
   [types.M_SET_YEAR_OPTIONS](state, payload) {
     state.yearOptions = payload.yearOptions;
@@ -42,6 +34,9 @@ const actions = {
     commit(types.M_SET_SAMPLES, { samples: operation });
     var years = getYears(operation);
     commit(types.M_SET_YEAR_OPTIONS, { yearOptions: years });
+  },
+  [types.A_FETCH_USER]: ({ commit }, operation) => {
+    commit(types.M_SET_USER, { user: operation });
   },
   [types.A_SET_SAMPLE_CAMPAIGN_FILTER]: ({ commit }, operation) => {
     commit(types.M_SET_SAMPLE_CAMPAIGN_FILTER, { campaignFilter: operation });
