@@ -1,18 +1,42 @@
 <template>
   <div class="app-login">
-    <vs-button color="primary" type="filled" @click="openModal"
-      >LaunchLogin</vs-button
-    >
+    <div title="Login de usuario" class="login-icon" @click="openModal">
+      <object
+        :data="require('@/assets/user.svg')"
+        type="image/svg+xml"
+        style="pointer-events: none;"
+      />
+    </div>
     <vs-popup
       class-content="popup-login"
-      title="Lorem ipsum dolor sit amet"
+      title="Login a la descarga de datos"
       :active.sync="modalState"
     >
-      <vs-input v-model="email" class="inputx" placeholder="Placeholder" />
-      <vs-input v-model="password" class="inputx" placeholder="Disabled" />
-      <vs-button color="primary" type="filled" @click="callLogin"
-        >Login</vs-button
-      >
+      <div class="login-container">
+        <vs-input
+          v-model="email"
+          type="text"
+          label="Usuario de la aplicación"
+          icon="account_circle"
+          class="item-login"
+          placeholder="email"
+        />
+        <vs-input
+          v-model="password"
+          class="item-login"
+          type="password"
+          label="Contraseña de usuario"
+          icon="lock"
+          placeholder="contraseña"
+        />
+        <vs-button
+          class="item-login item-login-buttom"
+          color="primary"
+          type="filled"
+          @click="callLogin"
+          >Login</vs-button
+        >
+      </div>
     </vs-popup>
   </div>
 </template>
@@ -43,6 +67,23 @@ export default {
 </script>
 <style scoped lang="scss">
 .app-login {
-  width: 100%;
+}
+.login-icon {
+  width: 20px;
+  padding: 5px;
+  margin: 0 4px 0 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+.item-login {
+  padding: 10px 5px;
+}
+.item-login-buttom {
+  margin-top: 10px;
 }
 </style>

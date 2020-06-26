@@ -18,3 +18,4 @@ export const G_GET_SAMPLES_FILTERED = "samples/G_GET_SAMPLES_FILTERED";
 export const G_GET_SAMPLES_FILTERED_IDS = "samples/G_GET_SAMPLES_FILTERED_IDS";
 export const G_GET_USER_TOKEN = "samples/G_GET_USER_TOKEN";
 export const G_GET_USER_LOGGED = "samples/G_GET_USER_LOGGED";
+export const G_GET_SAMPLES_LOADED = "samples/G_GET_SAMPLES_LOADED";
