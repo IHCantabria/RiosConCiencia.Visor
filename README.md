@@ -2,47 +2,58 @@
 
 Visor Web del proyecto RiosConCiencia
 
-### Commands
+## Commands
 
 ```
-## Project setup
 npm install
+```
 
 ### Compiles and hot-reloads for development
+
+```
 npm run serve
+```
 
 ### Compiles and minifies for production
-npm run build
 
-### Compiles and prepare to ansible deploy
-npm run deploy
+```
+npm run build
+```
 
 ### Run your tests
+
+```
 npm run test
+```
 
 ### Lints and fixes files
+
+```
 npm run lint
-
-### Lints and fixes code
-npm run lint:code
-
-### Check for conflicts rules lint
-npm run stylelint-check
-
-### Lints and fixes style
-npm run lint:style
+```
 
 ### Run your end-to-end tests
+
+```
 npm run test:e2e
+```
 
 ### Run your unit tests
+
+```
 npm run test:unit
+```
 
-### Run your unit tests with debuger
-test:unit:debug
+### Deploy version (patch/minor/major)
 
-### Run your unit tests and update the snapshot files
-test:unit:snap
+```
+npm run deploy-patch -- "commit message"
+```
+
+### Push to remote repo (master + tags)
+
+```
+npm run postgit
 ```
 
 ### Customize configuration
