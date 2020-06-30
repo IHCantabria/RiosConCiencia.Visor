@@ -109,6 +109,12 @@ export const FOREST_RAMP = [
     color: "red",
     name: "Muy degradado",
     colorCode: "#cc2518"
+  },
+  {
+    id: 4,
+    color: "cyan",
+    name: "No Calculable",
+    colorCode: "#1d92d4"
   }
 ];
 

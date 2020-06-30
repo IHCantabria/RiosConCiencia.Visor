@@ -1,29 +1,52 @@
 import * as config from "@/config/data-config";
 //aux method to get the color of the biological state
 export const getBiologicalColor = id => {
-  let color = config.BIOLOGICAL_RAMP.find(element => element.id == id).color;
-  if (!color)
-    color = config.BIOLOGICAL_RAMP.find(element => element.id == 0).color;
+  const colorIndex = config.BIOLOGICAL_RAMP.findIndex(
+    element => element.id == id
+  );
+  let color;
+  if (colorIndex == -1) {
+    color = config.BIOLOGICAL_RAMP[0].color;
+  } else {
+    color = config.BIOLOGICAL_RAMP[colorIndex].color;
+  }
   return color;
 };
 //aux method to get the color of the forest state
 export const getForestColor = id => {
-  let color = config.FOREST_RAMP.find(element => element.id == id).color;
-  if (!color) color = config.FOREST_RAMP.find(element => element.id == 0).color;
+  const colorIndex = config.FOREST_RAMP.findIndex(element => element.id == id);
+  let color;
+  if (colorIndex == -1) {
+    color = config.FOREST_RAMP[0].color;
+  } else {
+    color = config.FOREST_RAMP[colorIndex].color;
+  }
   return color;
 };
 //aux method to get the color of the forest state
 export const getStateColor = id => {
-  let color = config.ECOLOGICAL_RAMP.find(element => element.id == id).color;
-  if (!color)
-    color = config.ECOLOGICAL_RAMP.find(element => element.id == 0).color;
+  const colorIndex = config.ECOLOGICAL_RAMP.findIndex(
+    element => element.id == id
+  );
+  let color;
+  if (colorIndex == -1) {
+    color = config.ECOLOGICAL_RAMP[0].color;
+  } else {
+    color = config.ECOLOGICAL_RAMP[colorIndex].color;
+  }
   return color;
 };
 
 export const getCampaignId = name => {
-  let idCampaign = config.CAMPAIGN_VALUES.find(element => element.name == name)
-    .id;
-  if (!idCampaign) idCampaign = 0;
+  const campaignIndex = config.CAMPAIGN_VALUES.findIndex(
+    element => element.name == name
+  );
+  let idCampaign;
+  if (campaignIndex == -1) {
+    idCampaign = 0;
+  } else {
+    idCampaign = config.CAMPAIGN_VALUES[campaignIndex].id;
+  }
   return idCampaign;
 };
 
