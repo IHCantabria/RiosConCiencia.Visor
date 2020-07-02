@@ -29,8 +29,8 @@ export const dataHelperMixin = {
           year: data.year,
           type: config.SAMPLES.type,
           idCampaign: getCampaignId(data.campaign),
-          longitude: data.samplePointCoordsLon,
-          latitude: data.samplePointCoordsLat
+          longitude: data.riverSectionCoordsLon,
+          latitude: data.riverSectionCoordsLat
         };
       });
     }
