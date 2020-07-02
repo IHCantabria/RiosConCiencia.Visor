@@ -30,6 +30,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "leaflet": "^1.5.1",
+    "leaflet-easybutton": "^2.4.0",
     "leaflet-extra-markers": "^1.2.1",
     "leaflet-groupedlayercontrol": "^0.6.1",
     "material-icons": "^0.3.1",
