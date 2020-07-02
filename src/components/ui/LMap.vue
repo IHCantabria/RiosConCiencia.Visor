@@ -6,6 +6,7 @@
 <script>
 import L from "leaflet";
 import "leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js";
+import "leaflet-easybutton/src/easy-button.js";
 import "leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js";
 import {
   iconFix,
@@ -14,7 +15,8 @@ import {
   getCustomColorKey,
   createCustomPopup,
   createCustomTooltip,
-  createCustomLegend
+  createCustomLegend,
+  panZoomMarker
 } from "@/utils/leaflet-utils.js";
 iconFix();
 export default {
@@ -85,7 +87,9 @@ export default {
       myMap: null,
       layersMap: [],
       layerMarkers: [],
-      currentLegend: null
+      currentLegend: null,
+      originalCoordsMark: null,
+      showLegend: true
     };
   },
   watch: {
@@ -111,6 +115,8 @@ export default {
         this.cMapDefault.layers.includes(layer.options.id)
       );
       this.setMap(layersToSetMap);
+      this.addToggleControlControl();
+      this.setOriginalPosition();
       this.setupSwitcherLayer();
       this.setupLegend();
       this.setupListeners();
@@ -137,6 +143,56 @@ export default {
     },
     setMapBounds() {
       return L.latLngBounds(L.latLng(-90, -Infinity), L.latLng(90, Infinity));
+    },
+    addToggleControlControl() {
+      const self = this;
+      L.easyButton({
+        states: [
+          {
+            stateName: "toogleLegend",
+            icon: "fa-map",
+            title: "Haz click aquí para mostrar/ocultar la legenda del mapa",
+            onClick: function() {
+              self.myMap.fire("toogleLegend");
+            }
+          }
+        ]
+      }).addTo(this.myMap);
+      L.easyButton({
+        states: [
+          {
+            stateName: "toogleFilter",
+            icon: "fa-sliders-h",
+            title: "Haz click aquí para mostrar/ocultar el panel inferior",
+            onClick: function() {
+              self.myMap.fire("toogleFilter");
+            }
+          }
+        ]
+      }).addTo(this.myMap);
+      L.easyButton({
+        states: [
+          {
+            stateName: "toogleFilter",
+            icon: "fa-home",
+            title: "Haz click aquí para volver a la posición original del mapa",
+            onClick: function() {
+              self.myMap.fire("goToDefault");
+            }
+          }
+        ]
+      }).addTo(this.myMap);
+    },
+    moveAndZoomToOriginalPosition() {
+      this.myMap.fitBounds(panZoomMarker(this.originalCoordsMark), {
+        maxZoom: this.cMapDefault.zoom
+      });
+    },
+    setOriginalPosition() {
+      this.originalCoordsMark = L.marker({
+        lon: this.cCenter.lon,
+        lat: this.cCenter.lat
+      });
     },
     setupSwitcherLayer() {
       if (this.cSwitchLayerBaseMaps.length > 0) {
@@ -218,7 +274,32 @@ export default {
       });
     },
     setupListeners() {
+      this.ListenerToggleLegend();
+      this.ListenerToggleFilters();
+      this.ListenerGoToDefault();
       this.ListenerLegendChange();
+    },
+    ListenerToggleLegend() {
+      const self = this;
+      this.myMap.on("toogleLegend", function() {
+        self.showLegend = !self.showLegend;
+        const div = document.getElementsByClassName("custom-legend")[0];
+        self.showLegend
+          ? (div.style.display = "flex")
+          : (div.style.display = "none");
+      });
+    },
+    ListenerToggleFilters() {
+      const self = this;
+      this.myMap.on("toogleFilter", function() {
+        self.$emit("toggle-panel");
+      });
+    },
+    ListenerGoToDefault() {
+      const self = this;
+      this.myMap.on("goToDefault", function() {
+        self.moveAndZoomToOriginalPosition();
+      });
     },
     ListenerLegendChange() {
       const self = this;
@@ -228,9 +309,13 @@ export default {
       });
     },
     createLegend(legendText) {
+      const self = this;
       var legend = L.control({ position: "topright" });
       legend.onAdd = () => {
-        var div = createCustomLegend(legendText);
+        let div = createCustomLegend(legendText);
+        self.showLegend
+          ? (div.style.display = "flex")
+          : (div.style.display = "none");
         return div;
       };
       this.currentLegend = legend;

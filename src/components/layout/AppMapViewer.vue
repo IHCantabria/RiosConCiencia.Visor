@@ -8,6 +8,7 @@
       :c-overlay-layers="mapConfigComputed.overlayLayersConfig"
       :c-switch-layer-overlay-maps="mapConfigComputed.switchOverlayMapsConfig"
       :c-markers="markers"
+      @toggle-panel="togglePanel"
     ></l-map>
   </div>
 </template>
@@ -41,6 +42,11 @@ export default {
         overlayLayersConfig: this.leafletConfig.overlayLayersConfig,
         switchOverlayMapsConfig: this.leafletConfig.switchOverlayMapsConfig
       };
+    }
+  },
+  methods: {
+    togglePanel() {
+      this.$root.$emit("toggleFilterPanel");
     }
   }
 };
