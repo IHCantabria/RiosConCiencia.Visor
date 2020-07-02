@@ -1,20 +1,24 @@
 <template>
-  <div v-if="samplesLoaded" class="app-info">
-    <div class="panel-header">
-      <panel-about class="panel-about"></panel-about>
-      <panel-login v-if="!userLogged"></panel-login>
-    </div>
-    <div class="panel-filters">
-      <panel-filters></panel-filters>
-    </div>
-    <div v-if="userLogged" class="panel-download">
-      <span class="download-text">Descargar datos con los filtros activos</span>
-      <div class="download-icon" @click="launchDownload">
-        <object
-          :data="require('@/assets/download.svg')"
-          type="image/svg+xml"
-          style="pointer-events: none;"
-        />
+  <div v-if="samplesLoaded">
+    <div v-show="isPanelVisible" class="app-info">
+      <div class="panel-header">
+        <panel-about class="panel-about"></panel-about>
+        <panel-login v-if="!userLogged"></panel-login>
+      </div>
+      <div class="panel-filters">
+        <panel-filters></panel-filters>
+      </div>
+      <div v-if="userLogged" class="panel-download">
+        <span class="download-text"
+          >Descargar datos con los filtros activos</span
+        >
+        <div class="download-icon" @click="launchDownload">
+          <object
+            :data="require('@/assets/download.svg')"
+            type="image/svg+xml"
+            style="pointer-events: none;"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -31,13 +35,33 @@ export default {
     "panel-login": PanelLogin,
     "panel-filters": PanelFilters
   },
+  data() {
+    return {
+      panelShow: true
+    };
+  },
   computed: {
     ...mapGetters({
       userLogged: [types.G_GET_USER_LOGGED],
       samplesLoaded: [types.G_GET_SAMPLES_LOADED]
-    })
+    }),
+    isPanelVisible() {
+      return this.samplesLoaded && this.panelShow ? true : false;
+    }
+  },
+  mounted() {
+    this.init();
   },
   methods: {
+    init() {
+      //set the action event listener
+      this.setActionListeners();
+    },
+    setActionListeners() {
+      this.$root.$on("toggleFilterPanel", () => {
+        this.panelShow = !this.panelShow;
+      });
+    },
     launchDownload() {
       this.$root.$emit("callDownload");
     }

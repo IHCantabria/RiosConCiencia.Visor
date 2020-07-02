@@ -82,6 +82,7 @@ This software use:
 - [Leaflet](https://leafletjs.com/) - Branded License.
 - [Vuesax](https://lusaxweb.github.io/vuesax/) - MIT License.
 - [axios](https://github.com/axios/axios) - MIT License.
+- [CliffCloud/Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton) - Open License.
 - [Coryasilva/Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers) - Open License.
 
 

@@ -9,6 +9,12 @@ export const iconFix = () => {
   });
 };
 
+//aux method pan & zoom to a marker position
+export const panZoomMarker = marker => {
+  const latLngs = [marker.getLatLng()];
+  return L.latLngBounds(latLngs);
+};
+
 //aux method to get icon to CustomMarker
 export const getCustomIcon = layerId => {
   const icon = config.MARKER_ICONS.find(icon => icon.id == layerId).icon;

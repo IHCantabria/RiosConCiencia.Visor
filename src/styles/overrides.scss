@@ -107,6 +107,20 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 
 /* Override Leaflet styles */
 //This rules overright css from dependencies: Leaflet
+.easy-button-container{
+  margin-top:7px !important;
+}
+.easy-button-button {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: 1px;
+  border-radius: 4px;
+  background-color: $color-light-white;
+  &:hover {
+    background-color: $color-light-grey
+  }
+}
 
 .leaflet-control-layers{
   background-color: $color-light-white;
