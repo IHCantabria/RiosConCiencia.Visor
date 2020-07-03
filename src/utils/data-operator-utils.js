@@ -56,11 +56,20 @@ export const getYears = samples => {
     .map(item => item.year)
     .filter((value, index, self) => self.indexOf(value) === index);
   const yearSorted = years.sort(function(a, b) {
-    return a - b;
+    return b - a;
   });
   const yearObjects = [];
   for (let i = 0; i < yearSorted.length; i++) {
     yearObjects.push({ id: i + 1, name: yearSorted[i] });
   }
   return yearObjects;
+};
+
+//aux method to get the default filter campaign
+export const getCampaignFilter = (samples, yearObject, campaignArray) => {
+  const samplesFiltered = samples.filter(
+    sample =>
+      sample.year == yearObject.name && sample.campaign == campaignArray[1].name
+  );
+  return samplesFiltered.length > 0 ? campaignArray[1] : campaignArray[0];
 };

@@ -76,7 +76,7 @@ export default {
   methods: {
     selectFirstOption() {
       this.$nextTick(() => {
-        this.activeItem = this.items[0]; // default selection
+        if (!this.activeItem) this.items[0]; // default selection
       }); // default selection
     }
   }
