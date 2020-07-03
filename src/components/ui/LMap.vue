@@ -98,6 +98,11 @@ export default {
         this.updateLayerMarker();
       },
       deep: true
+    },
+    showLegend: {
+      handler() {
+        this.toggleLegend();
+      }
     }
   },
   mounted() {
@@ -275,6 +280,7 @@ export default {
     },
     setupListeners() {
       this.ListenerToggleLegend();
+      this.ListenerOpenPopUp();
       this.ListenerToggleFilters();
       this.ListenerGoToDefault();
       this.ListenerLegendChange();
@@ -283,10 +289,13 @@ export default {
       const self = this;
       this.myMap.on("toogleLegend", function() {
         self.showLegend = !self.showLegend;
-        const div = document.getElementsByClassName("custom-legend")[0];
-        self.showLegend
-          ? (div.style.display = "flex")
-          : (div.style.display = "none");
+      });
+    },
+    ListenerOpenPopUp() {
+      const self = this;
+      this.myMap.on("popupopen", function() {
+        //Hide legend is resolution is movil
+        window.innerWidth < 750 ? (self.showLegend = false) : "";
       });
     },
     ListenerToggleFilters() {
@@ -320,6 +329,12 @@ export default {
       };
       this.currentLegend = legend;
       legend.addTo(this.myMap);
+    },
+    toggleLegend() {
+      const div = document.getElementsByClassName("custom-legend")[0];
+      this.showLegend
+        ? (div.style.display = "flex")
+        : (div.style.display = "none");
     }
   }
 };
