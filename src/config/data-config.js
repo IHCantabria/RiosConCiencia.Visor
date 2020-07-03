@@ -32,15 +32,15 @@ export const MARKER_COLORS = [
 export const BIOLOGICAL_RAMP = [
   {
     id: 0,
-    color: "blue-dark",
+    color: "black",
     name: "No hay Datos",
-    colorCode: "#184055"
+    colorCode: "#231f20"
   },
   {
     id: 1,
-    color: "green",
+    color: "cyan",
     name: "Muy Buena",
-    colorCode: "#00842d"
+    colorCode: "#1d92d4"
   },
   {
     id: 2,
@@ -62,15 +62,15 @@ export const BIOLOGICAL_RAMP = [
   },
   {
     id: 5,
-    color: "red",
+    color: "orange-dark",
     name: "Mala",
-    colorCode: "#cc2518"
+    colorCode: "#d63922"
   },
   {
     id: 6,
-    color: "cyan",
+    color: "blue-dark",
     name: "No Calculable",
-    colorCode: "#1d92d4"
+    colorCode: "#185769"
   }
 ];
 
@@ -88,9 +88,9 @@ export const CAMPAIGN_VALUES = [
 export const FOREST_RAMP = [
   {
     id: 0,
-    color: "blue-dark",
+    color: "black",
     name: "No hay Datos",
-    colorCode: "#184055"
+    colorCode: "#231f20"
   },
   {
     id: 1,
@@ -106,30 +106,30 @@ export const FOREST_RAMP = [
   },
   {
     id: 3,
-    color: "red",
+    color: "orange-dark",
     name: "Muy degradado",
-    colorCode: "#cc2518"
+    colorCode: "#d63922"
   },
   {
     id: 4,
-    color: "cyan",
+    color: "blue-dark",
     name: "No Calculable",
-    colorCode: "#1d92d4"
+    colorCode: "#185769"
   }
 ];
 
 export const ECOLOGICAL_RAMP = [
   {
     id: 0,
-    color: "blue-dark",
+    color: "black",
     name: "No hay Datos",
-    colorCode: "#184055"
+    colorCode: "#231f20"
   },
   {
     id: 1,
-    color: "green",
+    color: "cyan",
     name: "Muy Bueno",
-    colorCode: "#00842d"
+    colorCode: "#1d92d4"
   },
   {
     id: 2,
@@ -151,14 +151,14 @@ export const ECOLOGICAL_RAMP = [
   },
   {
     id: 5,
-    color: "red",
+    color: "orange-dark",
     name: "Malo",
-    colorCode: "#cc2518"
+    colorCode: "#d63922"
   },
   {
     id: 6,
-    color: "cyan",
+    color: "blue-dark",
     name: "No Calculable",
-    colorCode: "#1d92d4"
+    colorCode: "#185769"
   }
 ];
