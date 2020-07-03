@@ -2,6 +2,7 @@
 export const M_SET_SAMPLES = "samples/M_SET_SAMPLES";
 export const M_SET_USER = "samples/M_SET_USER";
 export const M_SET_YEAR_OPTIONS = "samples/M_SET_YEAR_OPTIONS";
+export const M_SET_CAMPAIGN_OPTIONS = "samples/M_SET_CAMPAIGN_OPTIONS";
 export const M_SET_SAMPLE_CAMPAIGN_FILTER =
   "samples/M_SET_SAMPLE_CAMPAIGN_FILTER";
 export const M_SET_SAMPLE_YEAR_FILTER = "samples/M_SET_SAMPLE_YEAR_FILTER";

@@ -7,6 +7,7 @@
           label="Selector de Año"
           width-select="220px"
           :items="yearOptions"
+          :last-active-item="yearFilter"
           @change="setYearFilter"
         ></type-selector>
         <type-selector
@@ -14,6 +15,7 @@
           label="Selector de Campaña"
           width-select="220px"
           :items="campaignOptions"
+          :last-active-item="campaignFilter"
           @change="setCampaignFilter"
         ></type-selector>
       </div>
@@ -30,6 +32,8 @@ export default {
   },
   computed: {
     ...mapState({
+      campaignFilter: state => state.samples.campaignFilter,
+      yearFilter: state => state.samples.yearFilter,
       campaignOptions: state => state.samples.campaignOptions,
       yearOptions: state => state.samples.yearOptions
     })
