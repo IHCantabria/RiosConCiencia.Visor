@@ -8,8 +8,7 @@ const centerDefault = {
   lat: 43.2,
   lon: -3.9,
   zoom: 10,
-  minZoom: 10,
-  maxZoom: 16
+  minZoom: 3
 };
 
 const mapDefault = {

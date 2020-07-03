@@ -10,8 +10,7 @@ export const mapSatelite = {
     id: "MapSateliteID",
     attribution:
       "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-    minZoom: 10,
-    maxZoom: 16
+    minZoom: 3
   }
 };
 export const waterQuality = {
