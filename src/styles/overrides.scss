@@ -107,6 +107,13 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 
 /* Override Leaflet styles */
 //This rules overright css from dependencies: Leaflet
+
+//Hide tooltip in movil devices
+
+@media (hover: none) {
+  .leaflet-tooltip-pane { display: none; }
+}
+
 .easy-button-container{
   margin-top:7px !important;
 }
