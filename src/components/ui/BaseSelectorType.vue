@@ -1,13 +1,9 @@
 <template>
   <div class="inner-container">
-    <span v-if="isEmptyList" class="empty-list">No Options available</span>
-    <vs-select
-      v-else
-      v-model="activeItem"
-      :label="label"
-      :width="widthSelect"
-      autocomplete
+    <span v-if="isEmptyList" class="empty-list"
+      >No hay Opciones Disponibles</span
     >
+    <vs-select v-else v-model="activeItem" :label="label" :width="widthSelect">
       <vs-select-item
         v-for="(item, index) in items"
         :key="index"
