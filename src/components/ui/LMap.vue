@@ -237,7 +237,7 @@ export default {
         this.layerMarkers.push(overlayLayer);
       });
       groupedOverlays["Filtros"] = filters;
-      this.layerMarkers[0].addTo(this.myMap);
+      this.layerMarkers[2].addTo(this.myMap);
       return groupedOverlays;
     },
     updateLayerMarker() {
