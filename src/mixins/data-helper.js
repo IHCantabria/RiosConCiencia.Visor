@@ -15,8 +15,6 @@ export const dataHelperMixin = {
           forestState: data.riverBankQrisiName,
           alias: data.riverSectionAlias,
           municipality: data.riverSectionMunicipality,
-          river: data.riverName,
-          riverType: data.riverType,
           catchment: data.riverCatchment,
           id: data.id,
           idBioQuality: data.idBioQuality,
