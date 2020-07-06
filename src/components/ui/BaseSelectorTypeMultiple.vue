@@ -108,6 +108,7 @@ export default {
 }
 
 .selectStyle {
+  padding-right: 25px;
   margin: 10px;
 }
 </style>
