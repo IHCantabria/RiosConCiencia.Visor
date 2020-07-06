@@ -51,12 +51,8 @@ export const createCustomPopup = sample => {
         <td>${sample.municipality}</td>
       </tr>
       <tr>
-        <th scope="row">Año de muestreo</th>
-        <td>${sample.year}</td>
-      </tr>
-      <tr>
-        <th scope="row">Campaña de muestreo</th>
-        <td>${sample.campaign}</td>
+        <th scope="row">Año y campaña de muestreo</th>
+        <td>${sample.year} - ${sample.campaign}</td>
       </tr>
       <tr>
         <th scope="row">Calidad biológica del agua</th>
