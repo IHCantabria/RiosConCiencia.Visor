@@ -216,7 +216,7 @@ export default {
       }
     },
     setupLegend() {
-      this.createLegend(this.layerMarkers[0].options.legend);
+      this.createLegend(this.layerMarkers[2].options.legend);
     },
     createSwitchBaseLayers() {
       const baseLayers = {};
