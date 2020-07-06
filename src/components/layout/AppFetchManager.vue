@@ -55,7 +55,7 @@ export default {
       campaignFilter: state => state.samples.campaignFilter
     }),
     ...mapGetters({
-      samplesIds: [types.G_GET_SAMPLES_FILTERED_IDS],
+      samplesIds: [types.G_GET_SAMPLES_FILTERED_DOWNLOAD_IDS],
       token: [types.G_GET_USER_TOKEN]
     }),
     requestComputed() {

@@ -50,6 +50,19 @@ export const getCampaignId = name => {
   return idCampaign;
 };
 
+//aux method to create the objects filters donwload
+export const getDownloadFilters = (years, campaigns) => {
+  let filters = [];
+  filters.push({ id: 0, name: "Todas las campañas" });
+  years.forEach(year => {
+    campaigns.forEach(campaign => {
+      const idFilter = parseInt(`${year.name}${campaign.id}`);
+      filters.push({ id: idFilter, name: `${year.name} - ${campaign.name}` });
+    });
+  });
+  return filters;
+};
+
 //aux method to get the distint year of the samples
 export const getYears = samples => {
   const years = samples
@@ -58,7 +71,7 @@ export const getYears = samples => {
   const yearSorted = years.sort(function(a, b) {
     return b - a;
   });
-  const yearObjects = [];
+  let yearObjects = [];
   for (let i = 0; i < yearSorted.length; i++) {
     yearObjects.push({ id: i + 1, name: yearSorted[i] });
   }
