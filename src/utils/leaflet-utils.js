@@ -40,43 +40,34 @@ export const createCustomPopup = sample => {
   return `<table>
     <tbody>
       <tr>
-        <th scope="row">Río</th>
-        <td>${sample.river}</td>
+        <th scope="row">Nombre del tramo</th>
+        <td>${sample.alias}</td>
       </tr>
-      <tr>
-        <th scope="row">Tipo de corriente</th>
-        <td>${sample.riverType}</td>
-      </tr>
-      <tr>
         <th scope="row">Cuenca</th>
         <td>${sample.catchment}</td>
       </tr>
       <tr>
-        <th scope="row">Alias del tramo</th>
-        <td>${sample.alias}</td>
-      </tr>
-      <tr>
-        <th scope="row">Municipio del tramo</th>
+        <th scope="row">Municipio</th>
         <td>${sample.municipality}</td>
       </tr>
       <tr>
-        <th scope="row">Año de muestra</th>
+        <th scope="row">Año de muestreo</th>
         <td>${sample.year}</td>
       </tr>
       <tr>
-        <th scope="row">Campaña de muestra</th>
+        <th scope="row">Campaña de muestreo</th>
         <td>${sample.campaign}</td>
       </tr>
       <tr>
-        <th scope="row">Calidad del Agua</th>
+        <th scope="row">Calidad biológica del agua</th>
         <td>${sample.bioQuality}</td>
       </tr>
       <tr>
-        <th scope="row">Calidad del Bosque de Rivera</th>
+        <th scope="row">Calidad del bosque de ribera</th>
         <td>${sample.forestState}</td>
       </tr>
       <tr>
-        <th scope="row">Estado Ecológico</th>
+        <th scope="row">Estado ecológico</th>
         <td>${sample.ecologicalState}</td>
       </tr>
     </tbody>
