@@ -54,11 +54,19 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 }
 
 //modal
+.popup-about{
+  padding:0;
+  margin:0 !important;
+}
+
 .con-vs-popup .vs-popup{
   font-family: $app-font;
   color: $app-font-color;
-  width:275px;
+  width:100%;
+  max-width:600px;
 }
+
+
 
 .vuesax-app-is-ltr .vs-popup--content{
   width:auto;
@@ -191,14 +199,14 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   height: 80%;
 
   &__Water {
-    content: url("~@/assets/water.svg");
+    content: url("~@/assets/svgs/water.svg");
   }
 
   &__Forest {
-    content: url("~@/assets/tree.svg");
+    content: url("~@/assets/svgs/tree.svg");
   }
 
   &__Ecological {
-    content: url("~@/assets/ecological.svg");
+    content: url("~@/assets/svgs/ecological.svg");
   }
 }
