@@ -2,7 +2,7 @@
   <div class="app-login">
     <div title="Login de usuario" class="login-icon" @click="openModal">
       <object
-        :data="require('@/assets/user.svg')"
+        :data="require('@/assets/svgs/user.svg')"
         type="image/svg+xml"
         style="pointer-events: none;"
       />
@@ -13,22 +13,24 @@
       :active.sync="modalState"
     >
       <div class="login-container">
-        <vs-input
-          v-model="email"
-          type="text"
-          label="Usuario de la aplicación"
-          icon="account_circle"
-          class="item-login"
-          placeholder="email"
-        />
-        <vs-input
-          v-model="password"
-          class="item-login"
-          type="password"
-          label="Contraseña de usuario"
-          icon="lock"
-          placeholder="contraseña"
-        />
+        <div class="login-container__inputs">
+          <vs-input
+            v-model="email"
+            type="text"
+            label="Usuario de la aplicación"
+            icon="account_circle"
+            class="item-login"
+            placeholder="email"
+          />
+          <vs-input
+            v-model="password"
+            class="item-login"
+            type="password"
+            label="Contraseña de usuario"
+            icon="lock"
+            placeholder="contraseña"
+          />
+        </div>
         <vs-button
           class="item-login item-login-buttom"
           color="primary"
@@ -49,7 +51,6 @@ export default {
       modalState: false
     };
   },
-  computed: {},
   methods: {
     openModal() {
       this.modalState = true;
@@ -79,6 +80,10 @@ export default {
 .login-container {
   display: flex;
   flex-direction: column;
+  &__inputs {
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
 .item-login {
   padding: 10px 5px;

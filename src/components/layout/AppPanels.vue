@@ -20,7 +20,7 @@
               >
               <div class="download-icon" @click="launchDownload">
                 <object
-                  :data="require('@/assets/download.svg')"
+                  :data="require('@/assets/svgs/download.svg')"
                   type="image/svg+xml"
                   style="pointer-events: none;"
                 />
