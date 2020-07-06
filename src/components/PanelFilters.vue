@@ -1,25 +1,21 @@
 <template>
-  <div class="app-filters">
-    <div class="variable-selectors">
-      <div class="type-selectors">
-        <type-selector
-          class="type-selectors__selector"
-          label="Selector de Año"
-          width-select="220px"
-          :items="yearOptions"
-          :last-active-item="yearFilter"
-          @change="setYearFilter"
-        ></type-selector>
-        <type-selector
-          class="type-selectors__selector"
-          label="Selector de Campaña"
-          width-select="220px"
-          :items="campaignOptions"
-          :last-active-item="campaignFilter"
-          @change="setCampaignFilter"
-        ></type-selector>
-      </div>
-    </div>
+  <div class="type-selectors">
+    <type-selector
+      class="type-selectors__selector"
+      label="Selector de Año"
+      width-select="220px"
+      :items="yearOptions"
+      :last-active-item="yearFilter"
+      @change="setYearFilter"
+    ></type-selector>
+    <type-selector
+      class="type-selectors__selector"
+      label="Selector de Campaña"
+      width-select="220px"
+      :items="campaignOptions"
+      :last-active-item="campaignFilter"
+      @change="setCampaignFilter"
+    ></type-selector>
   </div>
 </template>
 <script>
