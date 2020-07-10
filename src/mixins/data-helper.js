@@ -32,6 +32,17 @@ export const dataHelperMixin = {
           idFilter: parseInt(`${data.year}${getCampaignId(data.campaign)}`)
         };
       });
+    },
+    formatPictsSamples(data) {
+      return data.map(data => {
+        return {
+          id: data.id,
+          campaign: data.campaign,
+          year: data.year,
+          idCampaign: getCampaignId(data.campaign),
+          idFilter: parseInt(`${data.year}${getCampaignId(data.campaign)}`)
+        };
+      });
     }
   }
 };
