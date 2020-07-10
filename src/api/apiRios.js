@@ -11,6 +11,11 @@ export const getAllSamples = () => {
   return { url, params: _basicHeaders, method: "get", body: {} };
 };
 
+export const getAllPictsSamples = () => {
+  const url = `${RIOS_API.public}/RiosConCiencia/GetPictSamples`;
+  return { url, params: _basicHeaders, method: "get", body: {} };
+};
+
 export const getSamplesCsv = (token, filters) => {
   const url = `${RIOS_API.public}/RiosConCiencia/ExportSamples/csv`;
   _basicHeaders.Authorization = `Bearer ${token}`;
