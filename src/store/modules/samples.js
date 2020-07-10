@@ -7,7 +7,7 @@ import {
 import { CAMPAIGN_VALUES } from "@/config/data-config";
 const state = {
   samples: null,
-  samplesFull: null,
+  samplesPicts: null,
   yearOptions: [],
   yearFilter: {},
   campaignOptions: [],
@@ -20,6 +20,9 @@ const state = {
 const mutations = {
   [types.M_SET_SAMPLES](state, payload) {
     state.samples = payload.samples;
+  },
+  [types.M_SET_PICTS_SAMPLES](state, payload) {
+    state.samplesPicts = payload.samplesPicts;
   },
   [types.M_SET_USER](state, payload) {
     state.user = payload.user;
@@ -66,6 +69,9 @@ const actions = {
     commit(types.M_SET_SAMPLE_DOWNLOAD_FILTERS, {
       downloadFilters: [downloadOptions[0]]
     });
+  },
+  [types.A_FETCH_PICTS_SAMPLES]: ({ commit }, operation) => {
+    commit(types.M_SET_PICTS_SAMPLES, { samplesPicts: operation });
   },
   [types.A_FETCH_USER]: ({ commit }, operation) => {
     commit(types.M_SET_USER, { user: operation });
