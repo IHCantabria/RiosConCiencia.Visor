@@ -84,6 +84,7 @@ export default {
       this.setActionListeners();
       //initial load data
       this.fetchSamplesData();
+      this.fetchPictsSamplesData();
     },
     setActionListeners() {
       this.$root.$on("callDownload", () => {
@@ -147,6 +148,18 @@ export default {
         this.createSpinnerTask(
           "Datos de Muestreo",
           "Recopilando datos de muestras. Por favor, espere..."
+        )
+      );
+    },
+    fetchPictsSamplesData() {
+      console.log("pictos");
+      this.createTask(
+        apiRios.getAllPictsSamples(),
+        this.formatPictsSamples,
+        types.A_FETCH_PICTS_SAMPLES,
+        this.createSpinnerTask(
+          "Datos de Muestreo Pictos",
+          "Recopilando datos de muestras de pictos. Por favor, espere..."
         )
       );
     },
