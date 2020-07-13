@@ -17,14 +17,19 @@ export const getAllPictsSamples = () => {
 };
 
 export const getSamplesCsv = (token, filters) => {
-  const url = `${RIOS_API.public}/RiosConCiencia/ExportSamples/csv`;
+  const url = `${RIOS_API.public}/RiosConCiencia/ExportSamples/cambera`;
   _basicHeaders.Authorization = `Bearer ${token}`;
   const bodyObject = {
-    year: filters.year,
-    campaign: filters.campaign,
-    samplesId: filters.samplesId
+    samplesId: filters.samplesId,
+    samplesPictsId: filters.samplesPictsId
   };
   return { url, params: _basicHeaders, method: "postFile", body: bodyObject };
+};
+
+export const getAllSamplesCsv = token => {
+  const url = `${RIOS_API.public}/RiosConCiencia/ExportSamplesAll/cambera`;
+  _basicHeaders.Authorization = `Bearer ${token}`;
+  return { url, params: _basicHeaders, method: "getFile", body: {} };
 };
 
 export const login = credentials => {
