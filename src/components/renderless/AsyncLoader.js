@@ -52,27 +52,8 @@ export default {
     async requestData() {
       this.pending = true;
       try {
-        if (this.method == "postFile") {
-          await axios
-            .post(this.url, this.body, {
-              responseType: "arraybuffer",
-              headers: this.params
-            })
-            .then(response => {
-              const blob = new Blob([response.data], {
-                type: "application/zip"
-              });
-              const downloadUrl = window.URL.createObjectURL(blob);
-              const link = document.createElement("a");
-              link.href = downloadUrl;
-              link.setAttribute("download", "Muestras.zip"); //any other extension
-              document.body.appendChild(link);
-              link.click();
-              link.remove();
-              window.URL.revokeObjectURL(downloadUrl);
-              return true;
-            });
-          this.data = [];
+        if (this.method == "postFile" || this.method == "getFile") {
+          await this.requestFile();
         } else if (this.method == "get") {
           const { data } = await axios.get(this.url, { headers: this.params });
           this.data = data;
@@ -93,6 +74,50 @@ export default {
           this.$emit("requestFinished", this.data);
         });
       }
+    },
+    async requestFile() {
+      if (this.method == "postFile") {
+        await axios
+          .post(this.url, this.body, {
+            responseType: "arraybuffer",
+            headers: this.params
+          })
+          .then(response => {
+            const blob = new Blob([response.data], {
+              type: "application/zip"
+            });
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = downloadUrl;
+            link.setAttribute("download", "Muestras.zip"); //any other extension
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(downloadUrl);
+            return true;
+          });
+      } else {
+        await axios
+          .get(this.url, {
+            responseType: "arraybuffer",
+            headers: this.params
+          })
+          .then(response => {
+            const blob = new Blob([response.data], {
+              type: "application/zip"
+            });
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = downloadUrl;
+            link.setAttribute("download", "Muestras.zip"); //any other extension
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(downloadUrl);
+            return true;
+          });
+      }
+      this.data = [];
     },
     setDefaultValues() {
       this.error = false;

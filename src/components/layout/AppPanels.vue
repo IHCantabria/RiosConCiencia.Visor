@@ -29,7 +29,8 @@
           </div>
           <div v-else>
             <span class="download-text"
-              >Has de loguearte para tener acceso a la descarga de datos</span
+              >Tienes que estar logueado para tener acceso a la descarga de
+              datos</span
             >
           </div>
         </vs-tab>

@@ -26,7 +26,7 @@
 </template>
 <script>
 import * as types from "@/store/types";
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import { dataHelperMixin } from "@/mixins/data-helper.js";
 import { notificationsMixin } from "@/mixins/notifications.js";
 import DataOperator from "@/components/renderless/DataOperator";
@@ -50,13 +50,11 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      yearFilter: state => state.samples.yearFilter,
-      campaignFilter: state => state.samples.campaignFilter
-    }),
     ...mapGetters({
       samplesIds: [types.G_GET_SAMPLES_FILTERED_DOWNLOAD_IDS],
-      token: [types.G_GET_USER_TOKEN]
+      samplesPictsIds: [types.G_GET_SAMPLES_PICTS_FILTERED_DOWNLOAD_IDS],
+      token: [types.G_GET_USER_TOKEN],
+      isFilterAll: [types.G_GET_IS_FILTER_ALL]
     }),
     requestComputed() {
       return this.request;
@@ -152,7 +150,6 @@ export default {
       );
     },
     fetchPictsSamplesData() {
-      console.log("pictos");
       this.createTask(
         apiRios.getAllPictsSamples(),
         this.formatPictsSamples,
@@ -175,18 +172,31 @@ export default {
       );
     },
     fetchCsvData() {
+      this.isFilterAll ? this.fetchCsvAllData() : this.fetchCsvFilterData();
+    },
+    fetchCsvAllData() {
+      this.createTask(
+        apiRios.getAllSamplesCsv(this.token),
+        null,
+        null,
+        this.createSpinnerTask(
+          "Descargando Datos",
+          "Descargando archivos de muestras. Por favor, espere..."
+        )
+      );
+    },
+    fetchCsvFilterData() {
       const filters = {
-        year: this.yearFilter.name,
-        campaign: this.campaignFilter.name,
-        samplesId: this.samplesIds
+        samplesId: this.samplesIds,
+        samplesPictsId: this.samplesPictsIds
       };
       this.createTask(
         apiRios.getSamplesCsv(this.token, filters),
         null,
         null,
         this.createSpinnerTask(
-          "Descargando Datos",
-          "Descargando archivos de muestras. Por favor, espere..."
+          "Descargando Datos Filtrados",
+          "Descargando archivos de muestras filtrados. Por favor, espere..."
         )
       );
     },
