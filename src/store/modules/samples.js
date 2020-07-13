@@ -113,10 +113,29 @@ const getters = {
         .map(sample => sample.id);
     }
   },
+  [types.G_GET_SAMPLES_PICTS_FILTERED_DOWNLOAD_IDS]: (state, getters) => {
+    if (!state.samplesPicts) {
+      return [];
+    } else if (
+      !state.downloadFilters.length ||
+      (state.downloadFilters.length == 1 && state.downloadFilters[0].id == 0)
+    ) {
+      return state.samplesPicts.map(sample => sample.id);
+    } else {
+      return state.samplesPicts
+        .filter(sample =>
+          getters[types.G_GET_FILTERS_IDS].includes(sample.idFilter)
+        )
+        .map(sample => sample.id);
+    }
+  },
   [types.G_GET_FILTERS_IDS]: state => {
     return state.downloadFilters.length
       ? state.downloadFilters.map(filter => filter.id)
       : [];
+  },
+  [types.G_GET_IS_FILTER_ALL]: state => {
+    return state.downloadFilters[0].id == 0 ? true : false;
   },
   [types.G_GET_USER_TOKEN]: state => {
     return state.user ? state.user.token : "";
