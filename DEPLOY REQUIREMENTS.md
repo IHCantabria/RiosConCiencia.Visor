@@ -21,7 +21,7 @@
 
 ## App folder
 
-`_____________`
+`RiosConCiencia.Visor`
 
 ## Distribution
 
@@ -30,7 +30,7 @@
 
 ## Url GIT
 
-    - ssh://git@193.144.208.195:222/IT/RiosConCiencia.Visor.git
+    - ssh://git@github.com:IHCantabria/RiosConCiencia.Visor.git
 
 ## DNS
 
@@ -72,7 +72,7 @@ Select only if needed:
 
 **What applications, services, or data sources is this application related to?**
 
-`RiosConciencia.Api, RiosConCiencia.App_________________________________________`
+`RiosConciencia.Api, RiosConCiencia.App`
 
 ## Credits
 
