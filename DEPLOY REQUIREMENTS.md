@@ -30,7 +30,7 @@
 
 ## Url GIT
 
-    - ssh://git@github.com:IHCantabria/RiosConCiencia.Visor.git
+    - git@github.com:IHCantabria/RiosConCiencia.Visor.git
 
 ## DNS
 
