@@ -14,7 +14,6 @@ import {
   getCustomIcon,
   getCustomColorKey,
   createCustomPopup,
-  createCustomTooltip,
   createCustomLegend,
   panZoomMarker
 } from "@/utils/leaflet-utils.js";
@@ -269,11 +268,9 @@ export default {
         { icon: createCustomIcon(icon, color) }
       );
       const popupContext = createCustomPopup(cMarker);
-      const tooltioContext = createCustomTooltip(cMarker);
       mark.layerID = cMarker.id;
       mark.type = cMarker.type;
       mark.bindPopup(popupContext);
-      mark.bindTooltip(tooltioContext);
       layerGroup.addLayer(mark);
     },
     clearLayerMarkers() {
