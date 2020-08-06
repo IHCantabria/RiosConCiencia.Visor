@@ -156,7 +156,7 @@ export default {
           {
             stateName: "toogleLegend",
             icon: "fa-map",
-            title: "Haz click aquí para mostrar/ocultar la legenda del mapa",
+            title: "Haz click aquí para mostrar/ocultar la leyenda del mapa",
             onClick: function() {
               self.myMap.fire("toogleLegend");
             }
