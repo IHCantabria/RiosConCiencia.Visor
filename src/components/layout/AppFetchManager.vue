@@ -20,6 +20,7 @@
         operation.additionalInfo ? operation.additionalInfo : null
       "
       @dataProcessed="operationsFinishedEvent"
+      @errorOperationHandler="errorOperationHandler"
       @operationFinished="operationsController"
     ></data-operator>
   </div>
@@ -109,6 +110,16 @@ export default {
         );
       }
     },
+    errorOperationHandler(error) {
+      if (error) {
+        const errorMessage =
+          "Tu usuario no tiene permisos para acceder a la descarga de datos.";
+        this.$_showNotificationOnce(
+          `${this.currentSpinnerTask.id}`,
+          `${errorMessage}`
+        );
+      }
+    },
     logicMessageError(error) {
       return error.response.data.messages;
     },
@@ -163,7 +174,7 @@ export default {
     authenticate(credentials) {
       this.createTask(
         apiRios.login(credentials),
-        null,
+        this.checkRole,
         types.A_FETCH_USER,
         this.createSpinnerTask(
           "Validando Usuario",
