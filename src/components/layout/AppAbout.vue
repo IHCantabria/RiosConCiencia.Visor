@@ -27,8 +27,8 @@
           <p class="about-container__msg-section">
             RíosConCiencia Visor es una herramienta digital que facilita la
             observación y el análisis de los datos recopilados en campo por
-            parte de los voluntarios y miembros del proyecto RíosConCiencia a
-            través de la aplicación móvil RíosConCienciApp.
+            parte de personas voluntarias a través de la aplicación móvil
+            RíosConCienciApp en el marco del Proyecto Ríos.
           </p>
           <p class="about-container__msg-section">
             Proyecto Ríos es una iniciativa de voluntariado ambiental que se
