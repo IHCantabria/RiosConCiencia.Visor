@@ -104,6 +104,7 @@ export default {
   background-color: #f4f4f4;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+  touch-action: none; // prevent scroll drag
 }
 
 .panel-header {
