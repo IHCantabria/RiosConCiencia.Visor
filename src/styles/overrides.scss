@@ -63,8 +63,13 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   touch-action: none; // prevent scroll drag
   font-family: $app-font;
   color: $app-font-color;
-  width:100%;
-  max-width:600px;
+  width:95%;
+  max-width:500px;
+}
+
+.vs-popup--content{
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 

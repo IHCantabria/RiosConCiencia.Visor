@@ -17,7 +17,6 @@ export default {
       });
     },
     logout() {
-      console.log("logout");
       this.setActiveUser(null);
     }
   },

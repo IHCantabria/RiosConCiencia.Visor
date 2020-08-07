@@ -45,20 +45,29 @@
             <a
               href="https://redcambera.org/proyectos/riosconciencia/"
               target="_blank"
-              >Pulse para más información</a
+              >Pulse aquí para más información del proyecto.</a
             >
           </p>
         </div>
-        <div class="claim-container">
-          <span>Con la colaboración de:</span>
-        </div>
         <div class="about-container__logos">
-          <img
-            src="@/assets/logos/LogoMinisterio-FECYT.png"
-            title="Gobierno de España y Fundación Española para la Ciencia y la Tecnología"
-          />
-          <img src="@/assets/logos/RedCambera.png" title="Red Cambera" />
-          <img src="@/assets/logos/ProyectoRios.png" title="Proyecto Ríos" />
+          <div class="logo">
+            <div class="claim-container">
+              <span>Con la colaboración de:</span>
+            </div>
+            <img
+              src="@/assets/logos/LogoMinisterio-FECYT.png"
+              title="Gobierno de España y Fundación Española para la Ciencia y la Tecnología"
+            />
+          </div>
+          <div class="logo">
+            <div class="claim-container">
+              <span>Un proyecto de:</span>
+            </div>
+            <img src="@/assets/logos/RedCambera.png" title="Red Cambera" />
+          </div>
+          <div class="logo-without-claim">
+            <img src="@/assets/logos/ProyectoRios.png" title="Proyecto Ríos" />
+          </div>
         </div>
       </div>
     </vs-popup>
@@ -93,40 +102,54 @@ export default {
   font-size: 0.7rem;
   display: flex;
   flex-direction: column;
-  margin: 2px;
-  padding: 1rem;
-}
-.claim-container {
-  padding: 0.4rem 1rem;
-  font-size: 0.7rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 .about-container {
   &__title-logo {
     display: flex;
-    padding: 1.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     & img {
       margin-left: auto;
       margin-right: auto;
-      max-height: 10vh;
+      max-height: 9vh;
     }
   }
   &__msg-section {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-align: left;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
   }
   &__logos {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     height: 100%;
-    & img {
+    width: 100%;
+    .logo {
+      padding: 0.5rem 1rem 0.5rem 1rem;
       max-height: 7vh;
-      max-width: 600px;
-      padding: 0.5rem 0;
-      margin-left: auto;
-      margin-right: auto;
+      & img {
+        max-height: 5.5vh;
+        height: 100%;
+      }
+    }
+    .logo-without-claim {
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      max-height: 7vh;
+      & img {
+        max-height: 7vh;
+        height: 100%;
+      }
     }
   }
+}
+.claim-container {
+  display: flex;
+  text-align: left;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.7rem;
 }
 </style>
