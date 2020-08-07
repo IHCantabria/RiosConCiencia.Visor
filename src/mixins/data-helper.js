@@ -43,6 +43,11 @@ export const dataHelperMixin = {
           idFilter: parseInt(`${data.year}${getCampaignId(data.campaign)}`)
         };
       });
+    },
+    checkRole(data) {
+      const RoleIdsVisor = [1, 6, 7, 8, 9];
+      const roleValid = RoleIdsVisor.includes(parseInt(data.roleId));
+      return roleValid ? data : null;
     }
   }
 };

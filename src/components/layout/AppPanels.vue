@@ -4,6 +4,7 @@
       <div class="panel-header">
         <panel-about class="panel-about"></panel-about>
         <panel-login v-if="!userLogged"></panel-login>
+        <panel-logout v-if="userLogged"></panel-logout>
       </div>
       <vs-tabs>
         <vs-tab icon="map" label="Visualización">
@@ -42,12 +43,14 @@
 import { mapGetters } from "vuex";
 import * as types from "@/store/types";
 import AppAbout from "@/components/layout/AppAbout.vue";
+import AppLogout from "@/components/layout/AppLogout.vue";
 import PanelFilters from "@/components/PanelFilters.vue";
 import PanelFilterDownload from "@/components/PanelFilterDownload.vue";
 import PanelLogin from "@/components/PanelLogin.vue";
 export default {
   components: {
     "panel-about": AppAbout,
+    "panel-logout": AppLogout,
     "panel-login": PanelLogin,
     "panel-filters": PanelFilters,
     "panel-filter-download": PanelFilterDownload
@@ -101,6 +104,7 @@ export default {
   background-color: #f4f4f4;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   border-radius: 15px;
+  touch-action: none; // prevent scroll drag
 }
 
 .panel-header {

@@ -5,10 +5,9 @@
 </template>
 <script>
 import Viewer from "@/views/Viewer.vue";
-
 export default {
   components: {
-    viewer: Viewer
+    Viewer
   },
   mounted() {
     this.init();

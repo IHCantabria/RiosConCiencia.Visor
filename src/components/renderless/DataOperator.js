@@ -55,9 +55,13 @@ export default {
     },
     prepareData() {
       const dataPrepared = this.Operate();
-      this.dispatcher
-        ? this.$store.dispatch(this.dispatcher, dataPrepared)
-        : this.$emit("dataProcessed", dataPrepared);
+      if (dataPrepared != null) {
+        this.dispatcher
+          ? this.$store.dispatch(this.dispatcher, dataPrepared)
+          : this.$emit("dataProcessed", dataPrepared);
+      } else {
+        this.$emit("errorOperationHandler", true);
+      }
       this.$emit("operationFinished");
     },
     Operate() {

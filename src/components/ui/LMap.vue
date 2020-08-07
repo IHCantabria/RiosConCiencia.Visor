@@ -14,7 +14,6 @@ import {
   getCustomIcon,
   getCustomColorKey,
   createCustomPopup,
-  createCustomTooltip,
   createCustomLegend,
   panZoomMarker
 } from "@/utils/leaflet-utils.js";
@@ -120,9 +119,10 @@ export default {
         this.cMapDefault.layers.includes(layer.options.id)
       );
       this.setMap(layersToSetMap);
-      this.addToggleControlControl();
       this.setOriginalPosition();
       this.setupSwitcherLayer();
+      this.setupZoomControl();
+      this.addToggleControlControl();
       this.setupLegend();
       this.setupListeners();
     },
@@ -140,6 +140,7 @@ export default {
         center: this.cMapDefault.center,
         zoom: this.cMapDefault.zoom,
         minZoom: this.cMapDefault.minZoom,
+        zoomControl: false,
         layers: layersToSetMap,
         maxBounds: bounds,
         maxBoundsViscosity: 1.0,
@@ -156,7 +157,7 @@ export default {
           {
             stateName: "toogleLegend",
             icon: "fa-map",
-            title: "Haz click aquí para mostrar/ocultar la legenda del mapa",
+            title: "Haz click aquí para mostrar/ocultar la leyenda del mapa",
             onClick: function() {
               self.myMap.fire("toogleLegend");
             }
@@ -208,12 +209,16 @@ export default {
           // Make the "Filtros" group exclusive (use radio inputs)
           exclusiveGroups: ["Filtros"],
           // Show a checkbox next to non-exclusive group labels for toggling all
-          groupCheckboxes: true
+          groupCheckboxes: true,
+          position: "topleft"
         };
         L.control
           .groupedLayers(baseLayers, groupedOverlays, options)
           .addTo(this.myMap);
       }
+    },
+    setupZoomControl() {
+      L.control.zoom({ position: "topleft" }).addTo(this.myMap);
     },
     setupLegend() {
       this.createLegend(this.layerMarkers[2].options.legend);
@@ -263,11 +268,9 @@ export default {
         { icon: createCustomIcon(icon, color) }
       );
       const popupContext = createCustomPopup(cMarker);
-      const tooltioContext = createCustomTooltip(cMarker);
       mark.layerID = cMarker.id;
       mark.type = cMarker.type;
       mark.bindPopup(popupContext);
-      mark.bindTooltip(tooltioContext);
       layerGroup.addLayer(mark);
     },
     clearLayerMarkers() {
