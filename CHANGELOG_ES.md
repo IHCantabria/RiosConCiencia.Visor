@@ -7,6 +7,7 @@
   - Cambios menores de texto.
   - La descarga de datos solo estará permitida a usuarios con permisos específicos.
 
+
 ### **v0.3.1** - 07/08/2020
 
 
