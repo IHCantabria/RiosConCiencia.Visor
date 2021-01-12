@@ -13,6 +13,17 @@ export const mapSatelite = {
     minZoom: 3
   }
 };
+export const MapGeographic = {
+  name: "Mapa Geográfico",
+  url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  configParameters: {
+    id: "geographicID",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 16,
+    minZoom: 3
+  }
+};
 export const waterQuality = {
   name: "Calidad del agua",
   configParameters: {
