@@ -1,5 +1,6 @@
 import {
   mapSatelite,
+  MapGeographic,
   waterQuality,
   forestQuality,
   ecologicalState
@@ -17,12 +18,16 @@ const mapDefault = {
   layers: [mapSatelite.configParameters.id]
 };
 
-const baseLayers = [mapSatelite];
+const baseLayers = [mapSatelite, MapGeographic];
 
 const switchBaseMaps = [
   {
     displayLayerName: mapSatelite.name,
     idLayer: mapSatelite.configParameters.id
+  },
+  {
+    displayLayerName: MapGeographic.name,
+    idLayer: MapGeographic.configParameters.id
   }
 ];
 
