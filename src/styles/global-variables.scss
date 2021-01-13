@@ -1,25 +1,21 @@
 /* Font */
-$app-font: "Montserrat",
-  Helvetica,
-  Arial,
-  sans-serif;
-$app-font-color: #2c3e50;  
+$app-font: "Montserrat", helvetica, arial, sans-serif;
+$app-font-color: #2c3e50;
 $app-font-size: 100%;
 
-/* Colors */ 
+/* Colors */
 $color-primary: #1c313a; //Primary Color
-$color-panels:linear-gradient(#f9f9f9,#eee);
+$color-panels: linear-gradient(#f9f9f9, #eee);
 $color-very-light-grey: #e0e0e0;
 $color-light-grey: #b3b3b3;
-$color-grey:#555555;
-$color-table-header:linear-gradient(#f9f9f9,#eee);
-$color-table-thead-tr: linear-gradient(#fff,#f1f1f1);
-$color-table-tbody-tr: linear-gradient(#f9f9f9,#eee);
+$color-grey: #555555;
+$color-table-header: linear-gradient(#f9f9f9, #eee);
+$color-table-thead-tr: linear-gradient(#fff, #f1f1f1);
+$color-table-tbody-tr: linear-gradient(#f9f9f9, #eee);
 $color-table-search: #ffffff;
 $color-white: #ffffff;
-$color-light-white:#F4F4F4;
+$color-light-white: #f4f4f4;
 $color-transparent: rgba(255, 255, 255, 0.5);
-
 
 /* Resolution Breakpoints */
 $breakpoint-movilToTablet: 46.875em;

@@ -4,10 +4,10 @@
   border-radius: 0;
   width: 100%;
   max-width: 750px;
-  background:$color-panels;
+  background: $color-panels;
 
   .sweet-title {
-    background:$color-light-white;
+    background: $color-light-white;
     border-bottom: 0;
     padding-top: 2%;
     padding-right: 0;
@@ -15,7 +15,7 @@
 
     h2 {
       font-weight: bold;
-      text-align:center;
+      text-align: center;
     }
   }
 
@@ -45,78 +45,81 @@
 
 /* Override Vuesax styles */
 //This rules overright css from dependencies: vuesax
-* {//Global
+* {
+  //Global
   box-sizing: content-box;
 }
-a, a:link, a:visited, a:focus, a:hover, a:active{
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
   color: $app-font-color;
-  text-decoration:none; 
+  text-decoration: none;
 }
 
 //modal
-.popup-about{
-  padding:0;
-  margin:0 !important;
+.popup-about {
+  padding: 0;
+  margin: 0;
 }
 
-.con-vs-popup .vs-popup{
+.con-vs-popup .vs-popup {
   touch-action: none; // prevent scroll drag
   font-family: $app-font;
   color: $app-font-color;
-  width:95%;
-  max-width:500px;
+  width: 95%;
+  max-width: 500px;
 }
 
-.vs-popup--content{
+.vs-popup--content {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
-
-
-.vuesax-app-is-ltr .vs-popup--content{
-  width:auto;
+.vuesax-app-is-ltr .vs-popup--content {
+  width: auto;
+  margin-right: 0;
 }
 
 //select
-.vs-con-input-label{
-  margin:auto;
+.vs-con-input-label {
+  margin: auto;
 }
 
 .material-icons {
   font-size: 1rem;
 }
-.vs-dropdown--menu{
+.vs-dropdown--menu {
   border-radius: 15px;
   font-family: $app-font;
   color: $app-font-color;
   font-size: 0.8rem;
-  background:$color-panels;
+  background: $color-panels;
 }
-.vs-select--options{
+.vs-select--options {
   overflow: hidden;
 }
 //selects
-.vs-select--label{
-  color:$app-font-color;
+.vs-select--label {
+  color: $app-font-color;
 }
-.con-select{
-  margin:auto;
+.con-select {
+  margin: auto;
 }
-.vuesax-app-is-ltr .vs-select--input{
-  padding-right:0;
+.vuesax-app-is-ltr .vs-select--input {
+  padding-right: 0;
 }
-.vuesax-app-is-ltr .vs-select--options{
-  top:60% !important;
+.vuesax-app-is-ltr .vs-select--options {
+  top: 60% !important;
 }
-
-
-.vs-select-primary{
+.vs-select-primary {
   background-color: $color-light-white;
 }
-.vs-select--item{
-  border-top:0;
-  border-bottom:0;
+.vs-select--item {
+  border-top: 0;
+  border-bottom: 0;
 }
 
 /* Override Leaflet styles */
@@ -125,35 +128,38 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 //Hide tooltip in movil devices
 
 @media (hover: none) {
-  .leaflet-tooltip-pane { display: none; }
+  .leaflet-tooltip-pane {
+    display: none;
+  }
 }
 
-.easy-button-container{
-  margin-top:7px !important;
+div.leaflet-bar.easy-button-container.leaflet-control {
+  margin-top: 7px;
 }
+
 .easy-button-button {
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
   border: 1px;
   border-radius: 4px;
   background-color: $color-light-white;
   &:hover {
-    background-color: $color-light-grey
+    background-color: $color-light-grey;
   }
 }
 
-.leaflet-control-layers{
+.leaflet-control-layers {
   background-color: $color-light-white;
 }
 .leaflet-control-layers-base label {
   &:hover {
     cursor: pointer;
-    background-color: $color-light-grey
+    background-color: $color-light-grey;
   }
 }
 
-.leaflet-container{
+.leaflet-container {
   font-family: $app-font;
   color: $app-font-color;
 }
@@ -165,36 +171,41 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 .leaflet-control-layers-selector {
   &:hover {
     cursor: pointer;
-    }
+  }
 }
-.leaflet-bar a{
+.leaflet-bar a {
   background-color: $color-light-white;
 }
 
-.leaflet-bar a:hover{
-  background-color: $color-light-grey
+.leaflet-bar a:hover {
+  background-color: $color-light-grey;
 }
-.leaflet-bar a.leaflet-disabled{
+.leaflet-bar a.leaflet-disabled {
   background: $color-grey;
+}
+div.leaflet-popup {
+  .leaflet-popup-close-button {
+    padding: 8px 8px 0 0;
+  }
 }
 
 .extra-marker i {
   margin-top: 0;
 }
 
-//legend 
-.circle-dot{
+//legend
+.circle-dot {
   height: 10px;
   width: 10px;
   border-radius: 50%;
   display: inline-block;
 }
 .custom-legend {
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding: 10px;
 }
-.item-legend{
+.item-legend {
   padding: 4px;
   text-align: left;
 }
