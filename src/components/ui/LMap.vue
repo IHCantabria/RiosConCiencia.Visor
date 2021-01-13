@@ -324,7 +324,7 @@ export default {
       const self = this;
       var legend = L.control({ position: "topright" });
       legend.onAdd = () => {
-        let div = createCustomLegend(legendText);
+        const div = createCustomLegend(legendText);
         self.showLegend
           ? (div.style.display = "flex")
           : (div.style.display = "none");

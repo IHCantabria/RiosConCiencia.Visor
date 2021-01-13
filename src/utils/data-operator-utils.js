@@ -52,7 +52,7 @@ export const getCampaignId = name => {
 
 //aux method to create the objects filters donwload
 export const getDownloadFilters = (years, campaigns) => {
-  let filters = [];
+  const filters = [];
   filters.push({ id: 0, name: "Todas las campañas" });
   years.forEach(year => {
     campaigns.forEach(campaign => {
@@ -71,7 +71,7 @@ export const getYears = samples => {
   const yearSorted = years.sort(function(a, b) {
     return b - a;
   });
-  let yearObjects = [];
+  const yearObjects = [];
   for (let i = 0; i < yearSorted.length; i++) {
     yearObjects.push({ id: i + 1, name: yearSorted[i] });
   }

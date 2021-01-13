@@ -92,7 +92,7 @@ export const createCustomLegendDiv = (title, ramp) => {
   return innerHTML;
 };
 export const createCustomLegend = innerHTML => {
-  let div = L.DomUtil.create(
+  const div = L.DomUtil.create(
     "div",
     "leaflet-control-layers leaflet-control custom-legend"
   );
