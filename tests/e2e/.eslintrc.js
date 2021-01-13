@@ -7,13 +7,7 @@ module.exports = {
   extends: ["plugin:cypress/recommended", "plugin:chai-friendly/recommended"],
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    strict: "off",
-    "jest/no-hooks": [
-      "error",
-      {
-        allow: ["afterEach", "afterAll", "beforeEach", "beforeAll"]
-      }
-    ]
+    strict: "off"
   },
   overrides: [
     {
