@@ -15,19 +15,19 @@ const centerDefault = {
 const mapDefault = {
   center: [centerDefault.lat, centerDefault.lon],
   zoom: centerDefault.zoom,
-  layers: [mapSatelite.configParameters.id]
+  layers: [MapGeographic.configParameters.id]
 };
 
-const baseLayers = [mapSatelite, MapGeographic];
+const baseLayers = [MapGeographic, mapSatelite];
 
 const switchBaseMaps = [
   {
-    displayLayerName: mapSatelite.name,
-    idLayer: mapSatelite.configParameters.id
-  },
-  {
     displayLayerName: MapGeographic.name,
     idLayer: MapGeographic.configParameters.id
+  },
+  {
+    displayLayerName: mapSatelite.name,
+    idLayer: mapSatelite.configParameters.id
   }
 ];
 

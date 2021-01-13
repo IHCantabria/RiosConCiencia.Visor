@@ -171,7 +171,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .loading-panel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

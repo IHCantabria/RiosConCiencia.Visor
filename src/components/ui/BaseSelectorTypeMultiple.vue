@@ -99,7 +99,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .inner-container {
   display: flex;
   flex-grow: 1;

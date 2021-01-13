@@ -18,7 +18,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .toggle-icon {
   width: 20px;
   padding: 5px;

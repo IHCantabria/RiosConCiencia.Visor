@@ -88,7 +88,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .toggle-icon {
   width: 20px;
   padding: 5px;
@@ -125,6 +125,7 @@ export default {
     justify-content: center;
     height: 100%;
     width: 100%;
+    padding-bottom: 1rem;
     .logo {
       padding: 0.5rem 1rem 0.5rem 1rem;
       max-height: 7vh;
