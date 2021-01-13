@@ -1,31 +1,46 @@
 module.exports = {
   root: true,
+  parserOptions: {
+    parser: "babel-eslint",
+    sourceType: "module",
+    ecmaVersion: 2020
+  },
   env: {
     node: true
   },
-  extends: ["plugin:vue/recommended", "@vue/prettier","plugin:promise/recommended","plugin:jest/all"],
+  extends: [
+    "plugin:vue/recommended",
+    "@vue/prettier",
+    "plugin:promise/recommended",
+    "plugin:jest/all",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended"
+  ],
+  globals: {
+    L: true //Leaflet instance
+  },
+  // add your custom rules here
   rules: {
+    // allow async-await
+    "generator-star-spacing": "off",
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "import/no-unresolved": "off",
+    semi: 0,
+    "prefer-const": 1,
+    "prettier/prettier": "warn",
     "jest/no-hooks": [
       "error",
       {
-        "allow": ["afterEach", "afterAll", "beforeEach", "beforeAll"]
-      },
+        allow: ["afterEach", "afterAll", "beforeEach", "beforeAll"]
+      }
     ],
     "jest/prefer-inline-snapshots": "off",
     "jest/prefer-called-with": "off"
   },
-  globals: {
-    L: true, //Leaflet instance
-  },
-  // required to lint *.vue files
-  plugins: ["prettier", "vue","promise","jest"],
-  parserOptions: {
-    parser: "babel-eslint",
-    sourceType: "module",
-    ecmaVersion: 2019
-  },
+  // required to lint *.vue files, jest files, imports and promises
+  plugins: ["prettier", "vue", "promise", "jest", "import"],
   overrides: [
     {
       files: [

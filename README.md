@@ -2,10 +2,23 @@
 
 Visor Web del proyecto RiosConCiencia
 
-## Commands
+## Web Proyect
+
+To see a real implementation of this project visit the following url [RiosConCiencia.Visor](https://riosconcienciavisor.ihcantabria.com/).
+
+## Build Setup
+
+
+### install dependencies
 
 ```
 npm install
+```
+
+### update dependencies
+
+```
+npm update
 ```
 
 ### Compiles and hot-reloads for development
@@ -20,16 +33,16 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### Compiles and minifies for production and view the bundle analyzer report
+
+```
+npm run build --report
+```
+
+### Run all your tests
 
 ```
 npm run test
-```
-
-### Lints and fixes files
-
-```
-npm run lint
 ```
 
 ### Run your end-to-end tests
@@ -44,19 +57,44 @@ npm run test:e2e
 npm run test:unit
 ```
 
+### Run your unit tests and update the snapshot files
+
+```
+npm run test:unit:snap
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### Check linter config
+
+```
+npm run stylelint-check
+```
+
+### Review (lint and test) project before deploy
+
+```
+npm run review
+```
+
 ### Deploy version (patch/minor/major)
 
 ```
-npm run deploy-patch -- "commit message"
+npm run deploy-patch
 ```
 
-### Push to remote repo (master + tags)
 
-```
-npm run postgit
-```
+### Advanced configuration
+
+For a detailed explanation on how things work, check out the [guide](https://vuejs-templates.github.io/webpack/) 
+and [docs for vue-loader](https://vuejs.github.io/vue-loader).
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ###  Built With
@@ -69,10 +107,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ###  Credits
 
 - [IH Cantabria](https://github.com/IHCantabria)
-
-###  CHANGELOG
-
-See  [Changelog](http://git.ihcantabria.com:3000/IT/RiosConCiencia.Visor/wiki/_pages)
 
 ### License
 

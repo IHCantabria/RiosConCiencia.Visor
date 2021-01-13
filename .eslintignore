@@ -1,5 +1,6 @@
-/build/
+/node_modules/
+/libs/
 /dist/
-/test/unit/coverage/
-src/Lib/
+/tests/coverage/
+/src/libs/
 

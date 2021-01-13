@@ -19,6 +19,16 @@
     - Dev
     - Prod
 
+## ANSIBLE RECIPE NAME
+
+_Production_
+
+    - Deploy RiosConCiencia.visor - PROD
+
+_Development_
+
+    - Deploy RiosConCiencia.visor - DEV
+
 ## App folder
 
 `RiosConCiencia.Visor`
@@ -27,8 +37,9 @@
 
     - Master
     - Tag
-	
+
 ## Settings site
+
     - feature_net45: 'no'
     - net_core: 'no'
     - core_version: 'no'
@@ -37,6 +48,10 @@
     - enable32BitAppOnWin64_pool: 'false'
     - managedPipeLineMode_pool: 'integrated'
     - iiswin_aut: 'no'
+
+## LOG
+
+    - log: 'no'
 
 ## Url GIT
 
@@ -55,6 +70,7 @@ _Development_
 ## Other settings
 
 Select only if needed:
+
 
 **Binary repo**
 

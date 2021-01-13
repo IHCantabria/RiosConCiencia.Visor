@@ -1,8 +1,17 @@
 # /node_modules
 node_modules
+
+# /libs
+libs
+
 # /dist
 dist
-# src/Lib
-src/Lib
+
+# tests/coverage
+tests/coverage
+
+# src/libs
+src/libs
+
 # src/styles/exports-variables, excluded for lack of support from plugin vscode stylelint 
 src/styles/exports-variables.scss

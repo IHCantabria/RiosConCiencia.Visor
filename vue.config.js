@@ -1,3 +1,5 @@
+const StyleLintPlugin = require("stylelint-webpack-plugin");
+const fs = require("fs");
 module.exports = {
   chainWebpack: config => {
     if (process.env.NODE_ENV === "production") {
@@ -19,21 +21,36 @@ module.exports = {
   },
   outputDir: process.env.VUE_APP_DEPLOY_DIR,
   runtimeCompiler: true,
-  css: {
-    loaderOptions: {
-      sass: {
-        // to import global variables && styles
-        prependData: `
-          @import "@/styles/global-variables.scss";
-          @import "@/styles/global-imports.scss";
-          @import "@/styles/app.scss";
-          @import "@/styles/layout.scss";
-        `
-      }
-    }
+  devServer: {
+    open: true,
+    https: true,
+    key: fs.readFileSync("./certificate/localhost-key.pem"),
+    cert: fs.readFileSync("./certificate/localhost.pem")
+  },
+  configureWebpack: {
+    plugins: [
+      new StyleLintPlugin({
+        fix: true,
+        files: "src/**/*.{vue,htm,html,css,sass,less,scss}",
+        formatter: () => {}
+      })
+    ]
   },
   pluginOptions: {
-    lintStyleOnBuild: true,
-    stylelint: {}
+    webpackBundleAnalyzer: {
+      openAnalyzer: false
+    }
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `
+        @import "@/styles/global-variables.scss";
+        @import "@/styles/global-imports.scss";
+        @import "@/styles/app.scss";
+        @import "@/styles/layout.scss";
+      `
+      }
+    }
   }
 };

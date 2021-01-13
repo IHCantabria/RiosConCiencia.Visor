@@ -4,8 +4,8 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest",
     ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$":
-      "<rootDir>/node_modules/jest-transform-stub",
-    "^.+\\.(js|jsx)?$": "<rootDir>/node_modules/babel-jest"
+      "jest-transform-stub",
+    "^.+\\.(js|jsx)?$": "babel-jest"
   },
   transformIgnorePatterns: ["/node_modules/"],
   moduleNameMapper: {
@@ -15,9 +15,26 @@ module.exports = {
       "<rootDir>/tests/__mocks__/fileMock.js"
   },
   snapshotSerializers: ["jest-serializer-vue"],
+  testMatch: [
+    "**/tests/unit/**/*.[jt]s?(x)",
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[jt]s?(x)"
+  ],
   testURL: "http://localhost/",
   watchPlugins: [
     "jest-watch-typeahead/filename",
     "jest-watch-typeahead/testname"
-  ]
+  ],
+  //TEST COVERAGE
+  coverageDirectory: "tests/coverage",
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "**/*.{js,vue}",
+    "!**/node_modules/**",
+    "!<rootDir>/dist/**",
+    "!<rootDir>/src/plugins/**",
+    "!<rootDir>/tests/**",
+    "!**/__tests__/**"
+  ],
+  coverageReporters: ["lcov", "text-summary"]
 };
