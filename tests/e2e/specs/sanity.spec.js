@@ -1,8 +1,9 @@
 // https://docs.cypress.io/api/introduction/api.html
-before(() => {
-  cy.server();
-});
+
 describe("sanity test", () => {
+  before(() => {
+    cy.server();
+  });
   it("sanity test", () => {
     cy.visit("/");
   });
