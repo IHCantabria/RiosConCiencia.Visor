@@ -1,3 +1,11 @@
+### **v0.3.4** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor en selector multiple de descarga de datos.
+
+
 ### **v0.3.3** - 12/01/2021
 
 
