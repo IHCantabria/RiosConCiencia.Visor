@@ -22,7 +22,7 @@
     "deploy-major": "npm version major -m v%s",
     "preversion": "npm run review",
     "version": "npm run build:all && git add -A",
-    "postversion": "git push origin main && git push origin --tags",
+    "postversion": "git push origin master && git push origin --tags",
     "preinstall": "npx npm-force-resolutions"
   },
   "engines": {
