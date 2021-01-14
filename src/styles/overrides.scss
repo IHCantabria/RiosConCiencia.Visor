@@ -118,6 +118,7 @@ a:active {
   top: auto !important;
   bottom: 5%;
   transform: translateY(-1.6rem);
+  max-height: 180px;
 }
 .vs-select-primary {
   background-color: $color-light-white;
