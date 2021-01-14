@@ -15,11 +15,7 @@ module.exports = {
       "<rootDir>/tests/__mocks__/fileMock.js"
   },
   snapshotSerializers: ["jest-serializer-vue"],
-  testMatch: [
-    "**/tests/unit/**/*.[jt]s?(x)",
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[jt]s?(x)"
-  ],
+  testMatch: ["**/tests/unit/**/*.[jt]s?(x)", "**/__tests__/**/*.[jt]s?(x)"],
   testURL: "http://localhost/",
   watchPlugins: [
     "jest-watch-typeahead/filename",
