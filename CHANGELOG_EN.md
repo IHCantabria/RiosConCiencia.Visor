@@ -1,9 +1,49 @@
+### **v0.3.9** - 14/01/2021
+
+
+**BugFixes:**
+
+- Minor fix height movil display.
+
+
+### **v0.3.8** - 14/01/2021
+
+
+**BugFixes:**
+
+- Minor fix max-height panels.
+
+
+### **v0.3.7** - 14/01/2021
+
+
+**BugFixes:**
+
+- Minor fix height-device display.
+
+
+### **v0.3.6** - 14/01/2021
+
+
+**BugFixes:**
+
+- Minor fix in single filter data selector.
+
+
+### **v0.3.5** - 14/01/2021
+
+
+**BugFixes:**
+
+- Minor fix in single filter data selector.
+
+
 ### **v0.3.4** - 14/01/2021
 
 
 **BugFixes:**
 
-- Arreglo menor en selector multiple de descarga de datos.
+- Minor fix in multiple data download selector.
 
 
 ### **v0.3.3** - 12/01/2021

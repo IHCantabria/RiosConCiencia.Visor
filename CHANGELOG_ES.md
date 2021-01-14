@@ -1,3 +1,43 @@
+## **v0.3.9** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor referente a la altura máxima de los paneles en dispositivo móvil.
+
+
+### **v0.3.8** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor de altura máxima de los paneles.
+
+
+### **v0.3.7** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor referente a la altura del dispositivo móvil.
+
+
+### **v0.3.6** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor en el filtro de selector de datos.
+
+
+### **v0.3.5** - 14/01/2021
+
+
+**BugFixes:**
+
+- Arreglo menor en el filtro de selector de datos.
+
+
 ### **v0.3.4** - 14/01/2021
 
 
