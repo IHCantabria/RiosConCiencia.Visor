@@ -98,7 +98,7 @@ export default {
   right: 0;
   text-align: center;
   width: 100%;
-  bottom: 2.5%;
+  bottom: 5%;
   margin-bottom: auto;
   max-width: 600px;
   background-color: #f4f4f4;

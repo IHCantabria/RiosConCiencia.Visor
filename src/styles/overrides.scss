@@ -116,7 +116,8 @@ a:active {
   position: fixed;
   right: inherit;
   top: auto !important;
-  bottom: 2.5%;
+  bottom: 5%;
+  transform: translateY(-1.6rem);
 }
 .vs-select-primary {
   background-color: $color-light-white;
