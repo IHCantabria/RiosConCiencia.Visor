@@ -1,11 +1,19 @@
+### **v0.3.3** - 12/01/2021
+
+
+**Features:**
+
+- Añadido mapa base de openStreetMap.
+
+
 ### **v0.3.2** - 07/08/2020
 
 
 **BugFixes:**
 
-  - Arreglos menores de estilo.
-  - Cambios menores de texto.
-  - La descarga de datos solo estará permitida a usuarios con permisos específicos.
+- Arreglos menores de estilo.
+- Cambios menores de texto.
+- La descarga de datos solo estará permitida a usuarios con permisos específicos.
 
 
 ### **v0.3.1** - 07/08/2020
@@ -23,9 +31,9 @@
 
 **BugFixes:**
 
-  - Arreglos menores de estilo.
-  - Cambios menores de texto.
-  - Se ha mejorado la interacción en móviles.
+- Arreglos menores de estilo.
+- Cambios menores de texto.
+- Se ha mejorado la interacción en móviles.
 
 
 ### **v0.3.0** - 13/07/2020
@@ -50,9 +58,9 @@
 
 **BugFixes:**
 
-  - Arreglos menores de visualización.
-  - Corregido error de visualización de coordenadas de los puntos de muestreo.
-  - Los botones del mapa ahora tendrán un estilo acorde con el resto de la aplicación.
+- Arreglos menores de visualización.
+- Corregido error de visualización de coordenadas de los puntos de muestreo.
+- Los botones del mapa ahora tendrán un estilo acorde con el resto de la aplicación.
 
 
 ### **v0.2.1** - 30/06/2020
