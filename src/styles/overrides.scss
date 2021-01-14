@@ -79,6 +79,7 @@ a:active {
 }
 
 .vuesax-app-is-ltr .vs-popup--content {
+  overflow: hidden;
   width: auto;
   margin-right: 0;
 }
@@ -112,7 +113,10 @@ a:active {
   padding-right: 0;
 }
 .vuesax-app-is-ltr .vs-select--options {
-  top: 60% !important;
+  position: fixed;
+  right: inherit;
+  top: auto !important;
+  bottom: 2.5%;
 }
 .vs-select-primary {
   background-color: $color-light-white;
