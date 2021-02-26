@@ -67,10 +67,19 @@ _Development_
 
     - riosconcienciavisordev.ihcantabria.com
 
+## URL APPLICATION
+
+_Production_
+
+    - riosconcienciavisor.ihcantabria.com
+
+_Development_
+
+    - riosconcienciavisordev.ihcantabria.com
+
 ## Other settings
 
 Select only if needed:
-
 
 **Binary repo**
 
