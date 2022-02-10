@@ -65,7 +65,7 @@
     "flush-promises": "^1.0.2",
     "jest-css-modules": "^2.1.0",
     "lodash.merge": "^4.6.2",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "npm-force-resolutions": "^0.0.3",
     "sass-loader": "^10.1.1",
     "stylelint": "^13.1.1",
