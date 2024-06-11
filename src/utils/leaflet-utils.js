@@ -3,27 +3,32 @@ import * as config from "@/config/data-config";
 export const iconFix = () => {
   delete L.Icon.Default.prototype._getIconUrl;
   L.Icon.Default.mergeOptions({
-    iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-    iconUrl: require("leaflet/dist/images/marker-icon.png"),
-    shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+    iconRetinaUrl: new URL(
+      "leaflet/dist/images/marker-icon-2x.png",
+      import.meta.url,
+    ).href,
+    iconUrl: new URL("leaflet/dist/images/marker-icon.png", import.meta.url)
+      .href,
+    shadowUrl: new URL("leaflet/dist/images/marker-shadow.png", import.meta.url)
+      .href,
   });
 };
 
 //aux method pan & zoom to a marker position
-export const panZoomMarker = marker => {
+export const panZoomMarker = (marker) => {
   const latLngs = [marker.getLatLng()];
   return L.latLngBounds(latLngs);
 };
 
 //aux method to get icon to CustomMarker
-export const getCustomIcon = layerId => {
-  const icon = config.MARKER_ICONS.find(icon => icon.id == layerId).icon;
+export const getCustomIcon = (layerId) => {
+  const icon = config.MARKER_ICONS.find((icon) => icon.id == layerId).icon;
   return icon;
 };
 
 //aux method to get color to CustomMarker
-export const getCustomColorKey = layerId => {
-  const key = config.MARKER_COLORS.find(icon => icon.id == layerId).key;
+export const getCustomColorKey = (layerId) => {
+  const key = config.MARKER_COLORS.find((icon) => icon.id == layerId).key;
   return key;
 };
 
@@ -31,12 +36,12 @@ export const getCustomColorKey = layerId => {
 export const createCustomIcon = (icon, color) => {
   return L.ExtraMarkers.icon({
     markerColor: `${color}`,
-    innerHTML: `<i class='icon-sensors icon-sensors__${icon}'></i>`
+    innerHTML: `<i class='icon-sensors icon-sensors__${icon}'></i>`,
   });
 };
 
 //aux method to create a popupInfo
-export const createCustomPopup = sample => {
+export const createCustomPopup = (sample) => {
   return `<table>
     <tbody>
       <tr>
@@ -71,7 +76,7 @@ export const createCustomPopup = sample => {
 };
 
 //aux method to create a tooltip
-export const createCustomTooltip = sample => {
+export const createCustomTooltip = (sample) => {
   return `<p>
       <strong>Calidad del Agua:</strong> ${sample.bioQuality}</br>
       <strong>Calidad del Bosque de Rivera:</strong> ${sample.forestState}</br>
@@ -83,18 +88,18 @@ export const createCustomTooltip = sample => {
 export const createCustomLegendDiv = (title, ramp) => {
   const labels = [`<strong class="title-legend">${title}</strong>`];
   let innerHTML;
-  ramp.forEach(ramp => {
+  ramp.forEach((ramp) => {
     innerHTML += labels.push(
-      `<span class="item-legend"><i class="circle-dot" style="background-color: ${ramp.colorCode}"></i> ${ramp.name}</span>`
+      `<span class="item-legend"><i class="circle-dot" style="background-color: ${ramp.colorCode}"></i> ${ramp.name}</span>`,
     );
   });
   innerHTML = labels.join("");
   return innerHTML;
 };
-export const createCustomLegend = innerHTML => {
+export const createCustomLegend = (innerHTML) => {
   const div = L.DomUtil.create(
     "div",
-    "leaflet-control-layers leaflet-control custom-legend"
+    "leaflet-control-layers leaflet-control custom-legend",
   );
   div.innerHTML = innerHTML;
   return div;

@@ -1,0 +1,121 @@
+@use "@/styles/variables" as app-variables;
+
+/* Inputs */
+.input-container {
+  width: 100%;
+  position: relative;
+
+  &__input {
+    background-color: #fff;
+    color: app-variables.$color-text-med;
+    border-radius: 4px;
+    width: 100%;
+    padding: 8px 16px;
+    display: inline-block;
+    border: 0.05rem solid #ccc;
+    box-sizing: border-box;
+    transition: ease-in 0.2s;
+    font-size: 0.95rem;
+    height: 36px;
+    margin: 8px 0;
+    accent-color: app-variables.$color-primary;
+
+    &::placeholder {
+      color: #888888;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px #e0e8ff;
+      z-index: 9;
+      border: 0.05rem solid app-variables.$color-primary;
+      border-color: app-variables.$color-primary;
+    }
+
+    &--error {
+      border: 1px solid app-variables.$error;
+      box-shadow: 0 0 2px 2px #db443730;
+    }
+
+    &--success {
+      border: 1px solid app-variables.$success;
+      box-shadow: 0 0 2px 2px #0f9d5830;
+    }
+
+    &--warning {
+      border: 1px solid app-variables.$warning;
+      box-shadow: 0 0 2px 2px #f4b40030;
+    }
+
+    &--info {
+      border: 1px solid app-variables.$info;
+      box-shadow: 0 0 2px 2px #4285f430;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    transition:
+      0.2s bottom,
+      0.2s opacity;
+    z-index: 10;
+    color: app-variables.$color-primary;
+    font-size: 0.85rem;
+    line-height: 1rem;
+    margin: -2px 8px;
+    padding: 0 4px;
+    background-color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+
+    &--error {
+      color: app-variables.$error;
+    }
+
+    &--success {
+      color: app-variables.$success;
+    }
+
+    &--warning {
+      color: app-variables.$warning;
+    }
+
+    &--info {
+      color: app-variables.$info;
+    }
+  }
+
+  &__helper {
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &--error {
+      color: app-variables.$error;
+    }
+
+    &--success {
+      color: app-variables.$success;
+    }
+
+    &--warning {
+      color: app-variables.$warning;
+    }
+
+    &--info {
+      color: app-variables.$info;
+    }
+
+    img {
+      width: 1.12rem;
+      height: 1.12rem;
+    }
+  }
+}

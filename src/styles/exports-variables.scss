@@ -1,6 +1,5 @@
-@import "global-variables";
+@import "@/styles/variables/colors";
 
 :export {
-    primaryColor:$color-primary;
+  primaryColor: $color-primary;
 }
-

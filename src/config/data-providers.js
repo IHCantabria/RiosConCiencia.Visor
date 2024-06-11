@@ -1,4 +1,6 @@
+const ENV = import.meta.env;
+
 export const RIOS_API = {
-  public: process.env.VUE_APP_API_PUBLIC_RIOS,
-  private: process.env.VUE_APP_API_PRIVATE_RIOS
+  public: ENV.VITE_PUBLIC_RIOS,
+  private: ENV.VITE_PRIVATE_RIOS,
 };

@@ -1,3 +1,80 @@
+<script setup>
+import { ref, computed, watch, onMounted } from "vue";
+
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+  },
+  label: {
+    type: String,
+    required: false,
+    default: () => {
+      return "";
+    },
+  },
+  widthSelect: {
+    type: String,
+    required: false,
+    default: () => {
+      return "400px";
+    },
+  },
+  lastActiveItems: {
+    type: Array,
+    required: false,
+    default: () => {
+      return [];
+    },
+  },
+});
+
+const emit = defineEmits(["change"]);
+
+const activeItems = ref([]);
+
+const isEmptyList = computed(() => {
+  return props.items.length === 0;
+});
+
+onMounted(() => {
+  init();
+});
+
+const init = () => {
+  activeItems.value = props.lastActiveItems.length ? props.lastActiveItems : [];
+};
+
+// WATCHERS
+watch(
+  () => props.items,
+  () => {
+    init();
+  },
+  { immediate: true },
+);
+watch(
+  () => activeItems.value,
+  (newValue) => {
+    const allFilterIndex = newValue.findIndex((item) => item.id == 0);
+    if (allFilterIndex == -1) {
+      //Option All is not present, normal logic
+      emit("change", newValue);
+    } else if (newValue.length == 1) {
+      //the is only one element selected, normal logic
+      emit("change", newValue);
+    } else if (newValue.length == allFilterIndex + 1) {
+      //the option All is the new option selected, remove other options
+      activeItems.value = [newValue[allFilterIndex]];
+    } else {
+      //the option All is the old option selected, remove it
+      activeItems.value.splice(allFilterIndex, 1);
+    }
+  },
+  { deep: true },
+);
+</script>
+
 <template>
   <div class="inner-container">
     <span v-if="isEmptyList" class="empty-list"
@@ -14,91 +91,14 @@
       <vs-select-item
         v-for="(item, index) in items"
         :key="index"
-        class="selectStyle"
-        :value="item"
+        class="select-style"
+        :model-value="item"
         :text="item.name"
       />
     </vs-select>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    label: {
-      type: String,
-      required: false,
-      default: () => {
-        return "";
-      }
-    },
-    widthSelect: {
-      type: String,
-      required: false,
-      default: () => {
-        return "400px";
-      }
-    },
-    lastActiveItems: {
-      type: Array,
-      required: false,
-      default: () => {
-        return [];
-      }
-    }
-  },
-  data() {
-    return {
-      activeItems: []
-    };
-  },
-  computed: {
-    isEmptyList() {
-      return this.items.length === 0;
-    }
-  },
-  watch: {
-    items: {
-      handler() {
-        this.init();
-      },
-      immediate: true
-    },
-    activeItems: {
-      handler(newValue) {
-        const allFilterIndex = this.activeItems.findIndex(item => item.id == 0);
-        if (allFilterIndex == -1) {
-          //Option All is not present, normal logic
-          this.$emit("change", this.activeItems);
-        } else if (newValue.length == 1) {
-          //the is only one element selected, normal logic
-          this.$emit("change", this.activeItems);
-        } else if (newValue.length == allFilterIndex + 1) {
-          //the option All is the new option selected, remove other options
-          this.activeItems = [this.activeItems[allFilterIndex]];
-        } else {
-          //the option All is the old option selected, remove it
-          this.activeItems.splice(allFilterIndex, 1);
-        }
-      },
-      deep: true
-    }
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      this.activeItems = this.lastActiveItems.length
-        ? this.lastActiveItems
-        : [];
-    }
-  }
-};
-</script>
+
 <style scoped lang="scss">
 .inner-container {
   display: flex;
@@ -107,7 +107,7 @@ export default {
   align-items: center;
 }
 
-.selectStyle {
+.select-style {
   padding-right: 25px;
   margin: 10px;
 }

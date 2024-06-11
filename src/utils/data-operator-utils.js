@@ -1,8 +1,8 @@
 import * as config from "@/config/data-config";
 //aux method to get the color of the biological state
-export const getBiologicalColor = id => {
+export const getBiologicalColor = (id) => {
   const colorIndex = config.BIOLOGICAL_RAMP.findIndex(
-    element => element.id == id
+    (element) => element.id == id,
   );
   let color;
   if (colorIndex == -1) {
@@ -13,8 +13,10 @@ export const getBiologicalColor = id => {
   return color;
 };
 //aux method to get the color of the forest state
-export const getForestColor = id => {
-  const colorIndex = config.FOREST_RAMP.findIndex(element => element.id == id);
+export const getForestColor = (id) => {
+  const colorIndex = config.FOREST_RAMP.findIndex(
+    (element) => element.id == id,
+  );
   let color;
   if (colorIndex == -1) {
     color = config.FOREST_RAMP[0].color;
@@ -24,9 +26,9 @@ export const getForestColor = id => {
   return color;
 };
 //aux method to get the color of the forest state
-export const getStateColor = id => {
+export const getStateColor = (id) => {
   const colorIndex = config.ECOLOGICAL_RAMP.findIndex(
-    element => element.id == id
+    (element) => element.id == id,
   );
   let color;
   if (colorIndex == -1) {
@@ -37,9 +39,9 @@ export const getStateColor = id => {
   return color;
 };
 
-export const getCampaignId = name => {
+export const getCampaignId = (name) => {
   const campaignIndex = config.CAMPAIGN_VALUES.findIndex(
-    element => element.name == name
+    (element) => element.name == name,
   );
   let idCampaign;
   if (campaignIndex == -1) {
@@ -54,8 +56,8 @@ export const getCampaignId = name => {
 export const getDownloadFilters = (years, campaigns) => {
   const filters = [];
   filters.push({ id: 0, name: "Todas las campañas" });
-  years.forEach(year => {
-    campaigns.forEach(campaign => {
+  years.forEach((year) => {
+    campaigns.forEach((campaign) => {
       const idFilter = parseInt(`${year.name}${campaign.id}`);
       filters.push({ id: idFilter, name: `${year.name} - ${campaign.name}` });
     });
@@ -64,11 +66,11 @@ export const getDownloadFilters = (years, campaigns) => {
 };
 
 //aux method to get the distint year of the samples
-export const getYears = samples => {
+export const getYears = (samples) => {
   const years = samples
-    .map(item => item.year)
+    .map((item) => item.year)
     .filter((value, index, self) => self.indexOf(value) === index);
-  const yearSorted = years.sort(function(a, b) {
+  const yearSorted = years.sort(function (a, b) {
     return b - a;
   });
   const yearObjects = [];
@@ -81,8 +83,9 @@ export const getYears = samples => {
 //aux method to get the default filter campaign
 export const getCampaignFilter = (samples, yearObject, campaignArray) => {
   const samplesFiltered = samples.filter(
-    sample =>
-      sample.year == yearObject.name && sample.campaign == campaignArray[1].name
+    (sample) =>
+      sample.year == yearObject.name &&
+      sample.campaign == campaignArray[1].name,
   );
   return samplesFiltered.length > 0 ? campaignArray[1] : campaignArray[0];
 };

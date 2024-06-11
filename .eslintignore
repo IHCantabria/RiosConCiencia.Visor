@@ -1,6 +1,10 @@
+# /node_modules
 /node_modules/
-/libs/
-/dist/
-/tests/coverage/
-/src/libs/
 
+# libs
+/libs/
+/src/libs/
+/src/assets/libs/
+
+# /dist
+/dist/

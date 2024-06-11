@@ -4,14 +4,13 @@ import * as config from "@/config/data-config";
 
 export const mapSatelite = {
   name: "Mapa Satelite",
-  url:
-    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
   configParameters: {
     id: "MapSateliteID",
     attribution:
       "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-    minZoom: 3
-  }
+    minZoom: 3,
+  },
 };
 export const MapGeographic = {
   name: "Mapa Geográfico",
@@ -21,27 +20,27 @@ export const MapGeographic = {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 16,
-    minZoom: 3
-  }
+    minZoom: 3,
+  },
 };
 export const waterQuality = {
   name: "Calidad del agua",
   configParameters: {
     id: "waterQualityID",
-    legend: createCustomLegendDiv("Calidad del agua", config.BIOLOGICAL_RAMP)
-  }
+    legend: createCustomLegendDiv("Calidad del agua", config.BIOLOGICAL_RAMP),
+  },
 };
 export const forestQuality = {
   name: "Estado del bosque",
   configParameters: {
     id: "forestQualityID",
-    legend: createCustomLegendDiv("Estado del bosque", config.FOREST_RAMP)
-  }
+    legend: createCustomLegendDiv("Estado del bosque", config.FOREST_RAMP),
+  },
 };
 export const ecologicalState = {
   name: "Estado ecológico",
   configParameters: {
     id: "ecologicalStateID",
-    legend: createCustomLegendDiv("Estado ecológico", config.ECOLOGICAL_RAMP)
-  }
+    legend: createCustomLegendDiv("Estado ecológico", config.ECOLOGICAL_RAMP),
+  },
 };

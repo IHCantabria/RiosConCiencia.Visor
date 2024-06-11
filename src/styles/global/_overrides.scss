@@ -1,0 +1,247 @@
+/* stylelint-disable selector-class-pattern */
+@use "@/styles/variables" as app-variables;
+
+/* Override Sweet-Modal styles */
+// This rules overright css from dependencies: sweet-modal
+.sweet-modal {
+  width: 100%;
+  max-width: 750px;
+  background: app-variables.$color-panels;
+
+  .sweet-title {
+    background: app-variables.$color-light-white;
+    border-bottom: 0;
+    padding-top: 2%;
+    padding-right: 0;
+    padding-left: 0;
+
+    h2 {
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .sweet-content {
+    padding: {
+      inset: 1% 2% 3% 2%;
+    }
+  }
+}
+
+.sweet-modal.is-visible {
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+/* Non-mobile styles, 750px breakpoint */
+
+@media only screen and (min-width: app-variables.$breakpoint-movil-to-tablet) {
+  .sweet-modal {
+    width: 80%;
+    border-radius: 20px;
+    max-width: 640px;
+  }
+}
+
+/* Override Vuesax styles */
+// This rules overright css from dependencies: vuesax
+* {
+  // Global
+  box-sizing: content-box;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  color: app-variables.$app-font-color;
+  text-decoration: none;
+}
+
+// modal
+.popup-about {
+  padding: 0;
+  margin: 0;
+}
+
+.con-vs-popup .vs-popup {
+  touch-action: none; // prevent scroll drag
+  font-family: app-variables.$app-font;
+  color: app-variables.$app-font-color;
+  width: 95%;
+  max-width: 500px;
+}
+
+.vs-popup--content {
+  overflow: hidden auto;
+}
+
+.vuesax-app-is-ltr .vs-popup--content {
+  overflow: hidden;
+  width: auto;
+  margin-right: 0;
+}
+
+// select
+.vs-con-input-label {
+  margin: auto;
+}
+
+.material-icons {
+  font-size: 1rem;
+}
+
+.vs-dropdown--menu {
+  border-radius: 15px;
+  font-family: app-variables.$app-font;
+  color: app-variables.$app-font-color;
+  font-size: 0.8rem;
+  background: app-variables.$color-panels;
+}
+
+.vs-select--options {
+  overflow: hidden;
+}
+
+// selects
+.vs-select--label {
+  color: app-variables.$app-font-color;
+}
+
+.con-select {
+  margin: auto;
+}
+
+.vuesax-app-is-ltr .vs-select--input {
+  padding-right: 0;
+}
+
+.vuesax-app-is-ltr .vs-select--options {
+  position: fixed;
+  right: inherit;
+  /* stylelint-disable-next-line declaration-no-important */
+  top: auto !important;
+  bottom: 5%;
+  transform: translateY(-1.6rem);
+  max-height: 180px;
+}
+
+.vs-select-primary {
+  background-color: app-variables.$color-light-white;
+}
+
+.vs-select--item {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* Override Leaflet styles */
+// This rules overright css from dependencies: Leaflet
+
+// Hide tooltip in movil devices
+
+@media (hover: none) {
+  .leaflet-tooltip-pane {
+    display: none;
+  }
+}
+
+div.leaflet-bar.easy-button-container.leaflet-control {
+  margin-top: 7px;
+}
+
+.easy-button-button {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px;
+  border-radius: 4px;
+  background-color: app-variables.$color-light-white;
+
+  &:hover {
+    background-color: app-variables.$color-light-grey;
+  }
+}
+
+.leaflet-control-layers {
+  background-color: app-variables.$color-light-white;
+}
+
+.leaflet-control-layers-base label {
+  &:hover {
+    cursor: pointer;
+    background-color: app-variables.$color-light-grey;
+  }
+}
+
+.leaflet-container {
+  font-family: app-variables.$app-font;
+  color: app-variables.$app-font-color;
+}
+
+.leaflet-control-layers-list {
+  text-align: left;
+}
+
+.leaflet-control-layers-selector {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.leaflet-bar a {
+  background-color: app-variables.$color-light-white;
+}
+
+.leaflet-bar a:hover {
+  background-color: app-variables.$color-light-grey;
+}
+
+.leaflet-bar a.leaflet-disabled {
+  background: app-variables.$color-grey;
+}
+
+div.leaflet-popup {
+  .leaflet-popup-close-button {
+    padding: 8px 8px 0 0;
+  }
+}
+
+.extra-marker i {
+  margin-top: 0;
+}
+
+// legend
+.circle-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.custom-legend {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.item-legend {
+  padding: 4px;
+  text-align: left;
+}
+
+// Icon classes
+.icon-sensors {
+  width: 80%;
+  height: 80%;
+
+  &__Water {
+    content: url("@/assets/svgs/water.svg");
+  }
+
+  &__Forest {
+    content: url("@/assets/svgs/leaft.svg");
+  }
+}

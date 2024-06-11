@@ -1,0 +1,37 @@
+<script setup>
+import { ref } from "vue";
+import ThePanels from "@/components/layout/ThePanels.vue";
+import TheMap from "@/components/layout/TheMap.vue";
+import TheFetchManager from "@/components/layout/TheFetchManager.vue";
+
+const TheFetchManagerRef = ref(null);
+const ThePanelsRef = ref(null);
+
+const onToggleFilterPanel = () => {
+  ThePanelsRef.value.togglePanel();
+};
+const onCallDownload = () => {
+  TheFetchManagerRef.value.fetchCsvData();
+};
+const onCallLogin = (credentials) => {
+  TheFetchManagerRef.value.authenticate(credentials);
+};
+</script>
+<template>
+  <div class="view-viewer">
+    <TheMap class="map" @toggle-filter-panel="onToggleFilterPanel" />
+    <TheFetchManager ref="TheFetchManagerRef" />
+    <ThePanels
+      ref="ThePanelsRef"
+      @call-download="onCallDownload"
+      @call-login="onCallLogin"
+    />
+  </div>
+</template>
+<style scoped lang="scss">
+.view-viewer {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+</style>

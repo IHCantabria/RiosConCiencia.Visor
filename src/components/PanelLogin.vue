@@ -1,16 +1,40 @@
+<script setup>
+import { ref } from "vue";
+// DATA
+const email = ref(null);
+const password = ref(null);
+const modalState = ref(false);
+
+// EMITS
+const emit = defineEmits(["callLogin"]);
+
+// METHODS
+const openModal = () => {
+  modalState.value = true;
+};
+const callLogin = () => {
+  modalState.value = false;
+  const credentials = {
+    email: email.value,
+    password: password.value,
+  };
+  emit("callLogin", credentials);
+};
+</script>
+
 <template>
   <div class="app-login">
     <div title="Login de usuario" class="login-icon" @click="openModal">
-      <object
-        :data="require('@/assets/svgs/user.svg')"
-        type="image/svg+xml"
-        style="pointer-events: none;"
+      <img
+        src="@/assets/svgs/user.svg"
+        alt="user icon"
+        style="pointer-events: none"
       />
     </div>
     <vs-popup
+      v-model:active="modalState"
       class-content="popup-login"
       title="Login a la descarga de datos"
-      :active.sync="modalState"
     >
       <div class="login-container">
         <div class="login-container__inputs">
@@ -42,52 +66,35 @@
     </vs-popup>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      email: null,
-      password: null,
-      modalState: false
-    };
-  },
-  methods: {
-    openModal() {
-      this.modalState = true;
-    },
-    callLogin() {
-      this.modalState = false;
-      const credentials = {
-        email: this.email,
-        password: this.password
-      };
-      this.$root.$emit("callLogin", credentials);
-    }
-  }
-};
-</script>
+
 <style scoped lang="scss">
 .app-login {
 }
+
 .login-icon {
   width: 20px;
   padding: 5px;
   margin: 0 4px 0 0;
+
   &:hover {
     cursor: pointer;
   }
 }
+
 .login-container {
   display: flex;
   flex-direction: column;
+
   &__inputs {
     display: flex;
     flex-flow: row wrap;
   }
 }
+
 .item-login {
   padding: 10px 5px;
 }
+
 .item-login-buttom {
   margin-top: 10px;
 }

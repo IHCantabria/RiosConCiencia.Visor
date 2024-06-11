@@ -3,7 +3,7 @@ import { RIOS_API } from "@/config/data-providers.js";
 const _basicHeaders = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS"
+  "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
 };
 
 export const getAllSamples = () => {
@@ -21,22 +21,22 @@ export const getSamplesCsv = (token, filters) => {
   _basicHeaders.Authorization = `Bearer ${token}`;
   const bodyObject = {
     samplesId: filters.samplesId,
-    samplesPictsId: filters.samplesPictsId
+    samplesPictsId: filters.samplesPictsId,
   };
   return { url, params: _basicHeaders, method: "postFile", body: bodyObject };
 };
 
-export const getAllSamplesCsv = token => {
+export const getAllSamplesCsv = (token) => {
   const url = `${RIOS_API.public}/RiosConCiencia/ExportSamplesAll/cambera`;
   _basicHeaders.Authorization = `Bearer ${token}`;
   return { url, params: _basicHeaders, method: "getFile", body: {} };
 };
 
-export const login = credentials => {
+export const login = (credentials) => {
   const url = `${RIOS_API.public}/RiosConCiencia/Authenticate`;
   const auth = {
     email: credentials.email,
-    password: credentials.password
+    password: credentials.password,
   };
   return { url, params: _basicHeaders, method: "post", body: auth };
 };

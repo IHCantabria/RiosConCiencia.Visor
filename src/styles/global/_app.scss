@@ -1,0 +1,29 @@
+@use "@/styles/variables" as app-variables;
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: hidden auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: app-variables.$app-background-color;
+  line-height: 1.25;
+}
+
+.app-style {
+  font-family: app-variables.$app-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: app-variables.$app-font-color;
+  font-size: app-variables.$app-font-size;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
