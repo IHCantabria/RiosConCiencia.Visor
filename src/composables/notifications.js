@@ -1,12 +1,10 @@
-// useNotifications.js
-import { getCurrentInstance } from "vue";
-// TODO: CHECK VS
+import { inject } from "vue";
+
 export function useNotifications() {
-  const instance = getCurrentInstance();
-  const vs = instance.appContext.config.globalProperties.$vs;
+  const $vs = inject("$vs");
 
   const showNotificationRepeat = (title, callback) => {
-    vs.notify({
+    $vs.notify({
       title: `Error en la operación de ${title}`,
       text: "Haga click para reintentar",
       color: "danger",
@@ -16,7 +14,7 @@ export function useNotifications() {
   };
 
   const showNotificationOnce = (titleText, err) => {
-    vs.notify({
+    $vs.notify({
       title: `Error en la operación de ${titleText}`,
       text: `${err}`,
       color: "danger",
