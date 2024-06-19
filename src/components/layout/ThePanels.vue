@@ -15,11 +15,13 @@ const panelShow = ref(true);
 
 // EMITS
 const emit = defineEmits(["callDownload", "callLogin", "logout"]);
-// COMPUTED
-const isPanelVisible = computed(() => {
-  return samplesStore.getSamplesLoaded && panelShow.value ? true : false;
-});
 
+// COMPUTED
+const isPanelVisible = computed(
+  () => samplesStore.getSamplesLoaded && panelShow.value,
+);
+
+// METHODS
 const launchDownload = () => {
   emit("callDownload");
 };

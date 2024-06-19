@@ -1,17 +1,63 @@
 <script setup>
+import { onMounted, watch } from "vue";
 import BaseSelectorType from "@/components/ui/BaseSelectorType.vue";
 import { useSamplesStore } from "@/store/samplesStore";
+import { useRoute, useRouter } from "vue-router";
 
 // COMPOSABLES & STORES
+const route = useRoute();
+const router = useRouter();
 const samplesStore = useSamplesStore();
 
+// LYFECYCLE
+onMounted(() => {
+  implementRouteParams();
+});
+
 // METHODS
-const setCampaignFilter = (type) => {
-  samplesStore.setSampleCampaignFilter(type);
+const implementRouteParams = () => {
+  let validYear = null;
+  let validCampaign = null;
+
+  if (route.params.year) {
+    const numberParamYear = Number(route.params.year);
+    if (!isNaN(numberParamYear)) {
+      const year = samplesStore.yearOptions.find((option) => {
+        return option.name === numberParamYear;
+      });
+      if (year) validYear = year;
+    }
+  }
+
+  if (route.params.campaign) {
+    const campaign = samplesStore.campaignOptions.find(
+      (option) => option.name === route.params.campaign,
+    );
+    if (campaign) validCampaign = campaign;
+  }
+
+  if (validYear && validCampaign) {
+    samplesStore.setSampleYearFilter(validYear);
+    samplesStore.setSampleCampaignFilter(validCampaign);
+  } else {
+    router.push("/");
+  }
 };
+
 const setYearFilter = (year) => {
   samplesStore.setSampleYearFilter(year);
 };
+const setCampaignFilter = (type) => {
+  samplesStore.setSampleCampaignFilter(type);
+};
+
+// WATCH
+watch(
+  () => route.params,
+  () => {
+    implementRouteParams();
+  },
+);
 </script>
 
 <template>

@@ -1,5 +1,4 @@
 <script setup>
-import MainView from "@/views/MainView.vue";
 import BaseSpinner from "@/components/ui/BaseSpinner.vue";
 import { onMounted } from "vue";
 import { useSpinnerStore } from "@/store/spinnerStore";
@@ -17,7 +16,7 @@ const init = () => {
 
 <template>
   <div id="app" class="app-style">
-    <MainView />
+    <router-view />
     <BaseSpinner />
   </div>
 </template>

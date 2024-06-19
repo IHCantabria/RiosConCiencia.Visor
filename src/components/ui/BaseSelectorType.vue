@@ -71,6 +71,13 @@ watch(
   },
   { deep: true },
 );
+watch(
+  () => props.lastActiveItem,
+  () => {
+    activeItem.value = props.lastActiveItem;
+  },
+  { deep: true },
+);
 </script>
 
 <template>
