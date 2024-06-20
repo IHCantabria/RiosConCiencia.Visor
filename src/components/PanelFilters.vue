@@ -46,9 +46,17 @@ const implementRouteParams = () => {
 
 const setYearFilter = (year) => {
   samplesStore.setSampleYearFilter(year);
+  updateRouteParams();
 };
 const setCampaignFilter = (type) => {
   samplesStore.setSampleCampaignFilter(type);
+  updateRouteParams();
+};
+
+const updateRouteParams = () => {
+  const year = samplesStore.yearFilter.name;
+  const campaign = samplesStore.campaignFilter.name;
+  router.push({ params: { year, campaign } });
 };
 
 // WATCH
