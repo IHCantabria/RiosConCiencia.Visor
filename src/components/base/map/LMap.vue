@@ -107,10 +107,15 @@ const emit = defineEmits(["toggle-panel"]);
 // LYFE CYCLE HOOKS
 onMounted(() => {
   initMap();
-  modifyPopup();
 });
 
-const modifyPopup = () => {
+// METHODS
+
+const initMap = async () => {
+  modifyLeafletPopup();
+  loadMap();
+};
+const modifyLeafletPopup = () => {
   L.Popup.prototype._animateZoom = function (e) {
     if (!this._map) {
       return;
@@ -123,11 +128,15 @@ const modifyPopup = () => {
       anchor = this._getAnchor();
     L.DomUtil.setPosition(this._container, pos.add(anchor));
   };
-};
-
-// METHODS
-const initMap = async () => {
-  loadMap();
+  L.Marker.prototype._animateZoom = function (opt) {
+    if (!this._map) {
+      return;
+    }
+    const pos = this._map
+      ._latLngToNewLayerPoint(this._latlng, opt.zoom, opt.center)
+      .round();
+    this._setPos(pos);
+  };
 };
 const loadMap = () => {
   loadTileLayers();
