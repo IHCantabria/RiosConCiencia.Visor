@@ -1,3 +1,18 @@
+## **v0.4.2** - 28/06/2024
+
+
+**BugFixes:**
+
+- Arreglo de leaflet cuando se hace zoom después de cerrar popup.
+
+## **v0.4.0** - 28/06/2024
+
+
+**Features:**
+
+- Migración a Vue 3 y Vite.
+- Añadida función de control de filtros por ruta url.
+
 ## **v0.3.9** - 14/01/2021
 
 
