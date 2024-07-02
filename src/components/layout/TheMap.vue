@@ -6,7 +6,7 @@ import { useSamplesStore } from "@/store/samplesStore.js";
 
 const samplesStore = useSamplesStore();
 
-const emit = defineEmits(["toggle-filter-panel"]);
+const emit = defineEmits(["toggle-filter-panel", "open-history"]);
 
 const mapConfigComputed = computed(() => {
   return {
@@ -22,6 +22,9 @@ const mapConfigComputed = computed(() => {
 const togglePanel = () => {
   emit("toggle-filter-panel");
 };
+const openHistory = (idRiverSection) => {
+  emit("open-history", idRiverSection);
+};
 </script>
 
 <template>
@@ -35,6 +38,7 @@ const togglePanel = () => {
       :c-switch-layer-overlay-maps="mapConfigComputed.switchOverlayMapsConfig"
       :c-markers="samplesStore.getSamplesFiltered"
       @toggle-panel="togglePanel"
+      @open-history="openHistory"
     />
   </div>
 </template>

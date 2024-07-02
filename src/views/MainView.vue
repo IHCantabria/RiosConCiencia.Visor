@@ -3,6 +3,10 @@ import { ref } from "vue";
 import ThePanels from "@/components/layout/ThePanels.vue";
 import TheMap from "@/components/layout/TheMap.vue";
 import TheFetchManager from "@/components/layout/TheFetchManager.vue";
+import HistoricData from "../components/HistoricData.vue";
+import { useSamplesStore } from "@/store/samplesStore.js";
+
+const samplesStore = useSamplesStore();
 
 const TheFetchManagerRef = ref(null);
 const ThePanelsRef = ref(null);
@@ -16,10 +20,20 @@ const onCallDownload = () => {
 const onCallLogin = (credentials) => {
   TheFetchManagerRef.value.authenticate(credentials);
 };
+const onOpenHistory = (idRiverSection) => {
+  samplesStore.setRiverSectionHistoricData(idRiverSection);
+};
 </script>
 <template>
-  <div class="view-viewer">
-    <TheMap class="map" @toggle-filter-panel="onToggleFilterPanel" />
+  <div
+    v-show="!samplesStore.riverSectionHistoricData.active"
+    class="view-viewer"
+  >
+    <TheMap
+      class="map"
+      @toggle-filter-panel="onToggleFilterPanel"
+      @open-history="onOpenHistory"
+    />
     <TheFetchManager ref="TheFetchManagerRef" />
     <ThePanels
       ref="ThePanelsRef"
@@ -27,6 +41,7 @@ const onCallLogin = (credentials) => {
       @call-login="onCallLogin"
     />
   </div>
+  <HistoricData v-if="samplesStore.riverSectionHistoricData.active" />
 </template>
 <style scoped lang="scss">
 .view-viewer {

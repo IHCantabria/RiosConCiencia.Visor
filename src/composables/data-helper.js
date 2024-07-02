@@ -31,6 +31,7 @@ export function useDataHelper() {
         longitude: data.riverSectionCoordsLon,
         latitude: data.riverSectionCoordsLat,
         idFilter: parseInt(`${data.year}${getCampaignId(data.campaign)}`),
+        idRiverSection: data.idRiverSection,
       };
     });
   };

@@ -7,12 +7,12 @@ const _basicHeaders = {
 };
 
 export const getAllSamples = () => {
-  const url = `${RIOSCONCIENCIA_API.public}/GetSamplesExtended`;
+  const url = `${RIOSCONCIENCIA_API.public}/GetSamplesDetailed`;
   return { url, params: _basicHeaders, method: "get", body: {} };
 };
 
 export const getAllPictsSamples = () => {
-  const url = `${RIOSCONCIENCIA_API.public}/GetPictSamples`;
+  const url = `${RIOSCONCIENCIA_API.public}/GetPictSamplesDetailed`;
   return { url, params: _basicHeaders, method: "get", body: {} };
 };
 

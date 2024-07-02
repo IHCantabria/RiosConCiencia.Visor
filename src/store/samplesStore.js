@@ -18,6 +18,10 @@ export const useSamplesStore = defineStore("samplesStore", {
       downloadOptions: [],
       downloadFilters: [],
       user: null,
+      riverSectionHistoricData: {
+        active: false,
+        riverSectionId: null,
+      },
     };
   },
   getters: {
@@ -126,6 +130,15 @@ export const useSamplesStore = defineStore("samplesStore", {
     },
     async setSampleDownloadFiltersAction(operation) {
       this.setSampleDownloadFilters(operation);
+    },
+    setRiverSectionHistoricData(idRiverSection) {
+      if (!idRiverSection) {
+        this.riverSectionHistoricData.active = false;
+        this.riverSectionHistoricData.riverSectionId = null;
+        return;
+      }
+      this.riverSectionHistoricData.active = true;
+      this.riverSectionHistoricData.riverSectionId = idRiverSection;
     },
   },
 });

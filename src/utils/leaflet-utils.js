@@ -42,37 +42,46 @@ export const createCustomIcon = (icon, color) => {
 
 //aux method to create a popupInfo
 export const createCustomPopup = (sample) => {
-  return `<table>
-    <tbody>
-      <tr>
-        <th scope="row">Nombre del tramo</th>
-        <td>${sample.alias}</td>
-      </tr>
-        <th scope="row">Cuenca</th>
-        <td>${sample.catchment}</td>
-      </tr>
-      <tr>
-        <th scope="row">Municipio</th>
-        <td>${sample.municipality}</td>
-      </tr>
-      <tr>
-        <th scope="row">Año y campaña de muestreo</th>
-        <td>${sample.year} - ${sample.campaign}</td>
-      </tr>
-      <tr>
-        <th scope="row">Calidad biológica del agua</th>
-        <td>${sample.bioQuality}</td>
-      </tr>
-      <tr>
-        <th scope="row">Calidad del bosque de ribera</th>
-        <td>${sample.forestState}</td>
-      </tr>
-      <tr>
-        <th scope="row">Estado ecológico</th>
-        <td>${sample.ecologicalState}</td>
-      </tr>
-    </tbody>
-  </table>`;
+  return `
+    <div class="popup-container-custom">
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Nombre del tramo</th>
+            <td>${sample.alias}</td>
+          </tr>
+          <tr>
+            <th scope="row">Cuenca</th>
+            <td>${sample.catchment}</td>
+          </tr>
+          <tr>
+            <th scope="row">Municipio</th>
+            <td>${sample.municipality}</td>
+          </tr>
+          <tr>
+            <th scope="row">Año y campaña de muestreo</th>
+            <td>${sample.year} - ${sample.campaign}</td>
+          </tr>
+          <tr>
+            <th scope="row">Calidad biológica del agua</th>
+            <td>${sample.bioQuality}</td>
+          </tr>
+          <tr>
+            <th scope="row">Calidad del bosque de ribera</th>
+            <td>${sample.forestState}</td>
+          </tr>
+          <tr>
+            <th scope="row">Estado ecológico</th>
+            <td>${sample.ecologicalState}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button id="riverSection-history-btn-${sample.idRiverSection}" class="btn">
+        <span class="material-icons">history</span>
+        Ver histórico
+      </button>
+    </div>
+  `;
 };
 
 //aux method to create a tooltip
