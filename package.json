@@ -38,7 +38,8 @@
     "sweet-modal-vue-3": "^0.3.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.3",
-    "vuesax3": "^4.2.1"
+    "vuesax3": "^4.2.1",
+    "zingchart": "^2.9.14"
   },
   "devDependencies": {
     "@html-eslint/eslint-plugin": "^0.24.1",

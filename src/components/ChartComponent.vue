@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, nextTick, watch } from "vue";
+import zingchart from "zingchart";
 
 const props = defineProps({
   id: {

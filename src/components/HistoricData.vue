@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useSamplesStore } from "@/store/samplesStore.js";
-import { useSpinnerStore } from "@/store/spinnerStore.js";
 import {
   HISTORIC_CHARTS_CONFIG,
   SERIES_CONFIG,
@@ -15,7 +14,6 @@ import ChartComponent from "@/components/ChartComponent.vue";
 
 // STORES & COMPOSABLES
 const samplesStore = useSamplesStore();
-const spinnerStore = useSpinnerStore();
 
 // DATA
 const riverSectionInfo = ref(null);
@@ -30,37 +28,36 @@ onMounted(() => {
 
 // METHODS
 const setHistoricData = () => {
-  spinnerStore.addTask("historicData", "Preparando datos históricos...");
-  spinnerStore.show();
+  try {
+    const riverSectionSamples = setRiverSectionSamples();
+    if (!riverSectionSamples.length) {
+      return;
+    }
 
-  const riverSectionSamples = setRiverSectionSamples();
-  if (!riverSectionSamples.length) {
-    spinnerStore.hide();
-    return;
+    setRiverSectionInfo(riverSectionSamples[0]);
+
+    bioQuality.value = setChartConfig(
+      riverSectionSamples,
+      "Calidad biológica",
+      "bioQuality",
+      BIOLOGICAL_RAMP,
+    );
+    ecologicalState.value = setChartConfig(
+      riverSectionSamples,
+      "Estado ecológico",
+      "ecologicalState",
+      ECOLOGICAL_RAMP,
+    );
+    forestState.value = setChartConfig(
+      riverSectionSamples,
+      "Estado forestal",
+      "forestState",
+      FOREST_RAMP,
+    );
+  } catch (error) {
+    samplesStore.setRiverSectionHistoricData(null);
+    alert("Error al cargar los datos históricos");
   }
-
-  setRiverSectionInfo(riverSectionSamples[0]);
-
-  bioQuality.value = setChartConfig(
-    riverSectionSamples,
-    "Calidad biológica",
-    "bioQuality",
-    BIOLOGICAL_RAMP,
-  );
-  ecologicalState.value = setChartConfig(
-    riverSectionSamples,
-    "Estado ecológico",
-    "ecologicalState",
-    ECOLOGICAL_RAMP,
-  );
-  forestState.value = setChartConfig(
-    riverSectionSamples,
-    "Estado forestal",
-    "forestState",
-    FOREST_RAMP,
-  );
-
-  spinnerStore.hide();
 };
 const setRiverSectionSamples = () => {
   const riverSectionSamples = samplesStore.samples.filter(
