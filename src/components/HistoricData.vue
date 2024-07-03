@@ -160,7 +160,6 @@ const onReturnClick = () => {
 
 <style lang="scss" scoped>
 $background-color: rgb(249 249 249);
-$view-color-primary: #6b8b98;
 
 .view-container {
   height: 100vh;
@@ -171,6 +170,7 @@ $view-color-primary: #6b8b98;
   overflow-y: auto;
   box-sizing: border-box;
   background-color: $background-color;
+  padding: 0 1rem;
 }
 
 .show-data-container {
@@ -250,10 +250,10 @@ $view-color-primary: #6b8b98;
   position: absolute;
   top: 1rem;
   right: 3rem;
-  border: 1px solid $view-color-primary;
+  border: 1px solid app-variables.$color-secondary;
 
   &:hover {
-    background-color: $view-color-primary;
+    background-color: app-variables.$color-secondary;
     color: white;
   }
 }

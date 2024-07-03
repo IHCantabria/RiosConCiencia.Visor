@@ -76,10 +76,16 @@ export const createCustomPopup = (sample) => {
           </tr>
         </tbody>
       </table>
-      <button id="riverSection-history-btn-${sample.idRiverSection}" class="btn">
-        <span class="material-icons">history</span>
-        Ver histórico
-      </button>
+      <div class="popup-buttons">
+        <button id="riverSection-history-btn-${sample.idRiverSection}" class="btn">
+          <span class="material-icons">history</span>
+          Ver histórico
+        </button>
+        <button id="riverSection-details-btn-${sample.idRiverSection}" class="btn">
+          <span class="material-icons">info</span>
+          Ver detalles
+        </button>
+      </div>
     </div>
   `;
 };

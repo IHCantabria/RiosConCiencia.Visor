@@ -6,7 +6,11 @@ import { useSamplesStore } from "@/store/samplesStore.js";
 
 const samplesStore = useSamplesStore();
 
-const emit = defineEmits(["toggle-filter-panel", "open-history"]);
+const emit = defineEmits([
+  "toggle-filter-panel",
+  "open-history",
+  "open-details",
+]);
 
 const mapConfigComputed = computed(() => {
   return {
@@ -25,6 +29,9 @@ const togglePanel = () => {
 const openHistory = (idRiverSection) => {
   emit("open-history", idRiverSection);
 };
+const openDetails = (idRiverSection) => {
+  emit("open-details", idRiverSection);
+};
 </script>
 
 <template>
@@ -39,6 +46,7 @@ const openHistory = (idRiverSection) => {
       :c-markers="samplesStore.getSamplesFiltered"
       @toggle-panel="togglePanel"
       @open-history="openHistory"
+      @open-details="openDetails"
     />
   </div>
 </template>

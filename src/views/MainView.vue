@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import ThePanels from "@/components/layout/ThePanels.vue";
 import TheMap from "@/components/layout/TheMap.vue";
 import TheFetchManager from "@/components/layout/TheFetchManager.vue";
 import HistoricData from "../components/HistoricData.vue";
 import { useSamplesStore } from "@/store/samplesStore.js";
 
+const router = useRouter();
 const samplesStore = useSamplesStore();
 
 const TheFetchManagerRef = ref(null);
@@ -23,6 +25,9 @@ const onCallLogin = (credentials) => {
 const onOpenHistory = (idRiverSection) => {
   samplesStore.setRiverSectionHistoricData(idRiverSection);
 };
+const onOpenDetails = (idRiverSection) => {
+  router.push({ name: "Sample", params: { idSample: idRiverSection } });
+};
 </script>
 <template>
   <div
@@ -33,6 +38,7 @@ const onOpenHistory = (idRiverSection) => {
       class="map"
       @toggle-filter-panel="onToggleFilterPanel"
       @open-history="onOpenHistory"
+      @open-details="onOpenDetails"
     />
     <TheFetchManager ref="TheFetchManagerRef" />
     <ThePanels

@@ -11,6 +11,11 @@ const routes = [
     name: "Main",
     component: () => import("../views/MainView.vue"),
   },
+  {
+    path: "/muestreo/:idSample",
+    name: "Sample",
+    component: () => import("../views/SampleView.vue"),
+  },
 ];
 
 const router = createRouter({

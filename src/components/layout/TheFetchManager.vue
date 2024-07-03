@@ -100,6 +100,7 @@ const manageTasks = () => {
   }
 };
 const fetchSamplesData = () => {
+  if (samplesStore.samples) return;
   createTask(
     apiRios.getAllSamples(),
     formatSamples,
@@ -111,6 +112,7 @@ const fetchSamplesData = () => {
   );
 };
 const fetchPictsSamplesData = () => {
+  if (samplesStore.samplesPicts) return;
   createTask(
     apiRios.getAllPictsSamples(),
     formatPictsSamples,

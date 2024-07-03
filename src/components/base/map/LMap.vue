@@ -102,11 +102,12 @@ watch(
 );
 
 // EMITS
-const emit = defineEmits(["toggle-panel", "open-history"]);
+const emit = defineEmits(["toggle-panel", "open-history", "open-details"]);
 
 // LYFE CYCLE HOOKS
 onMounted(() => {
   initMap();
+  updateLayerMarker();
 });
 
 // METHODS
@@ -322,7 +323,8 @@ const ListenerOpenPopUp = () => {
   myMap.value.on("popupopen", function (e) {
     //Hide legend is resolution is movil
     window.innerWidth < 750 ? (showLegend.value = false) : "";
-    ListenerRiverSectionBtn(e.popup._source.idRiverSection);
+    ListenerRiverSectionHistoricBtn(e.popup._source.idRiverSection);
+    ListenerRiverSectionDetailsBtn(e.popup._source.idRiverSection);
   });
 };
 const ListenerToggleFilters = () => {
@@ -341,12 +343,21 @@ const ListenerLegendChange = () => {
     createLegend(eventLayer.layer.options.legend);
   });
 };
-const ListenerRiverSectionBtn = (idRiverSection) => {
+const ListenerRiverSectionHistoricBtn = (idRiverSection) => {
   const btnId = `riverSection-history-btn-${idRiverSection}`;
   const btn = document.getElementById(btnId);
   if (btn) {
     btn.onclick = function () {
       emit("open-history", idRiverSection);
+    };
+  }
+};
+const ListenerRiverSectionDetailsBtn = (idRiverSection) => {
+  const btnId = `riverSection-details-btn-${idRiverSection}`;
+  const btn = document.getElementById(btnId);
+  if (btn) {
+    btn.onclick = function () {
+      emit("open-details", idRiverSection);
     };
   }
 };

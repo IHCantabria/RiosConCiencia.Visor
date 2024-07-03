@@ -1,4 +1,5 @@
 import { RIOSCONCIENCIA_API } from "@/config/data-providers.js";
+import axios from "axios";
 
 const _basicHeaders = {
   "Content-Type": "application/json",
@@ -14,6 +15,12 @@ export const getAllSamples = () => {
 export const getAllPictsSamples = () => {
   const url = `${RIOSCONCIENCIA_API.public}/GetPictSamplesDetailed`;
   return { url, params: _basicHeaders, method: "get", body: {} };
+};
+
+export const getSampleDetailed = async (sampleId) => {
+  const url = `${RIOSCONCIENCIA_API.public}/GetSampleDetailed/${sampleId}`;
+  const res = await axios.get(url, { headers: _basicHeaders });
+  return res.data;
 };
 
 export const getSamplesCsv = (token, filters) => {

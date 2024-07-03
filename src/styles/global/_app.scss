@@ -34,23 +34,30 @@ html::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
 
-  .btn {
-    background-color: app-variables.$color-primary;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
+  .popup-buttons {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
-    .material-icons {
-      font-size: 1.3rem;
+    .btn {
+      background-color: app-variables.$color-secondary;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 40%;
+      min-width: fit-content;
+
+      .material-icons {
+        font-size: 1.3rem;
+      }
     }
   }
 }
