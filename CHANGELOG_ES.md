@@ -1,3 +1,11 @@
+## **v0.5.0** - 04/07/2024
+
+
+**Features:**
+
+- Añadida funcionalidad ver historico tramos.
+- Añadida vista detalles del muestreo.
+
 ## **v0.4.2** - 28/06/2024
 
 

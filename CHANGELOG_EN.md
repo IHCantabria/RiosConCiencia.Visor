@@ -1,3 +1,12 @@
+## **v0.5.0** - 04/07/2024
+
+
+**Features:**
+
+- Added functionality to view historical sections.
+- Added sampling details view.
+
+
 ## **v0.4.2** - 06/28/2024
 
 
