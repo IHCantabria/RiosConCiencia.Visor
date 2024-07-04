@@ -37,7 +37,6 @@ const setSampleInfo = async () => {
     const parsedSampleInfo = parseSampleInfo(sampleDetailedInfo);
     if (parsedSampleInfo) {
       sampleInfo.value = parsedSampleInfo;
-      console.log(sampleInfo.value);
     }
   } catch (error) {
     showNoInfoError.value = true;
@@ -246,7 +245,7 @@ $background-color: rgb(249 249 249);
 }
 
 // Responsive Styles
-@media (width <= 768px) {
+@media (min-width: app-variables.$breakpoint-tablet-to-desktop) {
   .groups-container {
     padding: 1rem;
 

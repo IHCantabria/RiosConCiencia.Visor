@@ -84,7 +84,7 @@ defineProps({
   }
 
   th {
-    background-color: #f2f2f2;
+    background-color: #eaecf0;
   }
 
   th:first-of-type,
@@ -134,7 +134,7 @@ defineProps({
         text-align: left;
         width: fit-content;
         display: flex;
-        align-items: end;
+        align-items: flex-start;
         justify-content: center;
         gap: 0.3rem;
 

@@ -184,7 +184,11 @@ defineExpose({
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background-color: rgb(243 243 243);
+    background-color: rgb(235 236 240);
+
+    .collapsible-title {
+      color: black;
+    }
   }
 }
 </style>
