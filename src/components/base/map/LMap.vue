@@ -324,7 +324,7 @@ const ListenerOpenPopUp = () => {
     //Hide legend is resolution is movil
     window.innerWidth < 750 ? (showLegend.value = false) : "";
     ListenerRiverSectionHistoricBtn(e.popup._source.idRiverSection);
-    ListenerRiverSectionDetailsBtn(e.popup._source.idRiverSection);
+    ListenerRiverSectionDetailsBtn(e.popup._source.layerID);
   });
 };
 const ListenerToggleFilters = () => {
@@ -352,12 +352,12 @@ const ListenerRiverSectionHistoricBtn = (idRiverSection) => {
     };
   }
 };
-const ListenerRiverSectionDetailsBtn = (idRiverSection) => {
-  const btnId = `riverSection-details-btn-${idRiverSection}`;
+const ListenerRiverSectionDetailsBtn = (sampleId) => {
+  const btnId = `riverSection-details-btn-${sampleId}`;
   const btn = document.getElementById(btnId);
   if (btn) {
     btn.onclick = function () {
-      emit("open-details", idRiverSection);
+      emit("open-details", sampleId);
     };
   }
 };

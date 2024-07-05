@@ -81,7 +81,7 @@ export const createCustomPopup = (sample) => {
           <span class="material-icons">history</span>
           Ver histórico
         </button>
-        <button id="riverSection-details-btn-${sample.idRiverSection}" class="btn">
+        <button id="riverSection-details-btn-${sample.id}" class="btn">
           <span class="material-icons">info</span>
           Ver detalles
         </button>

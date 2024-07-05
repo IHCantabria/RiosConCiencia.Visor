@@ -25,8 +25,8 @@ const onCallLogin = (credentials) => {
 const onOpenHistory = (idRiverSection) => {
   samplesStore.setRiverSectionHistoricData(idRiverSection);
 };
-const onOpenDetails = (idRiverSection) => {
-  router.push({ name: "Sample", params: { idSample: idRiverSection } });
+const onOpenDetails = (sampleId) => {
+  router.push({ name: "Sample", params: { idSample: sampleId } });
 };
 </script>
 <template>

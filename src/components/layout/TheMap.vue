@@ -29,8 +29,8 @@ const togglePanel = () => {
 const openHistory = (idRiverSection) => {
   emit("open-history", idRiverSection);
 };
-const openDetails = (idRiverSection) => {
-  emit("open-details", idRiverSection);
+const openDetails = (sampleId) => {
+  emit("open-details", sampleId);
 };
 </script>
 
