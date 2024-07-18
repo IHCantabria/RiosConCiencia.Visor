@@ -17,13 +17,13 @@
 ## Environment
 
     - Dev
-    - Prod
+    - Pre
 
 ## ANSIBLE RECIPE NAME
 
-_Production_
+_Pre_
 
-    - Deploy RiosConCiencia.Visor - PROD
+    - Deploy RiosConCiencia.Visor - PRE
 
 _Development_
 
@@ -59,9 +59,9 @@ _Development_
 
 ## DNS
 
-_Production_
+_Pre_
 
-    - riosconcienciavisor.ihcantabria.com
+    - riosconcienciavisor-pre.ihcantabria.com
 
 _Development_
 
@@ -69,9 +69,9 @@ _Development_
 
 ## URL APPLICATION
 
-_Production_
+_Pre_
 
-    - riosconcienciavisor.ihcantabria.com
+    - riosconcienciavisor-pre.ihcantabria.com
 
 _Development_
 

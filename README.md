@@ -6,103 +6,64 @@ Visor Web del proyecto RiosConCiencia
 
 To see a real implementation of this project visit the following url [RiosConCiencia.Visor](https://riosconcienciavisor.ihcantabria.com/).
 
-## Build Setup
+## Prerequisites
 
+The dependency installation, compilation and tag creation commands are managed from the package.json file and are executed using npm, so it is necessary that the user has npm and node installed with a version compatible with those indicated in the package file "engines" section.
 
-### install dependencies
+## External Dependencies
 
-```
-npm install
-```
+RiosConCiencia.Visor.App requires  RiosConCiencia Api for its correct operation. For more information, access the repositories/docs of each one.
 
-### update dependencies
+## Environment variables in the appsettings
 
-```
-npm update
-```
+For the correct compilation and operation of the application, it is necessary to configure the following placeholders for the environment variables set in the environment appsettings files:
 
-### Compiles and hot-reloads for development
+- RIOSCONCIENCIA_API_URL -> The base uri in which RiosConCiencia Api is hosted.
 
-```
-npm run serve
-```
+To perform the replace, one solution is offered.
 
-### Compiles and minifies for production
+First: Replace the placeholder values before launching the build scripts.
 
-```
-npm run build
-```
+## Local Run
 
-### Compiles and minifies for production and view the bundle analyzer report
+It is possible to run the App locally using the first method to set the values of the environment variables and running the command npm run dev. As an alternative an .env-sample file is provided with an example configuration, you need to create an env.develpment.local and replace the base URI of Apis 100% functionality.
+
+## Scripts
+
+### Run Local Build
 
 ```
-npm run build --report
+npm run dev
 ```
 
-### Run all your tests
-
-```
-npm run test
-```
-
-### Run your end-to-end tests
-
-```
-npm run test:e2e
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
-```
-
-### Run your unit tests and update the snapshot files
-
-```
-npm run test:unit:snap
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Check linter config
-
-```
-npm run stylelint-check
-```
-
-### Review (lint and test) project before deploy
-
-```
-npm run review
-```
-
-### Deploy version (patch/minor/major)
+### Create a new Tag of the current code version(patch/minor/major), Example: "patch"
 
 ```
 npm run deploy-patch
 ```
 
+### install dependencies
 
-### Advanced configuration
+```
+npm run ci
+```
 
-For a detailed explanation on how things work, check out the [guide](https://vuejs-templates.github.io/webpack/) 
-and [docs for vue-loader](https://vuejs.github.io/vue-loader).
+### Build and compiles the mode of the project (Pre)
 
-### Customize configuration
+```
+npm run ci
+npm run build
+```
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Build Output Directory
+
+The output of the npm run build script is located in the "build/pre" folder.
 
 ###  Built With
 
 - [Vue](https://vuejs.org/) - The progressive javascript framework
-- [Webpack](https://webpack.js.org/) - Bundler
-- [Jest](https://jestjs.io/) - Testing framework
-- [cypress](https://www.cypress.io/) - Testing E2E framework
+- [Vite](https://vitejs.dev/) - Frontend Tooling
+- [Rollup](https://www.rollupjs.org/guide/en/) - Bundling
 
 ###  Credits
 
@@ -114,7 +75,7 @@ This software use:
 
 - [Font-Awesome](https://fontawesome.com/) - MIT, SIL OFL, and CC BY Licenses.
 - [Leaflet](https://leafletjs.com/) - Branded License.
-- [Vuesax](https://lusaxweb.github.io/vuesax/) - MIT License.
+- [Vuesax](https://lk77.github.io/vuesax/) - MIT License.
 - [axios](https://github.com/axios/axios) - MIT License.
 - [CliffCloud/Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton) - Open License.
 - [Coryasilva/Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers) - Open License.
