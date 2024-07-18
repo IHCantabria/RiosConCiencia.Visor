@@ -5,6 +5,7 @@ import {
   getDownloadFilters,
 } from "@/utils/data-operator-utils.js";
 import { CAMPAIGN_VALUES } from "@/config/data-config";
+import { shallowRef } from "vue";
 
 export const useSamplesStore = defineStore("samplesStore", {
   state: () => {
@@ -22,6 +23,7 @@ export const useSamplesStore = defineStore("samplesStore", {
         active: false,
         riverSectionId: null,
       },
+      riversGeoJson: shallowRef(null),
     };
   },
   getters: {
@@ -100,6 +102,9 @@ export const useSamplesStore = defineStore("samplesStore", {
     },
     setPictsSamples(operation) {
       this.samplesPicts = operation;
+    },
+    setRiversGeoJson(operation) {
+      this.riversGeoJson = operation;
     },
     setUser(operation) {
       this.user = operation;

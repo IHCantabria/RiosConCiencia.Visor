@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 import L from "leaflet";
 import "leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js";
 import "leaflet-easybutton/src/easy-button.js";
@@ -13,6 +13,7 @@ import {
   createCustomLegend,
   panZoomMarker,
 } from "@/utils/leaflet-utils.js";
+
 iconFix();
 
 // PROPS
@@ -76,12 +77,20 @@ const props = defineProps({
       return [];
     },
   },
+  cRiversGeoJson: {
+    type: Object,
+    required: false,
+    default: () => {
+      return null;
+    },
+  },
 });
 
 // DATA
 const myMap = ref(null);
 const layersMap = ref([]);
 const layerMarkers = ref([]);
+const riversGeoJsonLayer = ref(null);
 const currentLegend = ref(null);
 const originalCoordsMark = ref(null);
 const showLegend = ref(true);
@@ -91,6 +100,13 @@ watch(
   () => props.cMarkers,
   () => {
     updateLayerMarker();
+  },
+  { deep: true },
+);
+watch(
+  () => props.cRiversGeoJson,
+  () => {
+    updateRiverGeoJsonLayer();
   },
   { deep: true },
 );
@@ -108,6 +124,7 @@ const emit = defineEmits(["toggle-panel", "open-history", "open-details"]);
 onMounted(() => {
   initMap();
   updateLayerMarker();
+  updateRiverGeoJsonLayer();
 });
 
 // METHODS
@@ -237,9 +254,13 @@ const setupSwitcherLayer = () => {
       groupCheckboxes: true,
       position: "topleft",
     };
-    L.control
-      .groupedLayers(baseLayers, groupedOverlays, options)
-      .addTo(myMap.value);
+    myMap.value.layerSwitcher = L.control.groupedLayers(
+      baseLayers,
+      groupedOverlays,
+      options,
+    );
+
+    myMap.value.layerSwitcher.addTo(myMap.value);
   }
 };
 const setupZoomControl = () => {
@@ -270,10 +291,34 @@ const createSwitchOverlayLayers = () => {
   layerMarkers.value[2].addTo(myMap.value);
   return groupedOverlays;
 };
+
 const updateLayerMarker = () => {
   clearLayerMarkers();
   if (props.cMarkers.length > 0) addNewLayerMarkers();
 };
+const updateRiverGeoJsonLayer = async () => {
+  if (props.cRiversGeoJson) {
+    if (riversGeoJsonLayer.value) {
+      myMap.value.removeLayer(riversGeoJsonLayer.value);
+    }
+
+    const geoJsonLayer = L.geoJSON(null, {
+      id: "riverLayerGeoJsonID",
+      style: {
+        color: "#0885bf",
+        weight: 1,
+        opacity: 1,
+      },
+    });
+
+    riversGeoJsonLayer.value = geoJsonLayer;
+    await nextTick();
+    geoJsonLayer.addData(props.cRiversGeoJson);
+    geoJsonLayer.addTo(myMap.value);
+    myMap.value.layerSwitcher?.addOverlay(geoJsonLayer, "Ríos", "Otras capas");
+  }
+};
+
 const addNewLayerMarkers = () => {
   layerMarkers.value.forEach((layerGroup) => {
     createLayerMarkers(layerGroup);
@@ -339,8 +384,11 @@ const ListenerGoToDefault = () => {
 };
 const ListenerLegendChange = () => {
   myMap.value.on("overlayadd", function (eventLayer) {
-    myMap.value.removeControl(currentLegend.value);
-    createLegend(eventLayer.layer.options.legend);
+    // Prevent legend change for the river layer
+    if (eventLayer.layer.options.id !== "riverLayerGeoJsonID") {
+      myMap.value.removeControl(currentLegend.value);
+      createLegend(eventLayer.layer.options.legend);
+    }
   });
 };
 const ListenerRiverSectionHistoricBtn = (idRiverSection) => {

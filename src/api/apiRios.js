@@ -7,6 +7,12 @@ const _basicHeaders = {
   "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
 };
 
+export const getRiversGeoJson = async () => {
+  const url = `${RIOSCONCIENCIA_API.public}/GetRiversGeoJson`;
+  const res = await axios.get(url, { headers: _basicHeaders });
+  return res.data;
+};
+
 export const getAllSamples = () => {
   const url = `${RIOSCONCIENCIA_API.public}/GetSamplesDetailed`;
   return { url, params: _basicHeaders, method: "get", body: {} };

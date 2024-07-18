@@ -49,6 +49,7 @@ onMounted(() => {
 const init = () => {
   fetchSamplesData();
   fetchPictsSamplesData();
+  fetchRiversGeoJson();
 };
 const requestsController = (dataParam) => {
   data.value = dataParam;
@@ -123,7 +124,18 @@ const fetchPictsSamplesData = () => {
     ),
   );
 };
-
+const fetchRiversGeoJson = async () => {
+  if (samplesStore.riversGeoJson) return;
+  try {
+    const riversGeoJson = await apiRios.getRiversGeoJson();
+    samplesStore.setRiversGeoJson(riversGeoJson);
+  } catch (error) {
+    showNotificationOnce(
+      "Datos de Ríos",
+      "Error al cargar los datos de los ríos.",
+    );
+  }
+};
 const authenticate = (credentials) => {
   createTask(
     apiRios.login(credentials),
@@ -135,7 +147,6 @@ const authenticate = (credentials) => {
     ),
   );
 };
-
 const fetchCsvData = () => {
   isFilterAll.value ? fetchCsvAllData() : fetchCsvFilterData();
 };

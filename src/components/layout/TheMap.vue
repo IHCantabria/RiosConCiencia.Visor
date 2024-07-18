@@ -22,6 +22,7 @@ const mapConfigComputed = computed(() => {
     switchOverlayMapsConfig: LEAFLET_CONFIG.switchOverlayMapsConfig,
   };
 });
+const riversGeoJson = computed(() => samplesStore.riversGeoJson);
 
 const togglePanel = () => {
   emit("toggle-filter-panel");
@@ -44,6 +45,7 @@ const openDetails = (sampleId) => {
       :c-overlay-layers="mapConfigComputed.overlayLayersConfig"
       :c-switch-layer-overlay-maps="mapConfigComputed.switchOverlayMapsConfig"
       :c-markers="samplesStore.getSamplesFiltered"
+      :c-rivers-geo-json="riversGeoJson"
       @toggle-panel="togglePanel"
       @open-history="openHistory"
       @open-details="openDetails"
