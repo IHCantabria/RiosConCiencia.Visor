@@ -13,8 +13,6 @@ import {
   createCustomLegend,
   panZoomMarker,
 } from "@/utils/leaflet-utils.js";
-import "@/libs/geojson-vt.js";
-import "@/libs/leaflet-geojson-vt.js";
 
 iconFix();
 
@@ -93,7 +91,6 @@ const myMap = ref(null);
 const layersMap = ref([]);
 const layerMarkers = ref([]);
 const riversGeoJsonLayer = ref(null);
-const riversVTLayer = ref(null);
 const currentLegend = ref(null);
 const originalCoordsMark = ref(null);
 const showLegend = ref(true);
@@ -304,9 +301,6 @@ const updateRiverGeoJsonLayer = async () => {
     if (riversGeoJsonLayer.value) {
       myMap.value.removeLayer(riversGeoJsonLayer.value);
     }
-    if (riversVTLayer.value) {
-      myMap.value.removeLayer(riversVTLayer.value);
-    }
 
     const geoJsonLayer = L.geoJSON(null, {
       id: "riverLayerGeoJsonID",
@@ -316,26 +310,10 @@ const updateRiverGeoJsonLayer = async () => {
         opacity: 1,
       },
     });
-    const vtLayer = L.geoJson.vt(props.cRiversGeoJson, {
-      id: "riverLayerGeoJsonVtID",
-      style: {
-        color: "#0843b1",
-        weight: 1,
-        opacity: 1,
-      },
-      tolerance: 0.01,
-      debug: 0,
-    });
-
     riversGeoJsonLayer.value = geoJsonLayer;
-    riversVTLayer.value = vtLayer;
-    vtLayer.addTo(myMap.value);
-
     await nextTick();
     geoJsonLayer.addData(props.cRiversGeoJson);
     geoJsonLayer.addTo(myMap.value);
-    myMap.value.layerSwitcher?.addOverlay(geoJsonLayer, "Ríos", "Otras capas");
-    myMap.value.layerSwitcher?.addOverlay(vtLayer, "Ríos VT", "Otras capas");
   }
 };
 
@@ -404,14 +382,8 @@ const ListenerGoToDefault = () => {
 };
 const ListenerLegendChange = () => {
   myMap.value.on("overlayadd", function (eventLayer) {
-    // Prevent legend change for the river layer
-    if (
-      eventLayer.layer.options.id !== "riverLayerGeoJsonID" &&
-      eventLayer.layer.options.id !== "riverLayerGeoJsonVtID"
-    ) {
-      myMap.value.removeControl(currentLegend.value);
-      createLegend(eventLayer.layer.options.legend);
-    }
+    myMap.value.removeControl(currentLegend.value);
+    createLegend(eventLayer.layer.options.legend);
   });
 };
 const ListenerRiverSectionHistoricBtn = (idRiverSection) => {
