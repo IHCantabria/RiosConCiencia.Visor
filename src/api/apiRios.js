@@ -18,6 +18,12 @@ export const getAllSamples = () => {
   return { url, params: _basicHeaders, method: "get", body: {} };
 };
 
+export const getAllSamplesWithUserInfo = (token) => {
+  _basicHeaders.Authorization = `Bearer ${token}`;
+  const url = `${RIOSCONCIENCIA_API.public}/GetSamplesDetailedWithUserInfo`;
+  return { url, params: _basicHeaders, method: "get", body: {} };
+};
+
 export const getAllPictsSamples = () => {
   const url = `${RIOSCONCIENCIA_API.public}/GetPictSamplesDetailed`;
   return { url, params: _basicHeaders, method: "get", body: {} };
@@ -25,6 +31,12 @@ export const getAllPictsSamples = () => {
 
 export const getSampleDetailed = async (sampleId) => {
   const url = `${RIOSCONCIENCIA_API.public}/GetSampleDetailed/${sampleId}`;
+  const res = await axios.get(url, { headers: _basicHeaders });
+  return res.data;
+};
+export const getSampleDetailedWithUserInfo = async (token, sampleId) => {
+  _basicHeaders.Authorization = `Bearer ${token}`;
+  const url = `${RIOSCONCIENCIA_API.public}/GetSampleDetailedWithUserInfo/${sampleId}`;
   const res = await axios.get(url, { headers: _basicHeaders });
   return res.data;
 };

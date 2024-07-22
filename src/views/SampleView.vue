@@ -2,7 +2,11 @@
 import { ref, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useSpinnerStore } from "@/store/spinnerStore.js";
-import { getSampleDetailed } from "@/api/apiRios.js";
+import { useSamplesStore } from "@/store/samplesStore.js";
+import {
+  getSampleDetailed,
+  getSampleDetailedWithUserInfo,
+} from "@/api/apiRios.js";
 import {
   SAMPLE_INFO_CONFIG,
   SAMPLE_INFO_GROUPS_CONFIG,
@@ -15,6 +19,7 @@ import InfoTable from "@/components/InfoTable.vue";
 const route = useRoute();
 const router = useRouter();
 const spinnerStore = useSpinnerStore();
+const samplesStore = useSamplesStore();
 
 // DATA
 const sampleInfo = ref(null);
@@ -33,7 +38,15 @@ const setSampleInfo = async () => {
     spinnerStore.addTask("loadSampleData", "Cargando datos del muestreo");
     spinnerStore.show();
     const sampleSectionId = route.params.idSample;
-    const sampleDetailedInfo = await getSampleDetailed(sampleSectionId);
+    let sampleDetailedInfo = null;
+    if (samplesStore.getUserLogged) {
+      sampleDetailedInfo = await getSampleDetailedWithUserInfo(
+        samplesStore.getUserToken,
+        sampleSectionId,
+      );
+    } else {
+      sampleDetailedInfo = await getSampleDetailed(sampleSectionId);
+    }
     const parsedSampleInfo = parseSampleInfo(sampleDetailedInfo);
     if (parsedSampleInfo) {
       sampleInfo.value = parsedSampleInfo;

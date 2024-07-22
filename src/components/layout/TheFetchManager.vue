@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, computed } from "vue";
+import { ref, onMounted, watch, computed, nextTick } from "vue";
 import DataOperator from "@/components/renderless/DataOperator.vue";
 import AsyncLoader from "@/components/renderless/AsyncLoader.vue";
 import * as apiRios from "@/api/apiRios.js";
@@ -112,6 +112,18 @@ const fetchSamplesData = () => {
     ),
   );
 };
+const fetchSamplesAdminData = () => {
+  if (samplesStore.samples) return;
+  createTask(
+    apiRios.getAllSamplesWithUserInfo(token.value),
+    formatSamples,
+    "fetchSamples",
+    createSpinnerTask(
+      "Datos de Muestreo",
+      "Recopilando datos de muestras. Por favor, espere...",
+    ),
+  );
+};
 const fetchPictsSamplesData = () => {
   if (samplesStore.samplesPicts) return;
   createTask(
@@ -212,6 +224,16 @@ const updateSpinnerTask = (spinnerTask) => {
   }
   manageSpinnerState(false);
 };
+
+// WATCHERS
+watch(
+  () => samplesStore.user,
+  async () => {
+    samplesStore.samples = null;
+    await nextTick();
+    samplesStore.getUserLogged ? fetchSamplesAdminData() : fetchSamplesData();
+  },
+);
 
 // EXPOSE
 defineExpose({

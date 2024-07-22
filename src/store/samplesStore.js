@@ -118,6 +118,9 @@ export const useSamplesStore = defineStore("samplesStore", {
     setSampleDownloadFilters(operation) {
       this.downloadFilters = operation;
     },
+    async fetchSamplesAdmin(operation) {
+      this.setSamplesAdmin(operation);
+    },
     async fetchSamples(operation) {
       this.setSamples(operation);
     },
