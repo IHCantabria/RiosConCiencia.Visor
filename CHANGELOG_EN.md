@@ -1,3 +1,11 @@
+## **v0.6.3* - 22/07/2024
+
+
+**Features:**
+
+- Added river layer
+- Separate api methods with user info depending on admin login state
+
 ## **v0.5.0** - 04/07/2024
 
 

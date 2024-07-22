@@ -1,3 +1,11 @@
+## **v0.6.3* - 22/07/2024
+
+
+**Features:**
+
+- Añadida capa de ríos.
+- Separados métodos de la api con informacion de usuarios dependiendo de si hay usuario loggeado o no.
+
 ## **v0.5.0** - 04/07/2024
 
 
