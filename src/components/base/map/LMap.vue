@@ -13,6 +13,8 @@ import {
   createCustomLegend,
   panZoomMarker,
 } from "@/utils/leaflet-utils.js";
+import "@/libs/geojson-vt.js";
+import "@/libs/leaflet-geojson-vt.js";
 
 iconFix();
 
@@ -90,7 +92,7 @@ const props = defineProps({
 const myMap = ref(null);
 const layersMap = ref([]);
 const layerMarkers = ref([]);
-const riversGeoJsonLayer = ref(null);
+const riversGeoJsonVtLayer = ref(null);
 const currentLegend = ref(null);
 const originalCoordsMark = ref(null);
 const showLegend = ref(true);
@@ -298,22 +300,24 @@ const updateLayerMarker = () => {
 };
 const updateRiverGeoJsonLayer = async () => {
   if (props.cRiversGeoJson) {
-    if (riversGeoJsonLayer.value) {
-      myMap.value.removeLayer(riversGeoJsonLayer.value);
+    if (riversGeoJsonVtLayer.value) {
+      myMap.value.removeLayer(riversGeoJsonVtLayer.value);
     }
 
-    const geoJsonLayer = L.geoJSON(null, {
+    const vtLayer = L.geoJson.vt(props.cRiversGeoJson, {
       id: "riverLayerGeoJsonID",
       style: {
         color: "#0885bf",
         weight: 1,
         opacity: 1,
       },
+      tolerance: 0.01,
+      debug: 0,
     });
-    riversGeoJsonLayer.value = geoJsonLayer;
+
+    riversGeoJsonVtLayer.value = vtLayer;
     await nextTick();
-    geoJsonLayer.addData(props.cRiversGeoJson);
-    geoJsonLayer.addTo(myMap.value);
+    vtLayer.addTo(myMap.value);
   }
 };
 
@@ -382,8 +386,11 @@ const ListenerGoToDefault = () => {
 };
 const ListenerLegendChange = () => {
   myMap.value.on("overlayadd", function (eventLayer) {
-    myMap.value.removeControl(currentLegend.value);
-    createLegend(eventLayer.layer.options.legend);
+    // Prevent legend change for the river layer
+    if (eventLayer.layer.options.id !== "riverLayerGeoJsonID") {
+      myMap.value.removeControl(currentLegend.value);
+      createLegend(eventLayer.layer.options.legend);
+    }
   });
 };
 const ListenerRiverSectionHistoricBtn = (idRiverSection) => {
