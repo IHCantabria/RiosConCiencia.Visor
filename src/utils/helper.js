@@ -10,8 +10,9 @@ export const isValidValue = (value) => {
 
 export const parseDate = (date) => {
   const dateObj = new Date(date);
+  dateObj.setHours(dateObj.getHours() + 2);
   const day = dateObj.getDate();
-  const month = dateObj.getMonth() + 1;
+  const month = dateObj.getMonth() + 1; // Los meses comienzan en 0
   const year = dateObj.getFullYear();
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
