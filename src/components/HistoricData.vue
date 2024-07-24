@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useSamplesStore } from "@/store/samplesStore.js";
+import { useSpinnerStore } from "@/store/spinnerStore.js";
 import {
   HISTORIC_CHARTS_CONFIG,
   SERIES_CONFIG,
@@ -14,6 +15,7 @@ import ChartComponent from "@/components/ChartComponent.vue";
 
 // STORES & COMPOSABLES
 const samplesStore = useSamplesStore();
+const spinnerStore = useSpinnerStore();
 
 // DATA
 const riverSectionInfo = ref(null);
@@ -24,6 +26,9 @@ const forestState = ref(null);
 // LYFE CYCLE
 onMounted(() => {
   setHistoricData();
+});
+onUnmounted(() => {
+  spinnerStore.hide();
 });
 
 // METHODS
@@ -107,6 +112,8 @@ const setChartConfig = (samples, titleText, sampleKey, ramp) => {
 };
 
 const onReturnClick = () => {
+  spinnerStore.addTask("returnToMap", "Volviendo al mapa...");
+  spinnerStore.show();
   samplesStore.setRiverSectionHistoricData(null);
 };
 </script>

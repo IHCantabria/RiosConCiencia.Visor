@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, onUnmounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useSpinnerStore } from "@/store/spinnerStore.js";
 import { useSamplesStore } from "@/store/samplesStore.js";
@@ -28,6 +28,9 @@ const showNoInfoError = ref(false);
 // LYFE CYCLE
 onMounted(() => {
   setSampleInfo();
+});
+onUnmounted(() => {
+  spinnerStore.hide();
 });
 
 // METHODS
@@ -97,6 +100,8 @@ const parseSampleInfo = (sampleInfo) => {
   return groupedSampleInfo;
 };
 const onReturnClick = () => {
+  spinnerStore.addTask("returnToMap", "Volviendo al mapa...");
+  spinnerStore.show();
   router.push("/");
 };
 
@@ -155,6 +160,7 @@ $background-color: rgb(249 249 249);
   box-sizing: border-box;
   background-color: $background-color;
   padding: 0 1rem;
+  z-index: 98;
 
   &--error {
     justify-content: center;
