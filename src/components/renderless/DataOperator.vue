@@ -95,7 +95,9 @@ const Operate = () => {
 };
 
 const callDispatcher = () => {
-  samplesStore[props.dispatcher]();
+  if (props.dispatcher) {
+    samplesStore[props.dispatcher]();
+  }
   emit("operationFinished");
 };
 </script>

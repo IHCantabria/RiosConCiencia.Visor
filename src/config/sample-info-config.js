@@ -234,7 +234,7 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
     ],
   },
   riviera: {
-    alias: "Rivera",
+    alias: "Ribera",
     fields: [
       "riverBankNaturalnessName",
       "riverBankConectionsName",

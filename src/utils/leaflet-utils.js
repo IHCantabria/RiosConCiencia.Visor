@@ -94,7 +94,7 @@ export const createCustomPopup = (sample) => {
 export const createCustomTooltip = (sample) => {
   return `<p>
       <strong>Calidad del Agua:</strong> ${sample.bioQuality}</br>
-      <strong>Calidad del Bosque de Rivera:</strong> ${sample.forestState}</br>
+      <strong>Calidad del Bosque de Ribera:</strong> ${sample.forestState}</br>
       <strong>Estado Ecológico:</strong> ${sample.ecologicalState}
     </p>`;
 };
