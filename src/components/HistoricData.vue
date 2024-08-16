@@ -43,21 +43,21 @@ const setHistoricData = () => {
 
     bioQuality.value = setChartConfig(
       riverSectionSamples,
-      "Calidad biológica",
+      "Calidad biológica del agua",
       "bioQuality",
       BIOLOGICAL_RAMP,
     );
-    ecologicalState.value = setChartConfig(
-      riverSectionSamples,
-      "Estado ecológico",
-      "ecologicalState",
-      ECOLOGICAL_RAMP,
-    );
     forestState.value = setChartConfig(
       riverSectionSamples,
-      "Estado forestal",
+      "Estado del bosque de ribera",
       "forestState",
       FOREST_RAMP,
+    );
+    ecologicalState.value = setChartConfig(
+      riverSectionSamples,
+      "Estado de salud del río",
+      "ecologicalState",
+      ECOLOGICAL_RAMP,
     );
   } catch (error) {
     samplesStore.setRiverSectionHistoricData(null);
