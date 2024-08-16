@@ -1,21 +1,22 @@
 export const SAMPLE_INFO_CONFIG = {
-  id: { alias: "ID muestra" },
+  // id: { alias: "ID muestra" },
   waterLevelName: { alias: "Nivel del agua" },
   waterColorName: { alias: "Color del agua" },
   waterSmellName: { alias: "Olor del agua" },
-  riverBedWidthName: { alias: "Ancho del cauce" },
-  riverBedDepthName: { alias: "Profundidad del cauce" },
-  riverSideWidthLeftName: { alias: "Ancho del margen izquierdo" },
-  riverSideWidthRightName: { alias: "Ancho del margen derecho" },
-  stonesInPoolsName: { alias: "Piedras en las pozas" },
+  riverBedWidthName: { alias: "Anchura media cauce (m)" },
+  riverBedDepthName: { alias: "Profundidad media cauce (cm)" },
+  riverSideWidthLeftName: { alias: "Anchura media ribera izq (m)" },
+  riverSideWidthRightName: { alias: "Anchura media ribera drcha (m)" },
+  stonesInPoolsName: { alias: "Inclusión piedras" },
   sedimentMobilityName: { alias: "Movilidad de sedimentos" },
   rapidsFrequencyName: { alias: "Frecuencia de rápidos" },
-  velocityAndDepthName: { alias: "Velocidad y profundidad" },
-  riverShadowsName: { alias: "Sombras en el río" },
-  habitatIndexCategoriesName: { alias: "Categorías del índice de hábitat" },
-  riverBankNaturalnessName: { alias: "Naturalidad de la ribera" },
-  riverBankConectionsName: { alias: "Conexiones de la ribera" },
-  riverBankVegetationsName: { alias: "Vegetación de la ribera" },
+  velocityAndDepthName: { alias: "Régimen velocidad /profundidad" },
+  riverShadowsName: { alias: "Sombra cauce" },
+  habitatIndexCategoriesName: { alias: "Índice del Hábitat Fluvial" },
+  riverBankNaturalnessName: { alias: "Grado naturalidad" },
+  riverBankConectionsName: { alias: "Conexiones adyacentes" },
+  riverBankVegetationsName: { alias: "Continuidad de la vegetación" },
+  riverEEI: { alias: "Cobertura EEI" },
   weatherTodayName: { alias: "Clima hoy" },
   weather48HName: { alias: "Clima en 48 horas" },
   userCod: { alias: "Código" },
@@ -23,16 +24,16 @@ export const SAMPLE_INFO_CONFIG = {
   userSurnames: { alias: "Apellidos" },
   transparencyName: { alias: "Transparencia" },
   bioQualityName: { alias: "Calidad biológica" },
-  ecologicalStateName: { alias: "Estado ecológico" },
-  riverBankQrisiName: { alias: "Qrisi de la ribera" },
+  ecologicalStateName: { alias: "Estado de salud" },
+  riverBankQrisiName: { alias: "Calidad bosque de ribera" },
   habitatTransversalObstacleName: {
     alias: "Obstáculo transversal del hábitat",
   },
   riverBankInvasiveName: { alias: "Invasión de la ribera" },
   riverSectionAlias: { alias: "Alias" },
   riverSectionMunicipality: { alias: "Municipio" },
-  riverName: { alias: "Nombre del río" },
-  riverType: { alias: "Tipo de río" },
+  // riverName: { alias: "Nombre del río" },
+  // riverType: { alias: "Tipo de río" },
   riverCatchment: { alias: "Cuenca del río" },
   riverSectionCoordsLon: {
     alias: "Longitud",
@@ -48,10 +49,10 @@ export const SAMPLE_INFO_CONFIG = {
   samplePointCoordsLat: {
     alias: "Latitud",
   },
-  samplePointWidth: { alias: "Ancho" },
-  samplePointDepth: { alias: "Profundidad" },
+  samplePointWidth: { alias: "Anchura cauce muestreo (m)" },
+  samplePointDepth: { alias: "Profundidad cauce muestreo (cm)" },
   samplePointWaterVelocity: {
-    alias: "Velocidad del agua",
+    alias: "Velocidad agua (m/s)",
   },
   samplePointWaterTemp: {
     alias: "Temperatura del agua",
@@ -60,12 +61,12 @@ export const SAMPLE_INFO_CONFIG = {
   sampleHabitatTotalPoints: {
     alias: "Puntos totales de hábitat",
   },
-  idRiverSection: { alias: "ID tramo" },
-  partners: { alias: "Socios" },
+  // idRiverSection: { alias: "ID tramo" },
+  // partners: { alias: "Socios" },
   date: { alias: "Fecha" },
   campaign: { alias: "Campaña" },
   year: { alias: "Año" },
-  observations: { alias: "Observaciones" },
+  // observations: { alias: "Observaciones" },
   rapidFrequencyList: {
     alias: "Lista de frecuencias de rápidos",
     internalConfig: {
@@ -115,20 +116,20 @@ export const SAMPLE_INFO_CONFIG = {
     alias: "Lista de eucariotas",
     internalConfig: {
       groupName: { alias: "Grupo" },
+      subGroupName: { alias: "Subgrupo" },
       name: { alias: "Nombre" },
       specie: { alias: "Especie" },
-      subGroupName: { alias: "Subgrupo" },
     },
   },
   aquaticVegetationList: {
-    alias: "Lista de vegetación acuática",
+    alias: "Cobertura vegetación acuática",
     internalConfig: {
       name: { alias: "Nombre" },
       coverage: { alias: "Cobertura" },
     },
   },
   randomElementList: {
-    alias: "Lista de elementos aleatorios",
+    alias: "Elementos de heterogeneidad",
     internalConfig: {
       name: { alias: "Nombre" },
       presence: { alias: "Presencia" },
@@ -145,16 +146,16 @@ export const SAMPLE_INFO_CONFIG = {
 
 export const SAMPLE_INFO_GROUPS_CONFIG = {
   generalSampleInfo: {
-    alias: "Información general del muestreo",
+    alias: "Datos del muestreo",
     fields: [
-      "id",
+      // "id",
       "year",
       "campaign",
       "date",
-      "partners",
+      // "partners",
       "weatherTodayName",
       "weather48HName",
-      "observations",
+      // "observations",
       "samplePointCoordsLon",
       "samplePointCoordsLat",
     ],
@@ -162,11 +163,11 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   riverSection: {
     alias: "Información del tramo",
     fields: [
-      "idRiverSection",
+      // "idRiverSection",
       "riverSectionAlias",
       "riverSectionMunicipality",
-      "riverName",
-      "riverType",
+      // "riverName",
+      // "riverType",
       "riverCatchment",
       "riverSectionCoordsLon",
       "riverSectionCoordsLat",
@@ -175,51 +176,6 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   user: {
     alias: "Usuario",
     fields: ["userName", "userSurnames", "userCod"],
-  },
-  river: {
-    alias: "Cauce",
-    fields: [
-      "riverBedWidthName",
-      "riverBedDepthName",
-      "rapidsFrequencyName",
-      "riverSideWidthLeftName",
-      "riverSideWidthRightName",
-      "stonesInPoolsName",
-      "sedimentMobilityName",
-      "velocityAndDepthName",
-      "riverShadowsName",
-      "habitatIndexCategoriesName",
-      "samplePointWidth",
-      "samplePointDepth",
-      "samplePointWaterVelocity",
-      "rapidFrequencyList",
-      "substrateCompositionList",
-    ],
-  },
-  biodiversity: {
-    alias: "Biodiversidad",
-    fields: ["eukaryoteList", "aquaticVegetationList", "randomElementList"],
-  },
-  conditions: {
-    alias: "Afecciones",
-
-    fields: [
-      "waterLevelCriticalProblem",
-      "spillList",
-      "wasteList",
-      "waterElementList",
-    ],
-  },
-  ecologicalState: {
-    alias: "Estado ecológico",
-    fields: [
-      "ecologicalStateName",
-      "habitatTransversalObstacleName",
-      "riverBankInvasiveName",
-      "riverBankQrisiName",
-      "sampleQrisiTotalPoints",
-      "sampleHabitatTotalPoints",
-    ],
   },
   water: {
     alias: "Agua",
@@ -236,13 +192,60 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   riviera: {
     alias: "Ribera",
     fields: [
+      "marginConditionList",
+      "landUseList",
       "riverBankNaturalnessName",
       "riverBankConectionsName",
       "riverBankVegetationsName",
-      "marginConditionList",
-      "landUseList",
+      "riverEEI",
+      "riverBankQrisiName",
     ],
   },
+  biodiversity: {
+    alias: "Biodiversidad",
+    fields: ["eukaryoteList"],
+  },
+  river: {
+    alias: "Cauce",
+    fields: [
+      "riverBedWidthName",
+      "riverBedDepthName",
+      "riverSideWidthLeftName",
+      "riverSideWidthRightName",
+      "stonesInPoolsName",
+      "rapidsFrequencyName",
+      "substrateCompositionList",
+      "velocityAndDepthName",
+      "riverShadowsName",
+      "randomElementList",
+      "aquaticVegetationList",
+      "habitatIndexCategoriesName",
+      "samplePointWidth",
+      "samplePointDepth",
+      "samplePointWaterVelocity",
+    ],
+  },
+
+  conditions: {
+    alias: "Afecciones",
+
+    fields: [
+      "waterLevelCriticalProblem",
+      "spillList",
+      "wasteList",
+      "waterElementList",
+    ],
+  },
+  ecologicalState: {
+    alias: "Estado de salud del río",
+    fields: [
+      "ecologicalStateName",
+      "habitatTransversalObstacleName",
+      "riverBankInvasiveName",
+      "sampleHabitatTotalPoints",
+    ],
+  },
+
   detailedSampleInfo: {
     alias: "Otros",
     // This would be filled dinamically in the SampleView component if the sample has any field that is not in any of the other groups
