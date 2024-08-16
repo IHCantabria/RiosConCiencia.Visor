@@ -38,9 +38,9 @@ export const forestQuality = {
   },
 };
 export const ecologicalState = {
-  name: "Estado ecológico",
+  name: "Estado de salud",
   configParameters: {
     id: "ecologicalStateID",
-    legend: createCustomLegendDiv("Estado ecológico", config.ECOLOGICAL_RAMP),
+    legend: createCustomLegendDiv("Estado de salud", config.ECOLOGICAL_RAMP),
   },
 };
