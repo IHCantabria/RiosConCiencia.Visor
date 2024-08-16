@@ -70,8 +70,8 @@ a:active {
   touch-action: none; // prevent scroll drag
   font-family: app-variables.$app-font;
   color: app-variables.$app-font-color;
-  width: 95%;
-  max-width: 500px;
+  width: fit-content;
+  max-width: 750px;
 }
 
 .vs-popup--content {
