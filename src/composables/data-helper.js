@@ -7,6 +7,8 @@ import {
   getCampaignId,
 } from "@/utils/data-operator-utils.js";
 
+import { VALID_ROLE_IDS } from "@/config/role-config.js";
+
 export function useDataHelper() {
   const formatSamples = (data) => {
     return data.map((data) => {
@@ -49,8 +51,7 @@ export function useDataHelper() {
   };
 
   const checkRole = (data) => {
-    const RoleIdsVisor = [1, 6, 7, 8, 9];
-    const roleValid = RoleIdsVisor.includes(parseInt(data.roleId));
+    const roleValid = VALID_ROLE_IDS.includes(parseInt(data.roleId));
     return roleValid ? data : null;
   };
 

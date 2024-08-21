@@ -42,7 +42,7 @@ const setSampleInfo = async () => {
     spinnerStore.show();
     const sampleSectionId = route.params.idSample;
     let sampleDetailedInfo = null;
-    if (samplesStore.getUserLogged) {
+    if (samplesStore.getAdminLogged) {
       sampleDetailedInfo = await getSampleDetailedWithUserInfo(
         samplesStore.getUserToken,
         sampleSectionId,
@@ -70,9 +70,13 @@ const parseSampleInfo = (sampleInfo) => {
     const groupFields = {};
 
     SAMPLE_INFO_GROUPS_CONFIG[groupKey].fields.forEach((field) => {
+      // Skip if field is not present in sampleInfo, it means the user is not allowed to see it
+      if (sampleInfo[field] === undefined) return;
       if (isValidValue(sampleInfo[field])) {
         groupFields[field] = sampleInfo[field];
         assignedFields.add(field);
+      } else {
+        groupFields[field] = "-";
       }
     });
 

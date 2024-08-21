@@ -50,12 +50,12 @@ const openModal = () => {
           </p>
           <p class="about-container__msg-section">
             Este proyecto cuenta con la colaboración de la Fundación Española
-            para la Ciencia y la Tecnología del Ministerio de Ciencia e
-            Innovación.
+            para la Ciencia y la Tecnología del Ministerio de Ciencia,
+            Innovación y Universidades.
           </p>
           <p class="about-container__msg-section">
             <a
-              href="https://redcambera.org/proyectos/riosconciencia/"
+              href="https://redcambera.org/proyectorios/?ModPagespeed=off#contenidos"
               target="_blank"
               >Pulse aquí para más información del proyecto.</a
             >
@@ -67,26 +67,9 @@ const openModal = () => {
               <span>Con la colaboración de:</span>
             </div>
             <img
-              src="@/assets/logos/LogoMinisterio-FECYT.png"
+              src="@/assets/logos/faldon_FECY2024_fondo_CLARO.png"
               title="Gobierno de España y Fundación Española para la Ciencia y la Tecnología"
               alt="fecyt img"
-            />
-          </div>
-          <div class="logo">
-            <div class="claim-container">
-              <span>Un proyecto de:</span>
-            </div>
-            <img
-              src="@/assets/logos/RedCambera.png"
-              title="Red Cambera"
-              alt="red cambera img"
-            />
-          </div>
-          <div class="logo-without-claim">
-            <img
-              src="@/assets/logos/ProyectoRios.png"
-              title="Proyecto Ríos"
-              alt="proyecto rios img"
             />
           </div>
         </div>

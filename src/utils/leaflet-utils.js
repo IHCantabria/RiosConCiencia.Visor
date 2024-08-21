@@ -71,7 +71,7 @@ export const createCustomPopup = (sample) => {
             <td>${sample.forestState}</td>
           </tr>
           <tr>
-            <th scope="row">Estado ecológico</th>
+            <th scope="row">Estado de salud</th>
             <td>${sample.ecologicalState}</td>
           </tr>
         </tbody>
@@ -95,7 +95,7 @@ export const createCustomTooltip = (sample) => {
   return `<p>
       <strong>Calidad del Agua:</strong> ${sample.bioQuality}</br>
       <strong>Calidad del Bosque de Ribera:</strong> ${sample.forestState}</br>
-      <strong>Estado Ecológico:</strong> ${sample.ecologicalState}
+      <strong>Estado de salud:</strong> ${sample.ecologicalState}
     </p>`;
 };
 

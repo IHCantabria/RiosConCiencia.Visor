@@ -5,6 +5,7 @@ import {
   getDownloadFilters,
 } from "@/utils/data-operator-utils.js";
 import { CAMPAIGN_VALUES } from "@/config/data-config";
+import { ADMIN_ROLE_ID } from "@/config/role-config.js";
 import { shallowRef } from "vue";
 
 export const useSamplesStore = defineStore("samplesStore", {
@@ -77,6 +78,9 @@ export const useSamplesStore = defineStore("samplesStore", {
     },
     getUserLogged() {
       return this.user;
+    },
+    getAdminLogged() {
+      return this.user && this.user.roleId == ADMIN_ROLE_ID;
     },
     getSamplesLoaded() {
       return this.samples;
