@@ -1,5 +1,5 @@
 export const SAMPLE_INFO_CONFIG = {
-  // id: { alias: "ID muestra" },
+  id: { alias: "ID muestra" },
   waterLevelName: { alias: "Nivel del agua" },
   waterColorName: { alias: "Color del agua" },
   waterSmellName: { alias: "Olor del agua" },
@@ -32,8 +32,8 @@ export const SAMPLE_INFO_CONFIG = {
   riverBankInvasiveName: { alias: "Invasión de la ribera" },
   riverSectionAlias: { alias: "Alias" },
   riverSectionMunicipality: { alias: "Municipio" },
-  // riverName: { alias: "Nombre del río" },
-  // riverType: { alias: "Tipo de río" },
+  riverName: { alias: "Nombre del río" },
+  riverType: { alias: "Tipo de río" },
   riverCatchment: { alias: "Cuenca del río" },
   riverSectionCoordsLon: {
     alias: "Longitud",
@@ -41,7 +41,7 @@ export const SAMPLE_INFO_CONFIG = {
   riverSectionCoordsLat: {
     alias: "Latitud",
   },
-  waterFlow: { alias: "Flujo de agua" },
+  waterFlow: { alias: "¿El agua del río fluye?" },
   waterLevelCriticalProblem: { alias: "Problema crítico del nivel de agua" },
   samplePointCoordsLon: {
     alias: "Longitud",
@@ -61,12 +61,12 @@ export const SAMPLE_INFO_CONFIG = {
   sampleHabitatTotalPoints: {
     alias: "Puntos totales de hábitat",
   },
-  // idRiverSection: { alias: "ID tramo" },
-  // partners: { alias: "Socios" },
+  idRiverSection: { alias: "ID tramo" },
+  partners: { alias: "Socios" },
   date: { alias: "Fecha" },
   campaign: { alias: "Campaña" },
   year: { alias: "Año" },
-  // observations: { alias: "Observaciones" },
+  observations: { alias: "Observaciones" },
   rapidFrequencyList: {
     alias: "Lista de frecuencias de rápidos",
     internalConfig: {
@@ -148,14 +148,11 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   generalSampleInfo: {
     alias: "Datos del muestreo",
     fields: [
-      // "id",
       "year",
       "campaign",
       "date",
-      // "partners",
       "weatherTodayName",
       "weather48HName",
-      // "observations",
       "samplePointCoordsLon",
       "samplePointCoordsLat",
     ],
@@ -175,7 +172,7 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   },
   user: {
     alias: "Usuario",
-    fields: ["userName", "userSurnames", "userCod"],
+    fields: ["userName", "userSurnames", "userCod", "partners"],
   },
   water: {
     alias: "Agua",
