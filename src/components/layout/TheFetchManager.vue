@@ -231,7 +231,7 @@ watch(
   async () => {
     samplesStore.samples = null;
     await nextTick();
-    samplesStore.getUserLogged ? fetchSamplesAdminData() : fetchSamplesData();
+    samplesStore.getAdminLogged ? fetchSamplesAdminData() : fetchSamplesData();
   },
 );
 

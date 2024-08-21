@@ -42,7 +42,7 @@ const setSampleInfo = async () => {
     spinnerStore.show();
     const sampleSectionId = route.params.idSample;
     let sampleDetailedInfo = null;
-    if (samplesStore.getUserLogged) {
+    if (samplesStore.getAdminLogged) {
       sampleDetailedInfo = await getSampleDetailedWithUserInfo(
         samplesStore.getUserToken,
         sampleSectionId,
