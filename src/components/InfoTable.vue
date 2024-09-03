@@ -43,7 +43,7 @@ defineProps({
             }}
           </span>
           <BaseCollapsibleContainer
-            v-else
+            v-else-if="value !== '-'"
             :title="'Ver lista'"
             class="sub-group-elements"
           >
@@ -65,6 +65,7 @@ defineProps({
               </div>
             </div>
           </BaseCollapsibleContainer>
+          <span v-else class="value">-</span>
         </td>
       </tr>
     </tbody>
