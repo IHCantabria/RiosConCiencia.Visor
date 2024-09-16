@@ -233,11 +233,6 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
   },
   ecologicalState: {
     alias: "Estado de salud del río",
-    fields: [
-      "ecologicalStateName",
-      "habitatTransversalObstacleName",
-      "riverBankInvasiveName",
-      "sampleHabitatTotalPoints",
-    ],
+    fields: ["ecologicalStateName"],
   },
 };
