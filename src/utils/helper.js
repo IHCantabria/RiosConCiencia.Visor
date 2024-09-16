@@ -9,6 +9,9 @@ export const isValidValue = (value) => {
 };
 
 export const parseDate = (date) => {
+  if (!date || date === "-") {
+    return "-";
+  }
   const dateObj = new Date(date);
   dateObj.setHours(dateObj.getHours() + 2);
   const day = dateObj.getDate();

@@ -24,6 +24,7 @@ const samplesStore = useSamplesStore();
 // DATA
 const sampleInfo = ref(null);
 const showNoInfoError = ref(false);
+const isAfterSpring2024 = ref(false);
 
 // LYFE CYCLE
 onMounted(() => {
@@ -50,6 +51,7 @@ const setSampleInfo = async () => {
     } else {
       sampleDetailedInfo = await getSampleDetailed(sampleSectionId);
     }
+    setAfterSpring2024(sampleDetailedInfo.sampleDate);
     const parsedSampleInfo = parseSampleInfo(sampleDetailedInfo);
     if (parsedSampleInfo) {
       sampleInfo.value = parsedSampleInfo;
@@ -58,6 +60,16 @@ const setSampleInfo = async () => {
     showNoInfoError.value = true;
   } finally {
     spinnerStore.hide();
+  }
+};
+const setAfterSpring2024 = (sampleDate) => {
+  if (sampleDate) {
+    const dateParts = sampleDate.split("-");
+    if (dateParts.length === 3) {
+      const year = parseInt(dateParts[0]);
+      const month = parseInt(dateParts[1]);
+      isAfterSpring2024.value = year > 2024 || (year === 2024 && month > 6);
+    }
   }
 };
 
@@ -123,7 +135,10 @@ watch(
             class="info-group"
           >
             <h3>{{ SAMPLE_INFO_GROUPS_CONFIG[groupKey].alias }}</h3>
-            <InfoTable :group="group" />
+            <InfoTable
+              :group="group"
+              :is-after-spring-2024="isAfterSpring2024"
+            />
           </div>
         </div>
       </div>

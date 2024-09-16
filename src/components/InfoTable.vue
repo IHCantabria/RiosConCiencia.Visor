@@ -3,12 +3,23 @@ import BaseCollapsibleContainer from "@/components/base/ui/BaseCollapsibleContai
 import { parseDate } from "@/utils/helper.js";
 import { SAMPLE_INFO_CONFIG } from "@/config/sample-info-config.js";
 
-defineProps({
+const props = defineProps({
   group: {
     type: Object,
     required: true,
   },
+  isAfterSpring2024: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const getTitle = (field) => {
+  if (field === "riverBankNaturalnessName" && props.isAfterSpring2024) {
+    return "Estructura y complejidad de la ribera ";
+  }
+  return SAMPLE_INFO_CONFIG[field]?.alias || field;
+};
 </script>
 
 <template>
@@ -27,13 +38,11 @@ defineProps({
           'full-width': SAMPLE_INFO_CONFIG[field]?.internalConfig,
         }"
       >
-        <td class="bold">
-          {{ SAMPLE_INFO_CONFIG[field]?.alias || field }}
-        </td>
+        <td class="bold">{{ getTitle(field) }}</td>
         <td>
           <span v-if="!SAMPLE_INFO_CONFIG[field]?.internalConfig" class="value">
             {{
-              field === "date"
+              field === "sampleDate"
                 ? parseDate(value)
                 : typeof value === "boolean"
                   ? value
