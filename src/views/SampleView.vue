@@ -85,22 +85,6 @@ const parseSampleInfo = (sampleInfo) => {
     }
   });
 
-  // Assign remaining fields to detailedSampleInfo
-  const detailedSampleInfo = {};
-  Object.keys(SAMPLE_INFO_CONFIG).forEach((field) => {
-    if (
-      sampleInfo[field] !== undefined &&
-      isValidValue(sampleInfo[field]) &&
-      !assignedFields.has(field)
-    ) {
-      detailedSampleInfo[field] = sampleInfo[field];
-    }
-  });
-
-  if (Object.keys(detailedSampleInfo).length > 0) {
-    groupedSampleInfo["detailedSampleInfo"] = detailedSampleInfo;
-  }
-
   return groupedSampleInfo;
 };
 const onReturnClick = () => {

@@ -240,10 +240,4 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
       "sampleHabitatTotalPoints",
     ],
   },
-
-  detailedSampleInfo: {
-    alias: "Otros",
-    // This would be filled dinamically in the SampleView component if the sample has any field that is not in any of the other groups
-    fields: [],
-  },
 };
