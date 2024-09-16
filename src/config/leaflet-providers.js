@@ -31,10 +31,10 @@ export const waterQuality = {
   },
 };
 export const forestQuality = {
-  name: "Estado del bosque",
+  name: "Calidad del bosque",
   configParameters: {
     id: "forestQualityID",
-    legend: createCustomLegendDiv("Estado del bosque", config.FOREST_RAMP),
+    legend: createCustomLegendDiv("Calidad del bosque", config.FOREST_RAMP),
   },
 };
 export const ecologicalState = {
