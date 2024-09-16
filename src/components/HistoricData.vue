@@ -49,7 +49,7 @@ const setHistoricData = () => {
     );
     forestState.value = setChartConfig(
       riverSectionSamples,
-      "Estado del bosque de ribera",
+      "Calidad del bosque de ribera",
       "forestState",
       FOREST_RAMP,
     );
@@ -150,14 +150,14 @@ const onReturnClick = () => {
             :config="bioQuality"
           />
           <ChartComponent
-            v-if="ecologicalState"
-            :id="`ecologicalState-${samplesStore.riverSectionHistoricData.riverSectionId}`"
-            :config="ecologicalState"
-          />
-          <ChartComponent
             v-if="forestState"
             :id="`forestState-${samplesStore.riverSectionHistoricData.riverSectionId}`"
             :config="forestState"
+          />
+          <ChartComponent
+            v-if="ecologicalState"
+            :id="`ecologicalState-${samplesStore.riverSectionHistoricData.riverSectionId}`"
+            :config="ecologicalState"
           />
         </div>
       </div>
