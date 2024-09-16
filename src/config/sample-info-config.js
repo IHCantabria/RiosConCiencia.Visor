@@ -198,10 +198,6 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
       "riverBankQrisiName",
     ],
   },
-  biodiversity: {
-    alias: "Biodiversidad",
-    fields: ["eukaryoteList"],
-  },
   river: {
     alias: "Cauce",
     fields: [
@@ -222,10 +218,12 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
       "samplePointWaterVelocity",
     ],
   },
-
+  biodiversity: {
+    alias: "Biodiversidad",
+    fields: ["eukaryoteList"],
+  },
   conditions: {
     alias: "Afecciones",
-
     fields: [
       "waterLevelCriticalProblem",
       "spillList",
