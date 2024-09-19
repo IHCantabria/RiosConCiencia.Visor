@@ -7,10 +7,8 @@ import {
   getSampleDetailed,
   getSampleDetailedWithUserInfo,
 } from "@/api/apiRios.js";
-import {
-  SAMPLE_INFO_CONFIG,
-  SAMPLE_INFO_GROUPS_CONFIG,
-} from "@/config/sample-info-config.js";
+// SAMPLE_INFO_CONFIG,
+import { SAMPLE_INFO_GROUPS_CONFIG } from "@/config/sample-info-config.js";
 import { isValidValue } from "@/utils/helper.js";
 import NoDataImg from "@/assets/no-data.jpg";
 import InfoTable from "@/components/InfoTable.vue";
