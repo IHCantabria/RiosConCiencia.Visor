@@ -3,6 +3,7 @@ import { ref, onMounted, watch, computed, nextTick } from "vue";
 import DataOperator from "@/components/renderless/DataOperator.vue";
 import AsyncLoader from "@/components/renderless/AsyncLoader.vue";
 import * as apiRios from "@/api/apiRios.js";
+import * as apiProcess from "@/api/apiProcess.js";
 import { useSamplesStore } from "@/store/samplesStore";
 import { useSpinnerStore } from "@/store/spinnerStore";
 import { useDataHelper } from "@/composables/data-helper";
@@ -162,6 +163,17 @@ const authenticate = (credentials) => {
 const fetchCsvData = () => {
   isFilterAll.value ? fetchCsvAllData() : fetchCsvFilterData();
 };
+const fetchReportPDF = (year) => {
+  createTask(
+    apiProcess.getReportPDF(token.value, year),
+    null,
+    null,
+    createSpinnerTask(
+      "Descargando Reporte",
+      "Descargando reporte. Por favor, espere...",
+    ),
+  );
+};
 const fetchCsvAllData = () => {
   createTask(
     apiRios.getAllSamplesCsv(token.value),
@@ -238,6 +250,7 @@ watch(
 // EXPOSE
 defineExpose({
   fetchCsvData,
+  fetchReportPDF,
   authenticate,
 });
 </script>

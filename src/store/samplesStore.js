@@ -19,6 +19,7 @@ export const useSamplesStore = defineStore("samplesStore", {
       campaignFilter: {},
       downloadOptions: [],
       downloadFilters: [],
+      reportDownloadYear: null,
       user: null,
       riverSectionHistoricData: {
         active: false,

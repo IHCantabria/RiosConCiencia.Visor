@@ -19,6 +19,9 @@ const onToggleFilterPanel = () => {
 const onCallDownload = () => {
   TheFetchManagerRef.value.fetchCsvData();
 };
+const onCallReportDownload = () => {
+  TheFetchManagerRef.value.fetchReportPDF(samplesStore.reportDownloadYear);
+};
 const onCallLogin = (credentials) => {
   TheFetchManagerRef.value.authenticate(credentials);
 };
@@ -44,6 +47,7 @@ const onOpenDetails = (sampleId) => {
     <ThePanels
       ref="ThePanelsRef"
       @call-download="onCallDownload"
+      @call-report-download="onCallReportDownload"
       @call-login="onCallLogin"
     />
   </div>

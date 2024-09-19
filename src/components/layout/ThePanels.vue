@@ -5,6 +5,7 @@ import TheLogout from "@/components/layout/TheLogout.vue";
 import PanelLogin from "@/components/PanelLogin.vue";
 import PanelFilters from "@/components/PanelFilters.vue";
 import PanelFilterDownload from "@/components/PanelFilterDownload.vue";
+// import ReportYearsDownload from "@/components/ReportYearsDownload.vue";
 import { useSamplesStore } from "@/store/samplesStore";
 
 // COMPOSABLES & STORES
@@ -25,6 +26,9 @@ const isPanelVisible = computed(
 const launchDownload = () => {
   emit("callDownload");
 };
+// const launchReportPDFDownload = () => {
+//   emit("callReportDownload");
+// };
 const togglePanel = () => {
   panelShow.value = !panelShow.value;
 };
@@ -48,13 +52,13 @@ defineExpose({ togglePanel });
         <vs-tab icon="map" label="Visualización">
           <PanelFilters />
         </vs-tab>
-        <vs-tab icon="cloud_download" label="Descarga">
+        <vs-tab icon="cloud_download" label="Descarga datos">
           <div v-if="samplesStore.getUserLogged" class="panel-download">
             <PanelFilterDownload />
             <div class="panel-download__action">
-              <span class="download-text"
-                >Descargar datos de las campañas seleccionadas</span
-              >
+              <span class="download-text">
+                Descargar datos de las campañas seleccionadas
+              </span>
               <div class="download-icon" @click="launchDownload">
                 <img
                   src="@/assets/svgs/download.svg"
@@ -65,12 +69,34 @@ defineExpose({ togglePanel });
             </div>
           </div>
           <div v-else>
-            <span class="download-text"
-              >Tienes que estar logueado para tener acceso a la descarga de
-              datos</span
-            >
+            <span class="download-text">
+              Tienes que estar logueado para tener acceso a la descarga de datos
+            </span>
           </div>
         </vs-tab>
+        <!-- <vs-tab icon="sim_card_download" label="Descarga informe PDF">
+          <div v-if="samplesStore.getUserLogged" class="panel-download">
+            <ReportYearsDownload />
+            <div class="panel-download__action">
+              <span class="download-text">
+                Descargar informe PDF del año seleccionado
+              </span>
+              <div class="download-icon" @click="launchReportPDFDownload">
+                <img
+                  src="@/assets/svgs/download.svg"
+                  alt="download icon"
+                  style="pointer-events: none"
+                />
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <span class="download-text">
+              Tienes que estar logueado para tener acceso a la descarga del
+              informe PDF
+            </span>
+          </div>
+        </vs-tab> -->
       </vs-tabs>
     </div>
   </div>

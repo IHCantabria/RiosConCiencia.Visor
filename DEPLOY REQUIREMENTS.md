@@ -83,7 +83,7 @@ _Development_
 
 - Descargar Release: https://api.github.com/repos/IHCantabria/RiosConCiencia.Visor/releases/tags/riosconciencia.visor-{{ version }}-{{ entorno }}.zip
 
-- [ ] `Variables de entorno, sustituir los siguientes placeholders en los ficheros .env: RIOSCONCIENCIA_API_URL`
+- [ ] `Variables de entorno, sustituir los siguientes placeholders en los ficheros .env: RIOSCONCIENCIA_API_URL y RIOSCONCIENCIA_APIPROCESS_URL`
 
 <br>
 

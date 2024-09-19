@@ -19,6 +19,7 @@ RiosConCiencia.Visor.App requires  RiosConCiencia Api for its correct operation.
 For the correct compilation and operation of the application, it is necessary to configure the following placeholders for the environment variables set in the environment appsettings files:
 
 - RIOSCONCIENCIA_API_URL -> The base uri in which RiosConCiencia Api is hosted.
+- RIOSCONCIENCIA_APIPROCESS_URL -> The base uri in which RiosConCiencia ApiProcess is hosted.
 
 To perform the replace, one solution is offered.
 

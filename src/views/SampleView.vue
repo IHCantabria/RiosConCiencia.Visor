@@ -68,7 +68,7 @@ const setAfterSpring2024 = (sampleDate) => {
     if (dateParts.length === 3) {
       const year = parseInt(dateParts[0]);
       const month = parseInt(dateParts[1]);
-      isAfterSpring2024.value = year > 2024 || (year === 2024 && month > 6);
+      isAfterSpring2024.value = year > 2024 || (year === 2024 && month > 7);
     }
   }
 };
