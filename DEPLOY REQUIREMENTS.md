@@ -18,8 +18,13 @@
 
     - Dev
     - Pre
+    - Prod
 
 ## ANSIBLE RECIPE NAME
+
+_Prod_
+
+    - Deploy RiosConCiencia.Visor - PROD
 
 _Pre_
 
@@ -59,6 +64,10 @@ _Development_
 
 ## DNS
 
+_Prod_
+
+    - riosconcienciavisor.ihcantabria.com
+
 _Pre_
 
     - riosconcienciavisor-pre.ihcantabria.com
@@ -68,6 +77,10 @@ _Development_
     - riosconcienciavisordev.ihcantabria.com
 
 ## URL APPLICATION
+
+_Prod_
+
+    - riosconcienciavisor.ihcantabria.com
 
 _Pre_
 
@@ -80,8 +93,6 @@ _Development_
 ---
 
 **Do you need any other configuration?**
-
-- Descargar Release: https://api.github.com/repos/IHCantabria/RiosConCiencia.Visor/releases/tags/riosconciencia.visor-{{ version }}-{{ entorno }}.zip
 
 - [ ] `Variables de entorno, sustituir los siguientes placeholders en los ficheros .env: RIOSCONCIENCIA_API_URL y RIOSCONCIENCIA_APIPROCESS_URL`
 
