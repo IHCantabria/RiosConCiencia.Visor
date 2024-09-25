@@ -20,7 +20,7 @@ const onCallDownload = () => {
   TheFetchManagerRef.value.fetchCsvData();
 };
 const onCallReportDownload = () => {
-  TheFetchManagerRef.value.fetchReportPDF(samplesStore.reportDownloadYear);
+  TheFetchManagerRef.value.fetchReportPDF(samplesStore.reportDownloadYear.name);
 };
 const onCallLogin = (credentials) => {
   TheFetchManagerRef.value.authenticate(credentials);

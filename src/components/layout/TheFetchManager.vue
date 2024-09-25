@@ -169,8 +169,8 @@ const fetchReportPDF = (year) => {
     null,
     null,
     createSpinnerTask(
-      "Descargando Reporte",
-      "Descargando reporte. Por favor, espere...",
+      "Descargando informe PDF",
+      "Descargando informe PDF. Por favor, espere...",
     ),
   );
 };
@@ -263,6 +263,7 @@ defineExpose({
       :params="request.params ? request.params : {}"
       :method="request.method ? request.method : 'get'"
       :body="request.body ? request.body : {}"
+      :extra-info="request.extraInfo ? request.extraInfo : {}"
       @request-finished="requestsController"
       @state-request="pendingState"
       @error-handler="errorHandler"

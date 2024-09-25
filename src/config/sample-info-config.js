@@ -155,18 +155,13 @@ export const SAMPLE_INFO_GROUPS_CONFIG = {
       "sampleDate",
       "weatherTodayName",
       "weather48HName",
-      "samplePointCoordsLon",
-      "samplePointCoordsLat",
     ],
   },
   riverSection: {
     alias: "Información del tramo",
     fields: [
-      // "idRiverSection",
       "riverSectionAlias",
       "riverSectionMunicipality",
-      // "riverName",
-      // "riverType",
       "riverCatchment",
       "riverSectionCoordsLon",
       "riverSectionCoordsLat",

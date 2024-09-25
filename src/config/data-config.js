@@ -86,12 +86,12 @@ export const CAMPAIGN_VALUES = [
 ];
 
 export const FOREST_RAMP = [
-  {
-    id: 0,
-    color: "black",
-    name: "No hay Datos",
-    colorCode: "#231f20",
-  },
+  // {
+  //   id: 0,
+  //   color: "black",
+  //   name: "No hay Datos",
+  //   colorCode: "#231f20",
+  // },
   {
     id: 1,
     color: "green",
@@ -110,12 +110,12 @@ export const FOREST_RAMP = [
     name: "Muy degradado",
     colorCode: "#d63922",
   },
-  {
-    id: 4,
-    color: "blue-dark",
-    name: "No Calculable",
-    colorCode: "#185769",
-  },
+  // {
+  //   id: 4,
+  //   color: "blue-dark",
+  //   name: "No Calculable",
+  //   colorCode: "#185769",
+  // },
 ];
 
 export const ECOLOGICAL_RAMP = [

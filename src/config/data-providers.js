@@ -5,5 +5,5 @@ export const RIOSCONCIENCIA_API = {
 };
 
 export const RIOSCONCIENCIA_APIPROCESS = {
-  public: `${ENV.VITE_APIPROCESS_TOOL}/riosconciencia`,
+  public: `${ENV.VITE_APIPROCESS_TOOL}/pdf.riosconciencia`,
 };

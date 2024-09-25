@@ -24,6 +24,11 @@ const props = defineProps({
     required: false,
     default: () => ({}),
   },
+  extraInfo: {
+    type: Object,
+    required: false,
+    default: () => ({}),
+  },
 });
 
 // Define emits
@@ -70,6 +75,8 @@ const requestData = async () => {
   try {
     if (props.method === "postFile" || props.method === "getFile") {
       await requestFile();
+    } else if (props.method === "postPDF") {
+      await requestPDF(props.extraInfo?.year);
     } else if (props.method === "get") {
       const response = await axios.get(props.url, { headers: props.params });
       data.value = response.data;
@@ -133,6 +140,28 @@ const requestFile = async () => {
       });
   }
   data.value = [];
+};
+
+const requestPDF = async (year) => {
+  await axios
+    .post(props.url, props.body, {
+      responseType: "blob",
+      headers: props.params,
+    })
+    .then((response) => {
+      downloadPDF(response, `Informe PDF - ${year}.pdf`);
+      return true;
+    });
+};
+
+const downloadPDF = (pdf, name) => {
+  const urlFile = window.URL.createObjectURL(pdf.data);
+  const link = document.createElement("a");
+  link.href = urlFile;
+  link.download = name;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 };
 
 const setDefaultValues = () => {

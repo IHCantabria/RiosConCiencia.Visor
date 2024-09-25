@@ -5,7 +5,7 @@ import TheLogout from "@/components/layout/TheLogout.vue";
 import PanelLogin from "@/components/PanelLogin.vue";
 import PanelFilters from "@/components/PanelFilters.vue";
 import PanelFilterDownload from "@/components/PanelFilterDownload.vue";
-// import ReportYearsDownload from "@/components/ReportYearsDownload.vue";
+import ReportYearsDownload from "@/components/ReportYearsDownload.vue";
 import { useSamplesStore } from "@/store/samplesStore";
 
 // COMPOSABLES & STORES
@@ -15,7 +15,12 @@ const samplesStore = useSamplesStore();
 const panelShow = ref(true);
 
 // EMITS
-const emit = defineEmits(["callDownload", "callLogin", "logout"]);
+const emit = defineEmits([
+  "callDownload",
+  "callReportDownload",
+  "callLogin",
+  "logout",
+]);
 
 // COMPUTED
 const isPanelVisible = computed(
@@ -26,9 +31,9 @@ const isPanelVisible = computed(
 const launchDownload = () => {
   emit("callDownload");
 };
-// const launchReportPDFDownload = () => {
-//   emit("callReportDownload");
-// };
+const launchReportPDFDownload = () => {
+  emit("callReportDownload");
+};
 const togglePanel = () => {
   panelShow.value = !panelShow.value;
 };
@@ -74,7 +79,7 @@ defineExpose({ togglePanel });
             </span>
           </div>
         </vs-tab>
-        <!-- <vs-tab icon="sim_card_download" label="Descarga informe PDF">
+        <vs-tab icon="sim_card_download" label="Descarga informe PDF">
           <div v-if="samplesStore.getUserLogged" class="panel-download">
             <ReportYearsDownload />
             <div class="panel-download__action">
@@ -96,7 +101,7 @@ defineExpose({ togglePanel });
               informe PDF
             </span>
           </div>
-        </vs-tab> -->
+        </vs-tab>
       </vs-tabs>
     </div>
   </div>
