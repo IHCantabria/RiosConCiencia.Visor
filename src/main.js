@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 import Vuesax from "vuesax3";
+import VueMatomo from "vue-matomo";
 import router from "./router";
 
 const pinia = createPinia();
@@ -15,4 +16,11 @@ app.use(Vuesax, {
   },
 });
 
-app.use(pinia).use(router).mount("#app");
+app
+  .use(VueMatomo, {
+    host: "https://analytics.ihcantabria.com/",
+    siteId: 21,
+  })
+  .use(pinia)
+  .use(router)
+  .mount("#app");
