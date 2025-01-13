@@ -24,3 +24,5 @@ app
   .use(pinia)
   .use(router)
   .mount("#app");
+
+window._paq.push(["trackPageView"]); // Para rastrear una vista de página
