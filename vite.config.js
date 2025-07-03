@@ -4,6 +4,9 @@ import vue from "@vitejs/plugin-vue";
 import viteCompression from "vite-plugin-compression";
 import dns from "dns";
 import zlib from "zlib";
+import fs from "fs";
+import path from "path";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // Localhost instead of ip 127.0.0.1
 dns.setDefaultResultOrder("verbatim");
@@ -12,7 +15,6 @@ dns.setDefaultResultOrder("verbatim");
 export default defineConfig(({ mode }) => {
   //Workaround for building environments
   let dist = null;
-  // mode === "pre" ? "build/pre/" : "build/dev/";
   if (mode === "development") {
     dist = "build/dev/";
   } else if (mode === "pre") {
@@ -20,11 +22,34 @@ export default defineConfig(({ mode }) => {
   } else if (mode === "prod") {
     dist = "build/prod/";
   }
+
+  // Custom plugin to copy web.config
+  const copyWebConfig = () => ({
+    name: "copy-web-config",
+    closeBundle: () => {
+      // Determine the environment
+      let webConfigSource = null;
+      if (mode === "development") {
+        webConfigSource = "server-config/web.config.development";
+      } else if (mode === "pre") {
+        webConfigSource = "server-config/web.config.preproduction";
+      } else if (mode === "prod") {
+        webConfigSource = "server-config/web.config.production";
+      }
+
+      // copy the web.config to the dist folder
+      const targetPath = path.join(dist, "web.config");
+      const content = fs.readFileSync(webConfigSource);
+      fs.writeFileSync(targetPath, content);
+      console.log(`Copiado ${webConfigSource} a ${targetPath}`);
+    },
+  });
+
   return {
     plugins: [
       vue(),
       viteCompression({
-        filter: new RegExp("\\.(js|json|css|html|svg)$", "i"),
+        filter: new RegExp("\\.(js|json|css|htm|html|svg)$", "i"),
         threshold: 10240,
         algorithm: "brotliCompress",
         ext: ".br",
@@ -38,7 +63,7 @@ export default defineConfig(({ mode }) => {
         deleteOriginFile: false,
       }),
       viteCompression({
-        filter: new RegExp("\\.(js|json|css|html)$", "i"),
+        filter: new RegExp("\\.(js|json|css|htm|html|svg)$", "i"),
         threshold: 10240,
         algorithm: "gzip",
         ext: ".gz",
@@ -47,6 +72,8 @@ export default defineConfig(({ mode }) => {
         },
         deleteOriginFile: false,
       }),
+      copyWebConfig(), // Plugin to copy web.config
+      basicSsl(),
     ],
     define: {
       __APP_VERSION__: JSON.stringify(require("./package.json").version),
@@ -69,21 +96,23 @@ export default defineConfig(({ mode }) => {
       port: 8080,
       // Exits if port is already in use
       strictPort: true,
-      // Uncomment for LOCAL DEVELOPMENT only to be able to use https with certificate in localhost.
-      // Https configuration, default is false
-      // https: {
-      //   key: fs.readFileSync("./certificate/localhost-key.pem"),
-      //   cert: fs.readFileSync("./certificate/localhost.pem"),
-      // },
+      https: true,
     },
     preview: {
-      port: 8081,
+      port: 8080,
       strictPort: true,
-      https: false,
+      https: true,
     },
     build: {
       outDir: dist,
       reportCompressedSize: false,
+      rollupOptions: {
+        output: {
+          entryFileNames: "[name]-ihash[hash].js",
+          chunkFileNames: "[name]-ihash[hash].js",
+          assetFileNames: "[name]-ihash[hash].[ext]",
+        },
+      },
     },
     css: {
       preprocessorOptions: {
